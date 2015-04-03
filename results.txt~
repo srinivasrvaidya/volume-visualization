@@ -1,0 +1,554 @@
+
+Tissue opacity & boneOpacity = 0.0
+---------------
+
+step size: 0.005
+
+ Tissue opacity 0.005  Value-tissue:: 50237.9
+ Tissue opacity 0.01  Value-tissue:: 63793.1
+ Tissue opacity 0.015  Value-tissue:: 68321.8
+ Tissue opacity 0.02  Value-tissue:: 70121.7
+ Tissue opacity 0.025  Value-tissue:: 70895.9
+ Tissue opacity 0.03  Value-tissue:: 71220.8
+ Tissue opacity 0.035  Value-tissue:: 71331.1
+ Tissue opacity 0.04  Value-tissue:: 71357.5
+ Tissue opacity 0.045  Value-tissue:: 71157.8
+ Tissue opacity 0.05  Value-tissue:: 71032.7
+ Tissue opacity 0.055  Value-tissue:: 70886.4
+ Tissue opacity 0.06  Value-tissue:: 70674.4
+ Tissue opacity 0.065  Value-tissue:: 70376.3
+ Tissue opacity 0.07  Value-tissue:: 70131.2
+ Tissue opacity 0.075  Value-tissue:: 69905.6
+ Tissue opacity 0.08  Value-tissue:: 69663.7
+ Tissue opacity 0.085  Value-tissue:: 69260.5
+ Tissue opacity 0.09  Value-tissue:: 69012.4
+ Tissue opacity 0.095  Value-tissue:: 68746.7
+ Tissue opacity 0.1  Value-tissue:: 68353.3
+ Tissue opacity 0.105  Value-tissue:: 68067.2
+ Tissue opacity 0.11  Value-tissue:: 67802.1
+ Tissue opacity 0.115  Value-tissue:: 67496.9
+ Tissue opacity 0.12  Value-tissue:: 67100.7
+ Tissue opacity 0.125  Value-tissue:: 66793.8
+ Tissue opacity 0.13  Value-tissue:: 66483.9
+ Tissue opacity 0.135  Value-tissue:: 66072.3
+ Tissue opacity 0.14  Value-tissue:: 65757.9
+ Tissue opacity 0.145  Value-tissue:: 65480.7
+ Tissue opacity 0.15  Value-tissue:: 65155.1
+ Tissue opacity 0.155  Value-tissue:: 64732.6
+ Tissue opacity 0.16  Value-tissue:: 64409
+ Tissue opacity 0.165  Value-tissue:: 64123.8
+ Tissue opacity 0.17  Value-tissue:: 63660.5
+ Tissue opacity 0.175  Value-tissue:: 63333.8
+ Tissue opacity 0.18  Value-tissue:: 63042.9
+ Tissue opacity 0.185  Value-tissue:: 62713.7
+ Tissue opacity 0.19  Value-tissue:: 62272.7
+ Tissue opacity 0.195  Value-tissue:: 61942.1
+ Tissue opacity 0.2  Value-tissue:: 61644.4
+ Tissue opacity 0.205  Value-tissue:: 61307
+ Tissue opacity 0.21  Value-tissue:: 60836.4
+ Tissue opacity 0.215  Value-tissue:: 60538.2
+ Tissue opacity 0.22  Value-tissue:: 60196.8
+ Tissue opacity 0.225  Value-tissue:: 59763.9
+ Tissue opacity 0.23  Value-tissue:: 59411.9
+ Tissue opacity 0.235  Value-tissue:: 59109.8
+ Tissue opacity 0.24  Value-tissue:: 58762.3
+ Tissue opacity 0.245  Value-tissue:: 58328.9
+ Tissue opacity 0.25  Value-tissue:: 57983.6
+ Tissue opacity 0.255  Value-tissue:: 57636.6
+ Tissue opacity 0.26  Value-tissue:: 57204.2
+ Tissue opacity 0.265  Value-tissue:: 56851.9
+ Tissue opacity 0.27  Value-tissue:: 56542.8
+ Tissue opacity 0.275  Value-tissue:: 56179.9
+ Tissue opacity 0.28  Value-tissue:: 55750.8
+ Tissue opacity 0.285  Value-tissue:: 55392.6
+ Tissue opacity 0.29  Value-tissue:: 55081.9
+ Tissue opacity 0.295  Value-tissue:: 54608
+ Tissue opacity 0.3  Value-tissue:: 54251
+ Tissue opacity 0.305  Value-tissue:: 53934.6
+ Tissue opacity 0.31  Value-tissue:: 53576.7
+ Tissue opacity 0.315  Value-tissue:: 53137.1
+ Tissue opacity 0.32  Value-tissue:: 52776.9
+ Tissue opacity 0.325  Value-tissue:: 52458
+ Tissue opacity 0.33  Value-tissue:: 52094.2
+ Tissue opacity 0.335  Value-tissue:: 51622.4
+ Tissue opacity 0.34  Value-tissue:: 51303.9
+ Tissue opacity 0.345  Value-tissue:: 50936.3
+ Tissue opacity 0.35  Value-tissue:: 50513.1
+ Tissue opacity 0.355  Value-tissue:: 50134.8
+ Tissue opacity 0.36  Value-tissue:: 49814.2
+ Tissue opacity 0.365  Value-tissue:: 49440.8
+ Tissue opacity 0.37  Value-tissue:: 49022.3
+ Tissue opacity 0.375  Value-tissue:: 48651.2
+ Tissue opacity 0.38  Value-tissue:: 48278.6
+ Tissue opacity 0.385  Value-tissue:: 47863.7
+ Tissue opacity 0.39  Value-tissue:: 47486.8
+ Tissue opacity 0.395  Value-tissue:: 47162.1
+ Tissue opacity 0.4  Value-tissue:: 46772.4
+ Tissue opacity 0.405  Value-tissue:: 46361.4
+ Tissue opacity 0.41  Value-tissue:: 45981
+ Tissue opacity 0.415  Value-tissue:: 45655
+ Tissue opacity 0.42  Value-tissue:: 45195.2
+ Tissue opacity 0.425  Value-tissue:: 44813.8
+ Tissue opacity 0.43  Value-tissue:: 44484.5
+ Tissue opacity 0.435  Value-tissue:: 44099.6
+ Tissue opacity 0.44  Value-tissue:: 43683.7
+ Tissue opacity 0.445  Value-tissue:: 43299.8
+ Tissue opacity 0.45  Value-tissue:: 42966.7
+ Tissue opacity 0.455  Value-tissue:: 42578.5
+ Tissue opacity 0.46  Value-tissue:: 42125.2
+ Tissue opacity 0.465  Value-tissue:: 41795.2
+ Tissue opacity 0.47  Value-tissue:: 41401
+ Tissue opacity 0.475  Value-tissue:: 41009.6
+ Tissue opacity 0.48  Value-tissue:: 40603
+ Tissue opacity 0.485  Value-tissue:: 40271
+ Tissue opacity 0.49  Value-tissue:: 39872.1
+ Tissue opacity 0.495  Value-tissue:: 39487.5
+ Tissue opacity 0.5  Value-tissue:: 39092.2
+ Tissue opacity 0.505  Value-tissue:: 38694.1
+ Tissue opacity 0.51  Value-tissue:: 38316.1
+ Tissue opacity 0.515  Value-tissue:: 37913.6
+ Tissue opacity 0.52  Value-tissue:: 37576.9
+ Tissue opacity 0.525  Value-tissue:: 37157.8
+ Tissue opacity 0.53  Value-tissue:: 36788.4
+ Tissue opacity 0.535  Value-tissue:: 36379.8
+ Tissue opacity 0.54  Value-tissue:: 36040.9
+ Tissue opacity 0.545  Value-tissue:: 35611
+ Tissue opacity 0.55  Value-tissue:: 35203
+ Tissue opacity 0.555  Value-tissue:: 34859.6
+ Tissue opacity 0.56  Value-tissue:: 34447.7
+ Tissue opacity 0.565  Value-tissue:: 34077.2
+ Tissue opacity 0.57  Value-tissue:: 33663.9
+ Tissue opacity 0.575  Value-tissue:: 33317.9
+ Tissue opacity 0.58  Value-tissue:: 32899.9
+ Tissue opacity 0.585  Value-tissue:: 32482.7
+ Tissue opacity 0.59  Value-tissue:: 32139
+ Tissue opacity 0.595  Value-tissue:: 31718.1
+ Tissue opacity 0.6  Value-tissue:: 31373.3
+ Tissue opacity 0.605  Value-tissue:: 30937.5
+ Tissue opacity 0.61  Value-tissue:: 30590.7
+ Tissue opacity 0.615  Value-tissue:: 30170.7
+ Tissue opacity 0.62  Value-tissue:: 29822.5
+ Tissue opacity 0.625  Value-tissue:: 29408.3
+ Tissue opacity 0.63  Value-tissue:: 28995.2
+ Tissue opacity 0.635  Value-tissue:: 28645.5
+ Tissue opacity 0.64  Value-tissue:: 28227.1
+ Tissue opacity 0.645  Value-tissue:: 27875.9
+ Tissue opacity 0.65  Value-tissue:: 27441.8
+ Tissue opacity 0.655  Value-tissue:: 27088.5
+ Tissue opacity 0.66  Value-tissue:: 26672.2
+ Tissue opacity 0.665  Value-tissue:: 26316.4
+ Tissue opacity 0.67  Value-tissue:: 25907.3
+ Tissue opacity 0.675  Value-tissue:: 25497.6
+ Tissue opacity 0.68  Value-tissue:: 25135.2
+ Tissue opacity 0.685  Value-tissue:: 24726.5
+ Tissue opacity 0.69  Value-tissue:: 24344.2
+ Tissue opacity 0.695  Value-tissue:: 23937
+ Tissue opacity 0.7  Value-tissue:: 23570
+ Tissue opacity 0.705  Value-tissue:: 23163.5
+ Tissue opacity 0.71  Value-tissue:: 22759.9
+ Tissue opacity 0.714999  Value-tissue:: 22396.6
+ Tissue opacity 0.719999  Value-tissue:: 21987.4
+ Tissue opacity 0.724999  Value-tissue:: 21621.8
+ Tissue opacity 0.729999  Value-tissue:: 21192.9
+ Tissue opacity 0.734999  Value-tissue:: 20823.4
+ Tissue opacity 0.739999  Value-tissue:: 20417.7
+ Tissue opacity 0.744999  Value-tissue:: 20045.2
+ Tissue opacity 0.749999  Value-tissue:: 19649
+ Tissue opacity 0.754999  Value-tissue:: 19254.7
+ Tissue opacity 0.759999  Value-tissue:: 18879.4
+ Tissue opacity 0.764999  Value-tissue:: 18479.5
+ Tissue opacity 0.769999  Value-tissue:: 18101.2
+ Tissue opacity 0.774999  Value-tissue:: 17676.8
+ Tissue opacity 0.779999  Value-tissue:: 17294.7
+ Tissue opacity 0.784999  Value-tissue:: 16898.3
+ Tissue opacity 0.789999  Value-tissue:: 16512.6
+ Tissue opacity 0.794999  Value-tissue:: 16127.6
+ Tissue opacity 0.799999  Value-tissue:: 15740.8
+ Tissue opacity 0.804999  Value-tissue:: 15346
+ Tissue opacity 0.809999  Value-tissue:: 14958.6
+ Tissue opacity 0.814999  Value-tissue:: 14541.1
+ Tissue opacity 0.819999  Value-tissue:: 14154.2
+ Tissue opacity 0.824999  Value-tissue:: 13758.8
+ Tissue opacity 0.829999  Value-tissue:: 13371
+ Tissue opacity 0.834999  Value-tissue:: 12986
+ Tissue opacity 0.839999  Value-tissue:: 12598.2
+ Tissue opacity 0.844999  Value-tissue:: 12200
+ Tissue opacity 0.849999  Value-tissue:: 11810.8
+ Tissue opacity 0.854999  Value-tissue:: 11403.4
+ Tissue opacity 0.859999  Value-tissue:: 11015.4
+ Tissue opacity 0.864999  Value-tissue:: 10616
+ Tissue opacity 0.869999  Value-tissue:: 10226.7
+ Tissue opacity 0.874999  Value-tissue:: 9840.79
+ Tissue opacity 0.879999  Value-tissue:: 9454.64
+ Tissue opacity 0.884999  Value-tissue:: 9064.04
+ Tissue opacity 0.889999  Value-tissue:: 8659.48
+ Tissue opacity 0.894999  Value-tissue:: 8267
+ Tissue opacity 0.899999  Value-tissue:: 7880.1
+ Tissue opacity 0.904999  Value-tissue:: 7487.86
+ Tissue opacity 0.909999  Value-tissue:: 7084.77
+ Tissue opacity 0.914999  Value-tissue:: 6692.22
+ Tissue opacity 0.919999  Value-tissue:: 6304.89
+ Tissue opacity 0.924999  Value-tissue:: 5910.46
+ Tissue opacity 0.929999  Value-tissue:: 5511.95
+ Tissue opacity 0.934999  Value-tissue:: 5116.92
+ Tissue opacity 0.939999  Value-tissue:: 4730.43
+ Tissue opacity 0.944999  Value-tissue:: 4332.3
+ Tissue opacity 0.949999  Value-tissue:: 3942.13
+ Tissue opacity 0.954999  Value-tissue:: 3544.01
+ Tissue opacity 0.959999  Value-tissue:: 3153.7
+ Tissue opacity 0.964999  Value-tissue:: 2756.91
+ Tissue opacity 0.969999  Value-tissue:: 2365.92
+ Tissue opacity 0.974999  Value-tissue:: 1971.56
+ Tissue opacity 0.979999  Value-tissue:: 1577.2
+ Tissue opacity 0.984999  Value-tissue:: 1183.13
+ Tissue opacity 0.989999  Value-tissue:: 788.663
+ Tissue opacity 0.994999  Value-tissue:: 394.353
+ Tissue opacity 0.999999  Value-tissue:: 0.0610799
+
+---------------------------------------------------------------------------
+
+For plotting graph 
+50237.9 , 63793.1 , 68321.8 , 70121.7 , 70895.9 , 71220.8 , 71331.1 , 71357.5 , 71157.8 , 71032.7 , 70886.4 , 70674.4 , 70376.3 , 70131.2 , 69905.6 , 69663.7 , 69260.5 , 69012.4 , 68746.7 , 68353.3 , 68067.2 , 67802.1 , 67496.9 , 67100.7 , 66793.8 , 66483.9 , 66072.3 , 65757.9 , 65480.7 , 65155.1 , 64732.6 , 64409 , 64123.8 , 63660.5 , 63333.8 , 63042.9 , 62713.7 , 62272.7 , 61942.1 , 61644.4 , 61307 , 60836.4 ,60538.2 , 60196.8 , 59763.9 , 59411.9 , 59109.8 , 58762.3 , 58328.9 , 57983.6 , 57636.6 , 57204.2 , 56851.9 , 56542.8 , 56179.9 , 55750.8 , 55392.6 , 55081.9 , 54608 , 54251 , 53934.6 , 53576.7 , 53137.1 , 52776.9 , 52458 , 52094.2 , 51622.4 , 51303.9 , 50936.3 , 50513.1 , 50134.8 , 49814.2 , 49440.8 , 49022.3 , 48651.2 , 48278.6 , 47863.7 , 47486.8 , 47162.1 , 46772.4 , 46361.4 , 45981 , 45655 , 45195.2 , 44813.8 , 44484.5 , 44099.6 , 43683.7 , 43299.8 , 42966.7 , 42578.5 , 42125.2 , 41795.2 , 41401 , 41009.6 , 40603 , 40271 , 39872.1 , 39487.5 , 39092.2 , 38694.1 , 38316.1 , 37913.6 , 37576.9 , 37157.8 , 36788.4 , 36379.8 , 36040.9 , 35611 , 35203 , 34859.6 , 34447.7 , 34077.2 , 33663.9 , 33317.9 , 32899.9 , 32482.7 , 32139 , 31718.1 , 31373.3 , 30937.5 , 30590.7 , 30170.7 , 29822.5 , 29408.3 , 28995.2 , 28645.5 , 28227.1 , 27875.9 , 27441.8 , 27088.5 , 26672.2 , 26316.4 , 25907.3 , 25497.6 , 25135.2 , 24726.5 , 24344.2 , 23937 , 23570 , 23163.5 , 22759.9 , 22396.6 , 21987.4 , 21621.8 , 21192.9 , 20823.4 , 20417.7 , 20045.2 , 19649 , 19254.7 , 18879.4 , 18479.5 , 18101.2 , 17676.8 , 17294.7 , 16898.3 , 16512.6 , 16127.6 , 15740.8 , 15346 , 14958.6 , 14541.1 , 14154.2 , 13758.8 , 13371 , 12986 , 12598.2 , 12200 , 11810.8 , 11403.4 , 11015.4 , 10616 , 10226.7 , 9840.79 , 9454.64 , 9064.04 , 8659.48 , 8267 , 7880.1 , 748
+7.86 , 7084.77 , 6692.22 , 6304.89 , 5910.46 , 5511.95 , 5116.92 , 4730.43 , 4332.3 , 3942.13 , 3544.01 , 3153.7 , 2756.91 , 2365.92 ,1971.56 , 1577.2 , 1183.13 , 788.663 , 394.353 , 0.0610799
+
+-----------------------------------------------------------------------------
+
+Bone 
+--------------
+
+ Bone opacity 0.005  Value-bone:: 9985.91
+ Bone opacity 0.01  Value-bone:: 17001.3
+ Bone opacity 0.015  Value-bone:: 22063.1
+ Bone opacity 0.02  Value-bone:: 25790.3
+ Bone opacity 0.025  Value-bone:: 28581.1
+ Bone opacity 0.03  Value-bone:: 30701.4
+ Bone opacity 0.035  Value-bone:: 32322.4
+ Bone opacity 0.04  Value-bone:: 33574.1
+ Bone opacity 0.045  Value-bone:: 34546.5
+ Bone opacity 0.05  Value-bone:: 35302.9
+ Bone opacity 0.055  Value-bone:: 35890.2
+ Bone opacity 0.06  Value-bone:: 36343.1
+ Bone opacity 0.065  Value-bone:: 36690.3
+ Bone opacity 0.07  Value-bone:: 36952.3
+ Bone opacity 0.075  Value-bone:: 37143.1
+ Bone opacity 0.08  Value-bone:: 37280.2
+ Bone opacity 0.085  Value-bone:: 37368.1
+ Bone opacity 0.09  Value-bone:: 37419.7
+ Bone opacity 0.095  Value-bone:: 37434
+ Bone opacity 0.1  Value-bone:: 37427.7
+ Bone opacity 0.105  Value-bone:: 37390.3
+ Bone opacity 0.11  Value-bone:: 37340
+ Bone opacity 0.115  Value-bone:: 37265.2
+ Bone opacity 0.12  Value-bone:: 37184.4
+ Bone opacity 0.125  Value-bone:: 37087.5
+ Bone opacity 0.13  Value-bone:: 36969.5
+ Bone opacity 0.135  Value-bone:: 36858.1
+ Bone opacity 0.14  Value-bone:: 36723.7
+ Bone opacity 0.145  Value-bone:: 36599
+ Bone opacity 0.15  Value-bone:: 36446.8
+ Bone opacity 0.155  Value-bone:: 36307.2
+ Bone opacity 0.16  Value-bone:: 36146.9
+ Bone opacity 0.165  Value-bone:: 35997.4
+ Bone opacity 0.17  Value-bone:: 35829.2
+ Bone opacity 0.175  Value-bone:: 35653.8
+ Bone opacity 0.18  Value-bone:: 35499.2
+ Bone opacity 0.185  Value-bone:: 35317.4
+ Bone opacity 0.19  Value-bone:: 35146.3
+ Bone opacity 0.195  Value-bone:: 34961.2
+ Bone opacity 0.2  Value-bone:: 34793
+ Bone opacity 0.205  Value-bone:: 34600.6
+ Bone opacity 0.21  Value-bone:: 34402.1
+ Bone opacity 0.215  Value-bone:: 34232.3
+ Bone opacity 0.22  Value-bone:: 34031.4
+ Bone opacity 0.225  Value-bone:: 33856.2
+ Bone opacity 0.23  Value-bone:: 33645
+ Bone opacity 0.235  Value-bone:: 33470.7
+ Bone opacity 0.24  Value-bone:: 33261.3
+ Bone opacity 0.245  Value-bone:: 33081.4
+ Bone opacity 0.25  Value-bone:: 32875.1
+ Bone opacity 0.255  Value-bone:: 32663.2
+ Bone opacity 0.26  Value-bone:: 32484.5
+ Bone opacity 0.265  Value-bone:: 32268.7
+ Bone opacity 0.27  Value-bone:: 32086
+ Bone opacity 0.275  Value-bone:: 31863.5
+ Bone opacity 0.28  Value-bone:: 31680.2
+ Bone opacity 0.285  Value-bone:: 31461.3
+ Bone opacity 0.29  Value-bone:: 31272.8
+ Bone opacity 0.295  Value-bone:: 31059.5
+ Bone opacity 0.3  Value-bone:: 30840.2
+ Bone opacity 0.305  Value-bone:: 30651.9
+ Bone opacity 0.31  Value-bone:: 30431.1
+ Bone opacity 0.315  Value-bone:: 30235.2
+ Bone opacity 0.32  Value-bone:: 30014.2
+ Bone opacity 0.325  Value-bone:: 29823.3
+ Bone opacity 0.33  Value-bone:: 29601.3
+ Bone opacity 0.335  Value-bone:: 29379.6
+ Bone opacity 0.34  Value-bone:: 29190
+ Bone opacity 0.345  Value-bone:: 28963.6
+ Bone opacity 0.35  Value-bone:: 28772.1
+ Bone opacity 0.355  Value-bone:: 28539.5
+ Bone opacity 0.36  Value-bone:: 28346.6
+ Bone opacity 0.365  Value-bone:: 28121.4
+ Bone opacity 0.37  Value-bone:: 27927.3
+ Bone opacity 0.375  Value-bone:: 27703.2
+ Bone opacity 0.38  Value-bone:: 27479
+ Bone opacity 0.385  Value-bone:: 27284.6
+ Bone opacity 0.39  Value-bone:: 27056.8
+ Bone opacity 0.395  Value-bone:: 26860.6
+ Bone opacity 0.4  Value-bone:: 26625.8
+ Bone opacity 0.405  Value-bone:: 26428.9
+ Bone opacity 0.41  Value-bone:: 26201
+ Bone opacity 0.415  Value-bone:: 26002.1
+ Bone opacity 0.42  Value-bone:: 25778.3
+ Bone opacity 0.425  Value-bone:: 25552
+ Bone opacity 0.43  Value-bone:: 25351.2
+ Bone opacity 0.435  Value-bone:: 25125.5
+ Bone opacity 0.44  Value-bone:: 24914.5
+ Bone opacity 0.445  Value-bone:: 24688.4
+ Bone opacity 0.45  Value-bone:: 24484.7
+ Bone opacity 0.455  Value-bone:: 24259.2
+ Bone opacity 0.46  Value-bone:: 24034.2
+ Bone opacity 0.465  Value-bone:: 23832.9
+ Bone opacity 0.47  Value-bone:: 23604.2
+ Bone opacity 0.475  Value-bone:: 23402.1
+ Bone opacity 0.48  Value-bone:: 23163.2
+ Bone opacity 0.485  Value-bone:: 22959.9
+ Bone opacity 0.49  Value-bone:: 22731.1
+ Bone opacity 0.495  Value-bone:: 22526.6
+ Bone opacity 0.5  Value-bone:: 22302.4
+ Bone opacity 0.505  Value-bone:: 22077.7
+ Bone opacity 0.51  Value-bone:: 21872.7
+ Bone opacity 0.515  Value-bone:: 21645
+ Bone opacity 0.52  Value-bone:: 21438.1
+ Bone opacity 0.525  Value-bone:: 21198.8
+ Bone opacity 0.53  Value-bone:: 20991.1
+ Bone opacity 0.535  Value-bone:: 20764.3
+ Bone opacity 0.54  Value-bone:: 20555
+ Bone opacity 0.545  Value-bone:: 20332.7
+ Bone opacity 0.55  Value-bone:: 20108.8
+ Bone opacity 0.555  Value-bone:: 19895.9
+ Bone opacity 0.56  Value-bone:: 19672.8
+ Bone opacity 0.565  Value-bone:: 19446.1
+ Bone opacity 0.57  Value-bone:: 19222.4
+ Bone opacity 0.575  Value-bone:: 19007.2
+ Bone opacity 0.58  Value-bone:: 18785
+ Bone opacity 0.585  Value-bone:: 18564.4
+ Bone opacity 0.59  Value-bone:: 18351.6
+ Bone opacity 0.595  Value-bone:: 18126
+ Bone opacity 0.6  Value-bone:: 17911.9
+ Bone opacity 0.605  Value-bone:: 17673.2
+ Bone opacity 0.61  Value-bone:: 17457.1
+ Bone opacity 0.615  Value-bone:: 17233.4
+ Bone opacity 0.62  Value-bone:: 17015.8
+ Bone opacity 0.625  Value-bone:: 16797.9
+ Bone opacity 0.63  Value-bone:: 16580.7
+ Bone opacity 0.635  Value-bone:: 16361.7
+ Bone opacity 0.64  Value-bone:: 16139
+ Bone opacity 0.645  Value-bone:: 15919.7
+ Bone opacity 0.65  Value-bone:: 15682.4
+ Bone opacity 0.655  Value-bone:: 15463.4
+ Bone opacity 0.66  Value-bone:: 15240.5
+ Bone opacity 0.665  Value-bone:: 15021.3
+ Bone opacity 0.67  Value-bone:: 14802.9
+ Bone opacity 0.675  Value-bone:: 14583.6
+ Bone opacity 0.68  Value-bone:: 14359.2
+ Bone opacity 0.685  Value-bone:: 14139.2
+ Bone opacity 0.69  Value-bone:: 13904.2
+ Bone opacity 0.695  Value-bone:: 13684
+ Bone opacity 0.7  Value-bone:: 13459.6
+ Bone opacity 0.705  Value-bone:: 13239.4
+ Bone opacity 0.71  Value-bone:: 13020.7
+ Bone opacity 0.714999  Value-bone:: 12800.1
+ Bone opacity 0.719999  Value-bone:: 12574.1
+ Bone opacity 0.724999  Value-bone:: 12353.2
+ Bone opacity 0.729999  Value-bone:: 12120.8
+ Bone opacity 0.734999  Value-bone:: 11900
+ Bone opacity 0.739999  Value-bone:: 11673.7
+ Bone opacity 0.744999  Value-bone:: 11452.8
+ Bone opacity 0.749999  Value-bone:: 11233.4
+ Bone opacity 0.754999  Value-bone:: 11013.9
+ Bone opacity 0.759999  Value-bone:: 10792.6
+ Bone opacity 0.764999  Value-bone:: 10564.3
+ Bone opacity 0.769999  Value-bone:: 10342.2
+ Bone opacity 0.774999  Value-bone:: 10115
+ Bone opacity 0.779999  Value-bone:: 9893.04
+ Bone opacity 0.784999  Value-bone:: 9664.62
+ Bone opacity 0.789999  Value-bone:: 9442.56
+ Bone opacity 0.794999  Value-bone:: 9222.26
+ Bone opacity 0.799999  Value-bone:: 8999.82
+ Bone opacity 0.804999  Value-bone:: 8769.27
+ Bone opacity 0.809999  Value-bone:: 8546.26
+ Bone opacity 0.814999  Value-bone:: 8325.5
+ Bone opacity 0.819999  Value-bone:: 8102.51
+ Bone opacity 0.824999  Value-bone:: 7871.67
+ Bone opacity 0.829999  Value-bone:: 7648.41
+ Bone opacity 0.834999  Value-bone:: 7427.76
+ Bone opacity 0.839999  Value-bone:: 7203.73
+ Bone opacity 0.844999  Value-bone:: 6974.34
+ Bone opacity 0.849999  Value-bone:: 6750.16
+ Bone opacity 0.854999  Value-bone:: 6529.28
+ Bone opacity 0.859999  Value-bone:: 6304.56
+ Bone opacity 0.864999  Value-bone:: 6076.12
+ Bone opacity 0.869999  Value-bone:: 5851.41
+ Bone opacity 0.874999  Value-bone:: 5629.84
+ Bone opacity 0.879999  Value-bone:: 5408.03
+ Bone opacity 0.884999  Value-bone:: 5181.79
+ Bone opacity 0.889999  Value-bone:: 4956.38
+ Bone opacity 0.894999  Value-bone:: 4729.83
+ Bone opacity 0.899999  Value-bone:: 4507.61
+ Bone opacity 0.904999  Value-bone:: 4279.89
+ Bone opacity 0.909999  Value-bone:: 4057.29
+ Bone opacity 0.914999  Value-bone:: 3829.57
+ Bone opacity 0.919999  Value-bone:: 3606.56
+ Bone opacity 0.924999  Value-bone:: 3379.02
+ Bone opacity 0.929999  Value-bone:: 3155.66
+ Bone opacity 0.934999  Value-bone:: 2928.51
+ Bone opacity 0.939999  Value-bone:: 2706.5
+ Bone opacity 0.944999  Value-bone:: 2480.15
+ Bone opacity 0.949999  Value-bone:: 2255.41
+ Bone opacity 0.954999  Value-bone:: 2029.94
+ Bone opacity 0.959999  Value-bone:: 1804.27
+ Bone opacity 0.964999  Value-bone:: 1578.57
+ Bone opacity 0.969999  Value-bone:: 1353.8
+ Bone opacity 0.974999  Value-bone:: 1128.1
+ Bone opacity 0.979999  Value-bone:: 902.399
+ Bone opacity 0.984999  Value-bone:: 677.028
+ Bone opacity 0.989999  Value-bone:: 451.253
+ Bone opacity 0.994999  Value-bone:: 225.643
+ Bone opacity 0.999999  Value-bone:: 0.0349594
+
+
+---------
+
+, 9985.91 , 17001.3 , 22063.1 , 25790.3 , 28581.1 , 30701.4 , 32322.4 , 33574.1 , 34546.5 , 35302.9 , 35890.2 , 36343.1 , 36690.3 , 36952.3 , 37143.1 , 37280.2 , 37368.1 , 37419.7 , 37434 , 37427.7 , 37390.3 , 37340 , 37265.2 , 37184.4 , 37087.5 , 36969.5 , 36858.1 , 36723.7 , 36599 ,36446.8 , 36307.2 , 36146.9 , 35997.4 , 35829.2 , 35653.8 , 35499.2 , 35317.4 , 35146.3 , 34961.2 , 34793 , 34600.6 , 34402.1 , 34232.3 , 34031.4 , 33856.2 , 33645 , 33470.7 , 33261.3 , 33081.4 , 32875.1 , 32663.2 , 32484.5 , 32268.7 , 32086 , 31863.5 , 31680.2 , 31461.3 , 31272.8 , 31059.5 , 30840.2 , 30651.9 , 30431.1 , 30235.2 , 30014.2 , 29823.3 , 29601.3 , 29379.6 , 29190 , 28963.6 , 28772.1 , 28539.5 , 28346.6 , 28121.4 , 27927.3 , 27703.2 , 27479 , 27284.6 , 27056.8 , 26860.6 , 26625.8 , 26428.9 , 26201 , 26002.1 , 25778.3 , 25552 , 25351.2 , 25125.5 , 24914.5 , 24688.4 , 24484.7 , 24259.2 , 24034.2 , 23832.9 , 23604.2 , 23402.1 , 23163.2 , 22959.9 , 22731.1 , 22526.6 , 22302.4 , 22077.7 , 21872.7 , 21645 , 21438.1 , 21198.8 , 20991.1 , 20764.3 , 20555 , 20332.7 , 20108.8 , 19895.9 , 19672.8 , 19446.1 , 19222.4 , 19007.2 , 18785 , 18564.4 , 18351.6 , 18126 , 17911.9 , 17673.2 , 17457.1 , 17233.4 , 17015.8 , 16797.9 , 16580.7 , 16361.7 , 16139 , 15919.7 , 15682.4 , 15463.4 , 15240.5 , 15021.3 , 14802.9 , 14583.6 , 14359.2 , 14139.2 , 13904.2 , 13684 , 13459.6 , 13239.4 , 13020.7 , 12800.1 , 12574.1 , 12353.2 , 12120.8 , 11900 , 11673.7 , 11452.8 , 11233.4 , 11013.9 , 10792.6 , 10564.3 , 10342.2 , 10115 , 9893.04 , 9664.62 , 9442.56 , 9222.26 , 8999.82 , 8769.27 , 8546.26 , 8325.5 , 8102.51 , 7871.67 , 7648.41 , 7427.76 , 7203.73 , 6974.34 , 6750.16 , 6529.28 , 6304.56 , 6076.12 , 5851.41 , 5629.84 , 5408.03 , 5181.79 , 4956.38 , 4729.83 , 4507.61 , 4279.89 , 4057.29 , 3829.57 , 3606.56 , 3379.02 , 3155.66 , 2928.51 , 2706.5 , 2480.15 , 2255.41 , 2029.94 , 1804.27 , 1578.57 , 1353.8 , 1128.1 , 902.399 , 677.028 , 451.253 , 225.643 , 0.0349594 
+
+
+
+
+-------------------------------------------------------------
+
+Bone opacity varying && Tissue opacity constant( = 0.03)
+
+ Bone opacity 0.01  Tissue opacity 0.03  Value-Bone 2036.88 Value-tissue:: 69335.2
+ Bone opacity 0.02  Tissue opacity 0.03  Value-Bone 3223.87 Value-tissue:: 68199.9
+ Bone opacity 0.03  Tissue opacity 0.03  Value-Bone 3964.55 Value-tissue:: 67464.6
+ Bone opacity 0.04  Tissue opacity 0.03  Value-Bone 4448.59 Value-tissue:: 66959.4
+ Bone opacity 0.05  Tissue opacity 0.03  Value-Bone 4774.59 Value-tissue:: 66598.5
+ Bone opacity 0.06  Tissue opacity 0.03  Value-Bone 4997.97 Value-tissue:: 66330
+ Bone opacity 0.07  Tissue opacity 0.03  Value-Bone 5151.67 Value-tissue:: 66125.7
+ Bone opacity 0.08  Tissue opacity 0.03  Value-Bone 5256.33 Value-tissue:: 65965.8
+ Bone opacity 0.09  Tissue opacity 0.03  Value-Bone 5325.63 Value-tissue:: 65839
+ Bone opacity 0.1   Tissue opacity 0.03  Value-Bone 5368.67 Value-tissue:: 65736.1
+ Bone opacity 0.11  Tissue opacity 0.03  Value-Bone 5391.69 Value-tissue:: 65652
+ Bone opacity 0.12  Tissue opacity 0.03  Value-Bone 5399.43 Value-tissue:: 65582
+ Bone opacity 0.13  Tissue opacity 0.03  Value-Bone 5395.15 Value-tissue:: 65522.9
+ Bone opacity 0.14  Tissue opacity 0.03  Value-Bone 5381.38 Value-tissue:: 65473.1
+ Bone opacity 0.15  Tissue opacity 0.03  Value-Bone 5359.81 Value-tissue:: 65430
+ Bone opacity 0.16  Tissue opacity 0.03  Value-Bone 5331.98 Value-tissue:: 65393.5
+ Bone opacity 0.17  Tissue opacity 0.03  Value-Bone 5299    Value-tissue:: 65361.2
+ Bone opacity 0.18  Tissue opacity 0.03  Value-Bone 5261.73 Value-tissue:: 65333.3
+ Bone opacity 0.19  Tissue opacity 0.03  Value-Bone 5220.94 Value-tissue:: 65308.4
+ Bone opacity 0.2   Tissue opacity 0.03  Value-Bone 5177.1  Value-tissue:: 65286.6
+ Bone opacity 0.21  Tissue opacity 0.03  Value-Bone 5130.66 Value-tissue:: 65267.4
+ Bone opacity 0.22  Tissue opacity 0.03  Value-Bone 5081.96 Value-tissue:: 65249.5
+ Bone opacity 0.23  Tissue opacity 0.03  Value-Bone 5031.48 Value-tissue:: 65234.2
+ Bone opacity 0.24  Tissue opacity 0.03  Value-Bone 4979.24 Value-tissue:: 65219.8
+ Bone opacity 0.25  Tissue opacity 0.03  Value-Bone 4925.59 Value-tissue:: 65207.2
+ Bone opacity 0.26  Tissue opacity 0.03  Value-Bone 4870.78 Value-tissue:: 65195.5
+ Bone opacity 0.27  Tissue opacity 0.03  Value-Bone 4814.74 Value-tissue:: 65185
+ Bone opacity 0.28  Tissue opacity 0.03  Value-Bone 4757.79 Value-tissue:: 65175.4
+ Bone opacity 0.29  Tissue opacity 0.03  Value-Bone 4699.78 Value-tissue:: 65166.7
+ Bone opacity 0.3   Tissue opacity 0.03  Value-Bone 4641.26 Value-tissue:: 65158.5
+ Bone opacity 0.31  Tissue opacity 0.03  Value-Bone 4581.93 Value-tissue:: 65151
+ Bone opacity 0.32  Tissue opacity 0.03  Value-Bone 4522.01 Value-tissue:: 65144
+ Bone opacity 0.33  Tissue opacity 0.03  Value-Bone 4461.5 Value-tissue:: 65137.8
+ Bone opacity 0.34  Tissue opacity 0.03  Value-Bone 4400.48 Value-tissue:: 65131.7
+ Bone opacity 0.35  Tissue opacity 0.03  Value-Bone 4338.98 Value-tissue:: 65126.2
+ Bone opacity 0.36  Tissue opacity 0.03  Value-Bone 4277.01 Value-tissue:: 65120.9
+ Bone opacity 0.37  Tissue opacity 0.03  Value-Bone 4214.79 Value-tissue:: 65116.1
+ Bone opacity 0.38  Tissue opacity 0.03  Value-Bone 4152.04 Value-tissue:: 65111.4
+ Bone opacity 0.39  Tissue opacity 0.03  Value-Bone 4088.93 Value-tissue:: 65107.1
+ Bone opacity 0.4   Tissue opacity 0.03  Value-Bone 4025.53 Value-tissue:: 65103
+ Bone opacity 0.41  Tissue opacity 0.03  Value-Bone 3962.18 Value-tissue:: 65099.2
+ Bone opacity 0.42  Tissue opacity 0.03  Value-Bone 3898.3 Value-tissue:: 65095.6
+ Bone opacity 0.43  Tissue opacity 0.03  Value-Bone 3834.08 Value-tissue:: 65092.2
+ Bone opacity 0.44  Tissue opacity 0.03  Value-Bone 3769.81 Value-tissue:: 65089.1
+ Bone opacity 0.45  Tissue opacity 0.03  Value-Bone 3705.26 Value-tissue:: 65086
+ Bone opacity 0.46  Tissue opacity 0.03  Value-Bone 3640.43 Value-tissue:: 65083.1
+ Bone opacity 0.47  Tissue opacity 0.03  Value-Bone 3575.5 Value-tissue:: 65080.2
+ Bone opacity 0.48  Tissue opacity 0.03  Value-Bone 3510.47 Value-tissue:: 65077.6
+ Bone opacity 0.49  Tissue opacity 0.03  Value-Bone 3445.16 Value-tissue:: 65075.1
+ Bone opacity 0.5   Tissue opacity 0.03  Value-Bone 3379.72 Value-tissue:: 65072.6
+ Bone opacity 0.51  Tissue opacity 0.03  Value-Bone 3314.1 Value-tissue:: 65070.3
+ Bone opacity 0.52  Tissue opacity 0.03  Value-Bone 3248.34 Value-tissue:: 65068.1
+ Bone opacity 0.53  Tissue opacity 0.03  Value-Bone 3182.46 Value-tissue:: 65065.9
+ Bone opacity 0.54  Tissue opacity 0.03  Value-Bone 3116.42 Value-tissue:: 65063.9
+ Bone opacity 0.55  Tissue opacity 0.03  Value-Bone 3050.27 Value-tissue:: 65061.8
+ Bone opacity 0.56  Tissue opacity 0.03  Value-Bone 2984.06 Value-tissue:: 65060
+ Bone opacity 0.57  Tissue opacity 0.03  Value-Bone 2917.8  Value-tissue:: 65058.2
+ Bone opacity 0.58  Tissue opacity 0.03  Value-Bone 2851.21 Value-tissue:: 65056.5
+ Bone opacity 0.59  Tissue opacity 0.03  Value-Bone 2784.58 Value-tissue:: 65054.8
+ Bone opacity 0.6   Tissue opacity 0.03  Value-Bone 2718    Value-tissue:: 65053.3
+ Bone opacity 0.61  Tissue opacity 0.03  Value-Bone 2651.21 Value-tissue:: 65051.6
+ Bone opacity 0.62  Tissue opacity 0.03  Value-Bone 2584.32 Value-tissue:: 65050.3
+ Bone opacity 0.63  Tissue opacity 0.03  Value-Bone 2517.49 Value-tissue:: 65048.8
+ Bone opacity 0.64  Tissue opacity 0.03  Value-Bone 2450.48 Value-tissue:: 65047.4
+ Bone opacity 0.65  Tissue opacity 0.03  Value-Bone 2383.35 Value-tissue:: 65045.9
+ Bone opacity 0.66  Tissue opacity 0.03  Value-Bone 2316.14 Value-tissue:: 65044.5
+ Bone opacity 0.67  Tissue opacity 0.03  Value-Bone 2248.95 Value-tissue:: 65043.2
+ Bone opacity 0.68  Tissue opacity 0.03  Value-Bone 2181.54 Value-tissue:: 65042
+ Bone opacity 0.69  Tissue opacity 0.03  Value-Bone 2114.17 Value-tissue:: 65040.8
+ Bone opacity 0.7   Tissue opacity 0.03  Value-Bone 2046.54 Value-tissue:: 65039.6
+ Bone opacity 0.71  Tissue opacity 0.03  Value-Bone 1979.16 Value-tissue:: 65038.4
+ Bone opacity 0.72  Tissue opacity 0.03  Value-Bone 1911.53 Value-tissue:: 65037.4
+ Bone opacity 0.73  Tissue opacity 0.03  Value-Bone 1843.84 Value-tissue:: 65036.3
+ Bone opacity 0.74  Tissue opacity 0.03  Value-Bone 1776.16 Value-tissue:: 65035.3
+ Bone opacity 0.75  Tissue opacity 0.03  Value-Bone 1708.37 Value-tissue:: 65034.3
+ Bone opacity 0.76  Tissue opacity 0.03  Value-Bone 1640.52 Value-tissue:: 65033.4
+ Bone opacity 0.77  Tissue opacity 0.03  Value-Bone 1572.61 Value-tissue:: 65032.4
+ Bone opacity 0.78  Tissue opacity 0.03  Value-Bone 1504.68 Value-tissue:: 65031.3
+ Bone opacity 0.79  Tissue opacity 0.03  Value-Bone 1436.69 Value-tissue:: 65030.3
+ Bone opacity 0.8   Tissue opacity 0.03  Value-Bone 1368.66 Value-tissue:: 65029.5
+ Bone opacity 0.81  Tissue opacity 0.03  Value-Bone 1300.54 Value-tissue:: 65028.6
+ Bone opacity 0.82  Tissue opacity 0.03  Value-Bone 1232.48 Value-tissue:: 65027.8
+ Bone opacity 0.83  Tissue opacity 0.03  Value-Bone 1164.28 Value-tissue:: 65026.9
+ Bone opacity 0.839999  Tissue opacity 0.03  Value-Bone 1096.07 Value-tissue:: 65026.1
+ Bone opacity 0.849999  Tissue opacity 0.03  Value-Bone 1027.75 Value-tissue:: 65025.2
+ Bone opacity 0.859999  Tissue opacity 0.03  Value-Bone 959.525 Value-tissue:: 65024.5
+ Bone opacity 0.869999  Tissue opacity 0.03  Value-Bone 891.197 Value-tissue:: 65023.8
+ Bone opacity 0.879999  Tissue opacity 0.03  Value-Bone 822.825 Value-tissue:: 65023.1
+ Bone opacity 0.889999  Tissue opacity 0.03  Value-Bone 754.411 Value-tissue:: 65022.3
+ Bone opacity 0.899999  Tissue opacity 0.03  Value-Bone 685.971 Value-tissue:: 65021.7
+ Bone opacity 0.909999  Tissue opacity 0.03  Value-Bone 617.528 Value-tissue:: 65021
+ Bone opacity 0.919999  Tissue opacity 0.03  Value-Bone 549.004 Value-tissue:: 65020.2
+ Bone opacity 0.929999  Tissue opacity 0.03  Value-Bone 480.476 Value-tissue:: 65019.6
+ Bone opacity 0.939999  Tissue opacity 0.03  Value-Bone 411.915 Value-tissue:: 65018.9
+ Bone opacity 0.949999  Tissue opacity 0.03  Value-Bone 343.326 Value-tissue:: 65018.3
+ Bone opacity 0.959999  Tissue opacity 0.03  Value-Bone 274.712 Value-tissue:: 65017.6
+ Bone opacity 0.969999  Tissue opacity 0.03  Value-Bone 206.07 Value-tissue:: 65017
+ Bone opacity 0.979999  Tissue opacity 0.03  Value-Bone 137.403 Value-tissue:: 65016.4
+ Bone opacity 0.989999  Tissue opacity 0.03  Value-Bone 68.7147 Value-tissue:: 65015.8
+
+
+----
+
+bone values (CSV) 
+2036.88 , 3223.87 , 3964.55 , 4448.59 , 4774.59 , 4997.97 , 5151.67 , 5256.33 , 5325.63 , 5368.67 , 5391.69 , 5399.43 , 5395.15 , 5381.38 , 5359.81 , 5331.98 , 5299 , 5261.73 , 5220.94 , 5177.1 , 5130.66 , 5081.96 , 5031.48 , 4979.24 , 4925.59 , 4870.78 , 4814.74 , 4757.79 , 4699.78 , 4641.26 , 4581.93 , 4522.01 , 4461.5 , 4400.48 , 4338.98 , 4277.01 , 4214.79 , 4152.04 , 4088.93 , 4025.53 , 3962.18 , 3898.3 , 3834.08 , 3769.81 , 3705.26 , 3640.43 , 3575.5 , 3510.47 , 3445.16 , 3379.72 , 3314.1 , 3248.34 , 3182.46 , 3116.42 , 3050.27 , 2984.06 , 2917.8 , 2851.21 , 2784.58 , 2718 , 2651.21 , 2584.32 , 2517.49 , 2450.48 , 2383.35 , 2316.14 , 2248.95 , 2181.54 , 2114.17 , 2046.54 , 1979.16 , 1911.53 , 1843.84 , 1776.16 , 1708.37 , 1640.52 , 1572.61 , 1504.68 , 1436.69 , 1368.66 , 1300.54 , 1232.48 , 1164.28 , 1096.07 , 1027.75 , 959.525 , 891.197 , 822.825 , 754.411 , 685.971 , 617.528 , 549.004 , 480.476 , 411.915 , 343.326 , 274.712 , 206.07 , 137.403 , 68.7147
+
+tissue values (CSV)
+69335.2 , 68199.9 , 67464.6 , 66959.4 , 66598.5 , 66330 , 66125.7 , 65965.8 , 65839 , 65736.1 , 65652 , 65582 , 65522.9 , 65473.1 , 65430 , 65393.5 , 65361.2 , 65333.3 , 65308.4 , 65286.6 , 65267.4 , 65249.5 , 65234.2 , 65219.8 , 65207.2 , 65195.5 , 65185 , 65175.4 , 65166.7 , 65158.5 , 65151 , 65144 , 65137.8 , 65131.7 , 65126.2 , 65120.9 , 65116.1 , 65111.4 , 65107.1 , 65103 , 65099.2 , 65095.6 , 65092.2 , 65089.1 , 65086 , 65083.1 , 65080.2 , 65077.6 , 65075.1 , 65072.6 , 65070.3 , 65068.1 , 65065.9 , 65063.9 , 65061.8 , 65060 , 65058.2 , 65056.5 , 65054.8 , 65053.3 , 65051.6 , 65050.3 , 65048.8 , 65047.4 , 65045.9 , 65044.5 , 65043.2 , 65042 , 65040.8 , 65039.6 , 65038.4 , 65037.4 , 65036.3 , 65035.3 , 65034.3 , 65033.4 , 65032.4 , 65031.3 , 65030.3 , 65029.5 , 65028.6 , 65027.8 , 65026.9 , 65026.1 , 65025.2 , 65024.5 , 65023.8 , 65023.1 , 65022.3 , 65021.7 , 65021 , 65020.2 , 65019.6 , 65018.9 , 65018.3 , 65017.6 , 65017 , 65016.4 , 65015.8 
+
+----------------------------------------------------------------
+
+ Bone opacity 0.1  Tissue opacity 0.1  Values-bone:: 549.115   Values-tissue:: 67843.6 : Total 68392.7
+ Bone opacity 0.1  Tissue opacity 0.2  Values-bone:: 118.979   Values-tissue:: 61499.4 : Total 61618.3
+ Bone opacity 0.1  Tissue opacity 0.3  Values-bone:: 44.484    Values-tissue:: 54112.4 : Total 54156.9
+ Bone opacity 0.1  Tissue opacity 0.4  Values-bone:: 19.384    Values-tissue:: 46620.4 : Total 46639.8
+ Bone opacity 0.1  Tissue opacity 0.5  Values-bone:: 8.10322   Values-tissue:: 38908 : Total 38916.1
+ Bone opacity 0.1  Tissue opacity 0.6  Values-bone:: 3.37275   Values-tissue:: 31194 : Total 31197.4
+ Bone opacity 0.1  Tissue opacity 0.7  Values-bone:: 1.17034   Values-tissue:: 23373 : Total 23374.2
+ Bone opacity 0.1  Tissue opacity 0.8  Values-bone:: 0.260929  Values-tissue:: 15583.9 : Total 15584.2
+ Bone opacity 0.1  Tissue opacity 0.9  Values-bone:: 0.0292872 Values-tissue:: 7793.49 : Total 7793.52
+ Bone opacity 0.1  Tissue opacity 1    Values-bone:: 0 	       Values-tissue:: -0.00927603 : Total -0.00927603
+
+

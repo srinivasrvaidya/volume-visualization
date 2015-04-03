@@ -1,0 +1,242 @@
+	
+//	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+	
+    glEnable(GL_DEPTH_TEST);
+
+    // test the gl_error
+    GL_ERROR();
+
+ // render to texture
+	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, g_frameBuffer);
+    glViewport(0, 0, g_winWidth, g_winHeight);
+    linkShader(g_programHandle, g_bfVertHandle, g_bfFragHandle);
+    glUseProgram(g_programHandle);
+    render(GL_FRONT); // cull front face
+    
+    
+    glUseProgram(0);  // fixed pipeline 
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);  
+	
+	=====================================================
+	
+	float r1 = 0.0 ,r2 = 0.0 ,r3 = 0.0 ,r4 = 0.0;
+	
+	====================================================
+	
+	
+	if( colorSample.a > 0.5 )
+				r4 += (1.0 - colorAcum.a) * colorSample.a;
+			else
+			if( colorSample.a > 0.3 )
+				r3 += (1.0 - colorAcum.a) * colorSample.a;
+			else
+			if( colorSample.a > 0.08 )
+				r2 += (1.0 - colorAcum.a) * colorSample.a;
+			else
+				r1 += (1.0 - colorAcum.a) * colorSample.a;	
+
+	
+	
+	
+	=====================================================
+	
+	
+	
+	
+	
+	
+	
+/** -------  histogram section :: start  ------- **/
+
+//	glPushMatrix();
+
+    GL_ERROR();
+
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, g_TestFrameBuffer);
+//    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+
+    glViewport(0, 0, g_winWidth, g_winHeight);
+    linkShader(g_programHandle, g_histogramVertHandle, g_histogramFragHandle);
+    GL_ERROR();
+    glUseProgram(g_programHandle);
+    rayCastSetUnifroms();
+    GL_ERROR();
+    
+    render(GL_BACK);  // cull back face
+ //   glUseProgram(0);  // fixed pipeline
+
+	readBufferTexture(g_TestFrameBuffer);
+
+	cout << " -------------- " << "\n";
+	
+//	glPopMatrix();
+ 
+/** ------  histogram section :: stop  ------- **/   
+        
+  /*
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);     // to use normal framebuffer. 
+    
+ //   glBindFramebuffer(GL_DRAW_FRAMEBUFFER, g_TestFrameBuffer);
+ //   glBindFramebuffer(GL_DRAW_FRAMEBUFFER, g_frameBuffer);
+    glViewport(0, 0, g_winWidth, g_winHeight);
+    linkShader(g_programHandle, g_rcVertHandle, g_rcFragHandle);
+    GL_ERROR();
+    glUseProgram(g_programHandle);
+    rayCastSetUnifroms();
+    GL_ERROR();
+    
+    render(GL_BACK);  // cull back face
+	glUseProgram(0);
+    GL_ERROR(); 
+   */
+//    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, g_frameBuffer);
+//    GLenum drawbuffers[] = { GL_COLOR_ATTACHMENT1 };
+//    glDrawBuffers(1, drawbuffers);
+//    glBindRenderbuffer(GL_DRAW_FRAMEBUFFER, g_frameBuffer);
+//    glRenderbufferStorage(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 , g_winWidth,  g_winHeight);
+    
+    /****  for test the first pass  *******/
+    
+    /*
+     glBindFramebuffer(GL_READ_FRAMEBUFFER, g_frameBuffer);
+     checkFramebufferStatus();
+     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+     glViewport(0, 0, g_winWidth, g_winHeight);
+     glClearColor(0.0, 0.0, 1.0, 1.0);
+     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+     GL_ERROR();
+     glBlitFramebuffer(0, 0, g_winWidth, g_winHeight,0, 0, g_winWidth, g_winHeight, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+     GL_ERROR();
+	*/
+   glutSwapBuffers();
+   
+   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   
+   #version 130
+
+
+in vec3 EntryPoint;
+in vec4 ExitPointCoord;
+//in float visibilityHistogram[];
+
+
+uniform sampler2D ExitPoints;
+uniform sampler3D VolumeTex;
+uniform sampler1D TransferFunc;  
+uniform float     StepSize;
+uniform vec2      ScreenSize;
+uniform float     TissueOpacity;
+uniform float visibilityHistogram[256];
+
+//layout (location = 0) 
+out vec4 FragColor;
+
+
+void main()
+{
+    
+    vec3 exitPoint = texture(ExitPoints, gl_FragCoord.st/ScreenSize).xyz;
+  
+    if (EntryPoint == exitPoint)
+    	//background need no raycasting
+    	discard;
+ 
+    vec3 dir = exitPoint - EntryPoint;
+    float rayLength = length(dir); // the length from front to back is calculated and used to terminate the ray
+    vec3 deltaDir = normalize(dir) * StepSize;
+    float deltaDirLen = length(deltaDir);
+    vec3 voxelCoord = EntryPoint;
+    vec4 colorAcum = vec4(0.0); // The dest color
+    float alphaAcum = 0.0;                // The  dest alpha for blending
+    float intensity;
+    float rayAccumulatedLength = 0.0;
+    vec4 colorSample; // The src color 
+    float alphaSample; // The src alpha
+
+    // backgroundColor
+
+    vec4 bgColor = vec4(0.0, 0.0, 0.0, 0.0);
+ 
+	float r1 = 0.0 ,r2 = 0.0 ,r3 = 0.0 ,r4 = 0.0;
+ 
+    for(int i = 0; i < 1600; i++)
+    {
+    	intensity =  texture(VolumeTex, voxelCoord).x;   // --->
+
+//		texture(TransferFunc, intensity) = vec4(1.0,0.20,.80,0.05);
+		
+		colorSample = texture(TransferFunc, intensity);
+		
+	//	texture(TransferFunc, intensity) = vec4(1.0, 1.0, 1.0, 0.0);
+
+    	// front-to-back integration
+    	    	
+		if (intensity > 0.30 )                         //    -------> 80/255 = 0.31 (bone)
+			colorSample.rgba = vec4(1.0,1.0,1.0,1.0);
+		else
+		if (intensity > 0.08 )
+		{                        //    ------> 20/256 = 0.78 (tissue)
+			colorSample.rgb = vec3(0.7,0.4,0.22);
+			colorSample.a = TissueOpacity;
+		}
+    	if (intensity > 0.02 )                         //    -------> 80/256 = 0.31 (bone)
+			colorSample.rgba = vec4(0.1,0.18,0.82,0.02);
+		else
+			colorSample.rgba = vec4(0.0,0.0,0.0,0.0);
+		
+
+		if (colorSample.a > 0.0) 
+    	{
+
+			// range1:: 0.0 = 0.8
+			// range2:: 0.8 = 0.3
+			// range3:: 0.3 = 0.5
+			// range4:: 0.5 = 1
+
+			if( colorSample.a > 0.5 )
+				r4 += (1.0 - colorAcum.a) * colorSample.a;
+			else
+			if( colorSample.a > 0.3 )
+				r3 += (1.0 - colorAcum.a) * colorSample.a;
+			else
+			if( colorSample.a > 0.08 )
+				r2 += (1.0 - colorAcum.a) * colorSample.a;
+			else
+				r1 += (1.0 - colorAcum.a) * colorSample.a;	
+
+    	    colorAcum.rgb += (1.0 - colorAcum.a) * colorSample.rgb * colorSample.a;
+    	    colorAcum.a += (1.0 - colorAcum.a) * colorSample.a;
+    	    
+		}
+		
+				  
+    	voxelCoord += deltaDir;
+    	rayAccumulatedLength += deltaDirLen;
+    	
+    	if (rayAccumulatedLength >= rayLength )
+    	{	
+    	    colorAcum.rgb = colorAcum.rgb * colorAcum.a + (1 - colorAcum.a) * bgColor.rgb;		
+    	    break;  // terminate if opacity > 1 or; ray is outside the volume	
+    	}	
+    	else if (colorAcum.a > 1.0)
+    	{
+    	    colorAcum.a = 1.0;
+    	    break;
+    	}
+    }
+    
+  
+ //   FragColor = vec4(r1, r2, r3, r4);
+  
+  FragColor = colorAcum;
+  
+//	FragColor = vec4(0.1, 1, 10, 0.30);
+   
+    // for test
+    // FragColor = vec4(EntryPoint, 1.0);
+    // FragColor = vec4(exitPoint, 1.0);
+}
+
+
+	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
