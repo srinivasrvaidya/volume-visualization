@@ -50,7 +50,8 @@ GLuint g_3DVolBreath;
 GLuint g_3DVolWidth;
 
 
-float sampleOpacity[50] = {0.0};
+float transferFunction[ 256 * 4 ] = {0.0};
+float ROItransferFunction[ 256 * 4 ] = {0.0};
 float g_stepSize;
 bool rotationFlag;
 float ROI[6] = {0.6, 0.6, 0.6, 0.4, 0.4, 0.4};
@@ -89,7 +90,7 @@ int checkForOpenGLError(const char* file, int line)
 void initInitializeGlobalData()
 {
 
-    rotationFlag = true;
+    rotationFlag = false;
 
     g_stepSize = 0.001f;
     g_winWidth = 500;
@@ -99,29 +100,212 @@ void initInitializeGlobalData()
 
     // { noOfItemsPassed, RangeUpperLimit, RangeLowerLimit, R, B, G, A , ...}
     int TFLen = 31;
-    float transferFunction[31] = {TFLen,    1.00, 0.35, 1.00, 0.00, 0.00, 0.01,
-                                            0.35, 0.18, 0.0, 1.0, 0.0, 0.01,
-                                            0.18, 0.08, 0.0, 0.0, 1.0, 0.004,
-                                            0.08, 0.05, 0.05, 0.50, 0.20, 0.01 };
+ /*
+    float transferFunc[31] = {TFLen,        1.00, 0.55, 1.00, 0.00, 0.00, 0.05,
+                                            0.50, 0.40, 0.00, 1.00, 0.00, 0.01,
+                                            0.40, 0.20, 0.00, 0.00, 1.00, 0.01,
+                                            0.20, 0.10, 0.82, 0.50, 0.20, 0.01 };
+
+    float ROItransferFunc[31] = {TFLen,        1.00, 0.55, 1.00, 0.00, 0.00, 0.05,
+                                            0.50, 0.40, 0.00, 1.00, 0.00, 0.01,
+                                            0.40, 0.20, 0.00, 0.00, 1.00, 0.01,
+                                            0.20, 0.10, 0.82, 0.50, 0.20, 0.01 };
+*/
 
 
-    for(int i =0; i<TFLen; i++)                                     
+    float ROItransferFunc[31] = {TFLen,     1.00, 0.35, 1.00, 0.00, 0.00, 0.01,
+                                            0.35, 0.18, 0.00, 1.00, 0.00, 0.01,
+                                            0.18, 0.08, 0.00, 0.00, 1.00, 0.005,
+                                            0.08, 0.05, 0.82, 0.50, 0.20, 0.1 };                                        
+
+/*    float transferFunc[31] = {TFLen,        1.00, 0.35, 1.00, 0.00, 0.00, 0.01,
+                                            0.35, 0.18, 0.00, 1.00, 0.00, 0.01,
+                                            0.18, 0.08, 0.00, 0.00, 1.00, 0.005,
+                                            0.08, 0.05, 0.82, 0.50, 0.20, 0.1 };  
+*/
+/* Continous transfer function */
+
+    float transferFunc[256*4];   
+    float x = 0.0, y = 0.0;
+/*
+    for( int i = 0; i < 4*20; i += 4)
     {
-        sampleOpacity[i] = transferFunction[i];        
+        transferFunc[i] = 0.0;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.0;
+    }                                        
+
+    for( int i = 4*20; i < 4*30; i += 4)
+    {
+        transferFunc[i] = 0.950;
+        transferFunc[i+1] = 0.64;
+        transferFunc[i+2] = 0.375;
+        transferFunc[i+3] = 0.01;
+    }                                         
+
+
+    x = 0.0, y = 0.0;
+    for( int i = 4*30; i < 4*45; i += 4)
+    {
+        transferFunc[i] = 0.50+x;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.50;
+        transferFunc[i+3] = 0.01;
+        x = x + 0.05;
+        y = y + 0.005;
+    }
+    
+    x = 0.0, y = 0.0;
+    for( int i = 4*45; i < 4*60; i += 4)
+    {
+        transferFunc[i] = 0.50+x;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.50;
+        transferFunc[i+3] = 0.05;
+        x = x + 0.05;
+        y = y + 0.005;
     }
 
+    for( int i = 4*60; i < 4*80; i += 4)
+    {
+        transferFunc[i] = 0.30 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.01;
+    }
+    for( int i = 4*80; i < 4*120; i += 4)
+    {
+        transferFunc[i] = 0.30 ;
+        transferFunc[i+1] = 0.30;
+        transferFunc[i+2] = 0.30;
+        transferFunc[i+3] = 0.30;
+    } 
+
+
+    for( int i = 4*120; i < 4*150; i += 4)
+    {
+        transferFunc[i] = 0.50 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.10;     
+    }
+ 
+    for( int i = 4*150; i < 4*220; i += 4)
+    {
+        transferFunc[i] = 0.95 ;
+        transferFunc[i+1] = 0.95;
+        transferFunc[i+2] = 0.95;
+        transferFunc[i+3] = 0.05;
+    }
+    for( int i = 4*220; i < 4*255; i += 4)
+    {
+        transferFunc[i] = 0.95 ;
+        transferFunc[i+1] = 0.95;
+        transferFunc[i+2] = 0.95;
+        transferFunc[i+3] = 0.0;
+    
+    }
+ */
+
+ 
+    for( int i = 0; i < 4*20; i += 4)
+    {
+        transferFunc[i] = 0.0;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.0;
+    }                                        
+
+    for( int i = 4*20; i < 4*30; i += 4)
+    {
+        transferFunc[i] = 0.950;
+        transferFunc[i+1] = 0.64;
+        transferFunc[i+2] = 0.375;
+        transferFunc[i+3] = 0.01;
+    }                                         
+
+
+    x = 0.0, y = 0.0;
+    for( int i = 4*30; i < 4*45; i += 4)
+    {
+        transferFunc[i] = 0.50+x;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.01;
+        x = x + 0.05;
+        y = y + 0.005;
+    }
+    
+
+    x = 0.0, y = 0.0;
+    for( int i = 4*45; i < 4*60; i += 4)
+    {
+        transferFunc[i] = 0.70 + x;
+        transferFunc[i+1] = 0.132 - y;
+        transferFunc[i+2] = 0.132 - y;
+        transferFunc[i+3] = 0.01;
+        x = x + 0.05;
+        y = y + 0.005;
+    }
+
+     
+    for( int i = 4*60; i < 4*150; i += 4)
+    {
+        transferFunc[i] = 0.70 ;
+        transferFunc[i+1] = 0.70;
+        transferFunc[i+2] = 0.70;
+        transferFunc[i+3] = 0.10;     
+    }
+ 
+    for( int i = 4*150; i < 4*220; i += 4)
+    {
+        transferFunc[i] = 0.95 ;
+        transferFunc[i+1] = 0.95;
+        transferFunc[i+2] = 0.95;
+        transferFunc[i+3] = 0.0;
+    }
+    for( int i = 4*220; i < 4*255; i += 4)
+    {
+        transferFunc[i] = 1.0 ;
+        transferFunc[i+1] = 1.0;
+        transferFunc[i+2] = 1.0;
+        transferFunc[i+3] = 0.1;
+    
+    }
+     for( int i = 4*250; i < 4*250; i += 4)
+    {
+        transferFunc[i] = 0.0 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.95;
+        transferFunc[i+3] = 1.0;
+    
+    }
+
+/*  for(int i =0; i<TFLen; i++)                                     
+    {
+        transferFunction[i] = transferFunc[i];      
+        ROItransferFunction[i] = ROItransferFunc[i];  
+    }
+*/
+    for(int i = 0; i < 256*4 ; i++)                                     
+    {
+        transferFunction[i] = transferFunc[i];      
+        ROItransferFunction[i] = ROItransferFunc[i];  
+    }
 
     /**** 3D data controls ********/
 
-    g_3DVolHeight = 256;
-    g_3DVolWidth = 256;
-    g_3DVolBreath = 256;
+    g_3DVolHeight = 256; // 512;
+    g_3DVolWidth = 256; // 174;
+    g_3DVolBreath = 256; // 512;
 
-    volumeFile = "./model/foot.raw";
+    volumeFile = "./model/foot.raw" ;
      // "./model/bonsai.raw" 
      // "./model/skull.raw"
      // "./model/BostonTeapot.raw"   -- 256 256 178
      // "./model/foot.raw"
+    //  stent8.raw 512 x 512 x 174
 }
 
 
@@ -246,7 +430,7 @@ GLuint initShaderObj(const GLchar* srcfile, GLenum shaderType)
 		exit(EXIT_FAILURE);
     }
     
-    const int MAX_CNT = 10000;
+    const int MAX_CNT = 20000;
     GLchar *shaderCode = (GLchar *) calloc(MAX_CNT, sizeof(GLchar));
     inFile.read(shaderCode, MAX_CNT);
     if (inFile.eof())
@@ -260,7 +444,7 @@ GLuint initShaderObj(const GLchar* srcfile, GLenum shaderType)
     }
     else
     {
-		cout << srcfile << "is too large" << endl;
+		cout << srcfile << " is too large" << endl;
     }
     
     // create the shader Object
@@ -341,11 +525,11 @@ GLuint initTFF1DTex(const char* filename)
     }
     else if(inFile.fail())
     {
-		cout << filename << "read failed " << endl;
+		cout << filename << " read failed " << endl;
     }
     else
     {
-		cout << filename << "is too large" << endl;
+		cout << filename << " is too large" << endl;
     }   
     
     cout << "\n " << *tff ;
@@ -543,15 +727,27 @@ void rayCastSetUnifroms()
     }
 	
 
-    GLint sampleOpacityLoc = glGetUniformLocation(g_programHandle, "sampleOpacity");
-    if (sampleOpacityLoc >= 0)
+    GLint ROItransferFunctionLoc = glGetUniformLocation(g_programHandle, "ROItransferFunction");
+    if ( ROItransferFunctionLoc >= 0)
     {
-		glUniform1fv(sampleOpacityLoc, 50, sampleOpacity);
+        glUniform1fv(ROItransferFunctionLoc, 256*4, ROItransferFunction);
     }
     else
     {
-			cout << "sampleOpacityLoc is not bind to the uniform" << endl;
+        cout << " ROItransferFunctionLoc is not bind to the uniform" << endl;
     }
+
+    GLint transferFunctionLoc = glGetUniformLocation(g_programHandle, "transferFunction");
+    if (transferFunctionLoc >= 0)
+    {
+		glUniform1fv(transferFunctionLoc, 256*4, transferFunction);
+    }
+    else
+    {
+		cout << "transferFunctionLoc is not bind to the uniform" << endl;
+    }
+
+   
     
 
     GLint ROILoc = glGetUniformLocation(g_programHandle, "ROI");
@@ -632,9 +828,6 @@ void linkShader(GLuint shaderPgm, GLuint newVertHandle, GLuint newFragHandle)
 
 void readBufferTexture(GLuint g_TestFrameBuffer)
 {
-
-  
-
 	int size = g_winHeight * g_winWidth * 4;
 	float texValue[size] ;
     GLuint i=0;
@@ -660,6 +853,9 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 	}
 	
 
+    cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
+  
+
     i=0;
     while(i<4)
         total += rangeTotal[i++];
@@ -667,7 +863,7 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
     i=0;
     while(i < 4)
     {
-        if ( rangeTotal[i] < 1.0 )
+        if( rangeTotal[i] < 1.0 )
         {
             rangeTotal[i] = 0.00001;
             i++;
@@ -677,9 +873,8 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
         i++;
     }       
 
-
-    cout << " Values:: " << rangeTotal[0]*100 << " " << rangeTotal[1]*100 << " " << rangeTotal[2]*100 << " " << rangeTotal[3]*100 << "\n";
-
+//    cout << " Values:: " << rangeTotal[0]*100 << " " << rangeTotal[1]*100 << " " << rangeTotal[2]*100 << " " << rangeTotal[3]*100 << "\n";
+    cout << " " << transferFunction[83] << " " << transferFunction[123] << " " << transferFunction[183] << transferFunction[0] << "\n";
     rangeTotal[0] *= 500;
     rangeTotal[1] *= 500;
     rangeTotal[2] *= 500;
@@ -687,10 +882,10 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 
  //   cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
 
-    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( 255, 0, 0), 12, 8, 0  );
+    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( 0, 0, 255), 12, 8, 0  );
     line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar( 0, 255, 0), 12, 8, 0  );
-    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( 0, 0, 255), 12, 8, 0  );
-    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( 150, 150, 150), 12, 8, 0  );
+    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( 255, 0, 0), 12, 8, 0  );
+    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( 255*0.2 , 255*0.5 , 255 * 0.82), 12, 8, 0  );
 
     namedWindow("Visibility histogram", CV_WINDOW_AUTOSIZE );
     imshow("Visibility histogram", histImage );
@@ -785,8 +980,10 @@ void render(GLenum cullFace)
     model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
 	// to make the "*.raw" i.e. the volume data stand up.
  
-//	model *= glm::rotate(90.0f, vec3(1.0f, 0.0f, 0.0f));
+	model *= glm::rotate(0.0f, vec3(1.0f, 0.0f, 0.0f));
     model *= glm::rotate(90.0f, vec3(0.0f, 1.0f, 0.0f));
+
+    model *= glm::rotate(0.0f, vec3(0.0f, 0.0f, 1.0f));
 
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
     
@@ -833,68 +1030,112 @@ void keyboard(unsigned char key, int x, int y)
     {
 	case 'A':
 	case 'a':	
-                    if ( sampleOpacity[6] < 0.005)
-                        sampleOpacity[6] = 0.0000 ;       
+                    if ( transferFunction[83] < 0.005)
+                    {
+                        for( int i = 4*20; i < 4*30; i += 4)
+                        {
+                            transferFunction[i+3] = 0.0;
+                        }    
+                    }       
                     else    
-                       sampleOpacity[6] -= 0.005;
+                    {
+                        for( int i = 4*20; i < 4*30; i += 4)
+                        {
+                            transferFunction[i+3] -= 0.005;
+                        } 
+                    }
 	
 
     break;
 	
 	case 'D':
 	case 'd':
-				sampleOpacity[6] +=0.005;
+	            for( int i = 4*20; i < 4*30; i += 4)
+                {
+                    transferFunction[i+3] += 0.005;
+                }
 	break;
+
     case 'q':
     case 'Q':   
-                    if ( sampleOpacity[12] < 0.005)
-                        sampleOpacity[12] = 0.0000 ;      
-                    else    
-                       sampleOpacity[12] -= 0.005;
+                if ( transferFunction[123] < 0.005)
+                {
+                    for( int i = 4*30; i < 4*45; i += 4)
+                    {
+                        transferFunction[i+3] = 0.0;
+                    }    
+                }       
+                else    
+                {
+                    for( int i = 4*30; i < 4*45; i += 4)
+                    {
+                        transferFunction[i+3] -= 0.005;
+                    } 
+                }
+
     break;
     
     case 'e':
     case 'E':
-                sampleOpacity[12] +=0.005;
+                for( int i = 4*30; i < 4*45; i += 4)
+                {
+                    transferFunction[i+3] += 0.005;
+                } 
     break;
 
-    case 'L':    // move left
+    case 'J':    // move left
+    case 'j':
+
+                if ( transferFunction[183] < 0.005)
+                {
+                    for( int i = 4*45 ; i < 4*60 ; i += 4)
+                    {
+                        transferFunction[i+3] = 0.0;
+                    }    
+                }       
+                else    
+                {
+                    for( int i = 4*45 ; i < 4*60 ; i += 4)
+                    {
+                        transferFunction[i+3] -= 0.005;
+                    } 
+                }
+
+    break;
+
+    case 'L':    // move right
     case 'l':
-                ROI[2] -= 0.05;
-                ROI[5] -= 0.05;
-    break;
-
-    case 'j':    // move right
-    case 'J':
-                ROI[2] += 0.05;
-                ROI[5] += 0.05;
+                for( int i = 4*45 ; i < 4*60 ; i += 4)
+                {
+                    transferFunction[i+3] += 0.005;
+                }
     break;
 
 
     case 'M': // move front
     case 'm':
-                ROI[0] -= 0.05;
-                ROI[3] -= 0.05;
+                ROI[2] -= 0.05;
+                ROI[5] -= 0.05;
     break;
 
 
     case 'n': // move back
     case 'N':
-                ROI[0] += 0.05;
-                ROI[3] += 0.05;
+                ROI[2] += 0.05;
+                ROI[5] += 0.05;
     break;
 
     case 'i': // move front
     case 'I':
-                ROI[1] += 0.05;
-                ROI[4] += 0.05;
+                ROI[0] += 0.05;
+                ROI[3] += 0.05;
     break;
 
 
     case 'K': // move back
     case 'k':
-                ROI[1] -= 0.05;
-                ROI[4] -= 0.05;
+                ROI[0] -= 0.05;
+                ROI[3] -= 0.05;
     break;
 
     case '\x20' :

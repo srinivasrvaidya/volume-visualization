@@ -9,13 +9,13 @@ uniform sampler3D VolumeTex;
 uniform sampler1D TransferFunc;  
 uniform float     StepSize;
 uniform vec2      ScreenSize;
-uniform float sampleOpacity[50];
+uniform float transferFunction[256*4];
+uniform float ROItransferFunction[50];
 uniform float ROI[6];
 
+//uniform int countVoxelFlag;
 //layout (location = 0) 
 out vec4 FragColor;
-
-
 
 void main()
 {
@@ -37,100 +37,62 @@ void main()
     float rayAccumulatedLength = 0.0;
     float accumulatedOpacity=0.0;
     float sampleOpacityValue = 0.0;
-    bool flagOther = true;
 
   	float r1 = 0.0 ,r2 = 0.0 ,r3 = 0.0 ,r4 = 0.0;
-    int j;
+    
+    int count1=0, count2=0, count3=0, count4=0;
 
-    for(int i = 0; i < 2600; i++)
+    bool rangeFlag = true;
+
+    for(int i = 0; i < 1600; i++)
     {
-    	intensity =  texture(VolumeTex, voxelCoord).x;   // --->
+    	intensity =  texture(VolumeTex, voxelCoord).x;      
+        int INTENSITY = int(intensity * 256);                                   
 
-        j = 1;
-        
-        if(  intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
+        if(  0.078125 <= intensity && 0.1171875 >= intensity )
         {
-            sampleOpacityValue = sampleOpacity[j+5];
-            flagOther = false;
-                
+
+            sampleOpacityValue = transferFunction[INTENSITY*4 + 3];       
+            r1 += (1.0 - accumulatedOpacity) * sampleOpacityValue;     
+
         }   
+        else
+        if(  0.1171875 <= intensity && 0.175 >= intensity )
+        {
 
-        j += 6;
-        if(  intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
-        {
-            sampleOpacityValue = sampleOpacity[j+5];
-            flagOther = false;
+            sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
+            r2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
         }
+        else
+        if( 0.175 <= intensity && 0.234 >= intensity )
+        {
 
-        j += 6;
-        if( intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
-        {
-            sampleOpacityValue = sampleOpacity[j+5];
-            flagOther = false;
+            sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
+            r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
         }
-            
-        j += 6;
-        if( intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
+        else
+        if( 0.234 <= intensity && 0.585 >= intensity )
         {
-            sampleOpacityValue = sampleOpacity[j+5];
-            flagOther = false;
-        }
 
-        if ( flagOther )
+            sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
+            r4 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        }
+        else
         {
-            sampleOpacityValue = 0.0;
+            //sampleOpacityValue = 0.0;
         }
       
         
 
-        if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) && ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) ) 
+        if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) && 
+            ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
+            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) ) 
         {
-            
+         //   count1 += 0;    
         }
 
         accumulatedOpacity += (1.0 - accumulatedOpacity) * sampleOpacityValue;
 		
-        /*
-		if( intensity > 0.35 )
-			r4 +=  (1.0 - accumulatedOpacity) * sampleOpacityValue;
-		else
-		if( intensity > 0.07 )
-			r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
-		else
-			r1 += (1.0 - accumulatedOpacity) * sampleOpacityValue;	
-		*/
-
-
-        flagOther  = true;
-        j=1;
-
-        if(  intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
-        {
-            r1 += (1.0 - accumulatedOpacity) * sampleOpacityValue;  
-            flagOther = false;
-        }   
-
-        j += 6;
-        if(  intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
-        {
-            r2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
-            flagOther = false;
-        }
-
-        j += 6;
-        if( intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
-        {
-            r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
-            flagOther = false;
-        }
-            
-        j += 6;
-        if( intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
-        {
-            r4 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
-            flagOther = false;
-        }
-
 	
     	voxelCoord += deltaDir;
     	rayAccumulatedLength += deltaDirLen;
@@ -147,7 +109,12 @@ void main()
     }
     
     
-	FragColor = vec4(r1, r2, r3, r4);
+//    if ( true )
+	   FragColor = vec4(r1, r2, r3, r4);
+//    else
+//       FragColor = vec4(0.0, 0.0, 0.0, 0.0);   
+
+//  FragColor = vec4(count1, count2, count3, count4);
 
     // for test
     // FragColor = vec4(EntryPoint, 1.0);
@@ -178,6 +145,37 @@ void main()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       /*
+        if( intensity > 0.35 )
+            r4 +=  (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        else
+        if( intensity > 0.07 )
+            r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        else
+            r1 += (1.0 - accumulatedOpacity) * sampleOpacityValue;  
+        */
 /*
 bool isRayHittingROI(float x, float y, float z)
 {
@@ -190,18 +188,18 @@ bool isRayHittingROI(float x, float y, float z)
 */
 
    /*
-        while( j < sampleOpacity[0] )
+        while( indexTF < sampleOpacity[0] )
         {
-            if( intensity <= sampleOpacity[j] && intensity >= sampleOpacity[j+1] )
+            if( intensity <= sampleOpacity[indexTF] && intensity >= sampleOpacity[indexTF+1] )
             {
    
-                sampleOpacityValue = sampleOpacity[j+5];
+                sampleOpacityValue = sampleOpacity[indexTF+5];
 
             }
 
-         j+=6;  
+         indexTF+=6;  
         } 
-        if( j > sampleOpacity[0])
+        if( indexTF > sampleOpacity[0])
         {
             sampleOpacityValue = 0.0;
         }
@@ -222,4 +220,74 @@ bool isRayHittingROI(float x, float y, float z)
         {
            sampleOpacityValue = 0.0;    
         }
-*/        
+        
+ for(int i = 0; i < 1600; i++)
+    {
+        intensity =  texture(VolumeTex, voxelCoord).x;                                         
+
+        indexTF = 1;
+        if(  intensity <= transferFunction[indexTF] && intensity >= transferFunction[indexTF+1] )
+        {
+    
+            rangeFlag = true;
+            break;
+            
+            sampleOpacityValue = transferFunction[indexTF+5];       
+            r1 += (1.0 - accumulatedOpacity) * sampleOpacityValue;     
+
+              
+        }   
+        else
+        if( (indexTF += 6) < transferFunction[0] && intensity <= transferFunction[indexTF] && intensity >= transferFunction[indexTF+1] )
+        {
+
+    
+
+            sampleOpacityValue = transferFunction[indexTF+5];
+            r2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        }
+        else
+        if( (indexTF += 6) < transferFunction[0] && intensity <= transferFunction[indexTF] && intensity >= transferFunction[indexTF+1] )
+        {
+
+            sampleOpacityValue = transferFunction[indexTF+5];
+            r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        }
+        else
+        if( (indexTF += 6) < transferFunction[0] &&  intensity <= transferFunction[indexTF] && intensity >= transferFunction[indexTF+1] )
+        {
+
+            sampleOpacityValue = transferFunction[indexTF+5];
+            r4 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        }
+        else
+        {
+            sampleOpacityValue = 0.0;
+        }
+      
+        
+
+        if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) && 
+            ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
+            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) ) 
+        {
+            count1 += 0;    
+        }
+
+        accumulatedOpacity += (1.0 - accumulatedOpacity) * sampleOpacityValue;
+        
+    
+        voxelCoord += deltaDir;
+        rayAccumulatedLength += deltaDirLen;
+        
+        if (rayAccumulatedLength >= rayLength )
+        {   
+            break;  
+        }   
+        
+        if (accumulatedOpacity >= 1.0)
+        {
+            break;
+        }
+    }
+*/
