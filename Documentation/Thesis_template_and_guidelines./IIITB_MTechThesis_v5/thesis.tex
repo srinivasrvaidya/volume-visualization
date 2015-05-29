@@ -1,0 +1,63 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{thesis}
+
+
+% The value for \thesistitle should be the title of the thesis in a single line.
+\renewcommand{\thesistitle}{
+Visibility Driven Focus+context Multimodal Volume visualization
+}
+
+% The value for \authorname should be the name of the student as per the
+% administrative records. Add your roll number here within paranthesis.
+\renewcommand{\authorname}{Srinivas R Vaidya (MT2010152)}
+
+% The value for \mydegree should be 
+% 1: for M.Tech., 
+% 2: for M.S. by research,
+% 3: for Ph.D.
+\renewcommand{\mydegree}{1} 
+
+% Values for the date that should go to your title page and certificate page,
+% specifically the day, month, and year. 
+% Note: Ensure that the date that is used is a valid date. 
+%
+% \myyear should be year in 4-digit format. 
+% \mymonth is the number corresponding to the month, e.g. 1, 2, ..., 12 for 
+%          January, February, ..., December, respectively.
+% \myday is the number for the day from 1 to 31, depending on the allowable 
+%          number of days for the month and year specified in \mymonth and 
+%          \myyear.
+\renewcommand{\myday}{15}
+\renewcommand{\mymonth}{6}
+\renewcommand{\myyear}{2015}
+
+% The value for \advisorname should be the name of the advisor with appropriate
+% title.
+\renewcommand{\advisorname}{Prof. T K Srikanth}
+
+% The value for \coadvisorname should be the name of the co-advisor with 
+% appropriate title. Use the next line if no co-advisor; otherwise comment 
+% out the next line and uncomment the succeeding line.
+\renewcommand{\coadvisorname}{}
+%\renewcommand{\coadvisorname}{Prof. Jane Doe}
+
+\begin{document}
+
+\maketitlepages
+
+\include{Chapters/chap1}
+\include{Chapters/chap2}
+\include{Chapters/chap3}
+\include{Chapters/chap4}
+\include{Chapters/chap5}
+\include{Chapters/chap6}
+
+\setbib
+
+% If you have no appendices, remove the following three lines.
+% If you have more appdences, add them as necessary.
+\appendix
+\include{Chapters/Appendix/apdxa}
+\include{Chapters/Appendix/apdxb}
+
+\end{document}

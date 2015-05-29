@@ -1,0 +1,79 @@
++Cover Page
++Certificate
++Acknowledgment
++Contents
++Abstract
++List of Abbrivations
++List of Figures
++List of Tables
+
+chapter 1: Introduction
+- Objective
+- Motivation
+- Organization of thesis
+
+=================================
+http://www.cc.gatech.edu/scivis/tutorial/linked/volrend.html
+http://web.cs.wpi.edu/~matt/courses/cs563/talks/powwie/p1/ray-cast.htm
+http://en.wikipedia.org/wiki/Volume_rendering
+
+=================================
+
+chapter 2: Background/Literature survey
+- Focus + context 
+- visibility 
+- opacity peeling,, etc...,
+- Literature survery.
+- importance aware composition
+
+chapter 3: Direct Volume rendering using raycasting
+Definitions::
++ What is Direct volume rendering
++ Transfer function
++ Composting
+	- front-to-back ray composting
+	- Back-to-front ray composting
++ Entry & Exit Textures
++ 2-pass Ray casting algorithm[1]
+
+chapter 4: Visibility driven histogram
++ Definition
++ Background
++ Pictorial Diagram with description
++ Visibility driven Transfer function.
+
+chapter 5: Visibility guided multimodal volume visualization 
+- ROI visibility histogram
+- per ray histogram
+- Benefits of using VH for multimodal viz.
+
+chapter 6: Prerequisite Installations
+- Install openGL GLSL 2.3+, GLEW, openCV, GLM, GLUI...
+- GPU assistanced computation
+
+chapter 7: Implementation
+- Datasets
+	- Source
+	- format
+- Using GLSL - GPU. 
+- Fragment shader.
+- Use of off-screen renderers. 
+- Binding textures to samplers (https://www.opengl.org/wiki/Sampler_%28GLSL%29)
+
+- Histogram computation.
+
+
+chapter 8: Results & Future Work
+- Screenshot of result.
+
+= FOOT
+= CHEST
+= HEAD
+
+- Future work
+	- 
+
+
+Reference:
+1. http://www.voreen.org/129-Ray-Casting.html
+

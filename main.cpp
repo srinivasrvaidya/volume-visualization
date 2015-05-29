@@ -17,6 +17,7 @@
 #include <glm/gtx/transform2.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <Glui2/glui2.h>
 
 #define GL_ERROR() checkForOpenGLError(__FILE__, __LINE__)
 
@@ -37,6 +38,7 @@ GLuint g_bfTexObj;
 GLuint g_texWidth;
 GLuint g_texHeight;
 GLuint g_volTexObj;
+GLuint g_vol2TexObj;
 GLuint g_rcVertHandle;
 GLuint g_rcFragHandle;
 GLuint g_bfVertHandle;
@@ -48,6 +50,18 @@ GLuint g_histogramTexObj;
 GLuint g_3DVolHeight;
 GLuint g_3DVolBreath;
 GLuint g_3DVolWidth;
+GLuint g_3DVol2Height;
+GLuint g_3DVol2Breath;
+GLuint g_3DVol2Width;
+
+
+// Window size
+const int WindowWidth = 512;
+const int WindowHeight = 512;
+
+// Global Glui2 Handle
+Glui2* GluiHandle = NULL;
+
 
 
 float transferFunction[ 256 * 4 ] = {0.0};
@@ -56,6 +70,7 @@ float g_stepSize;
 bool rotationFlag;
 float ROI[6] = {0.6, 0.6, 0.6, 0.4, 0.4, 0.4};
 char *volumeFile;
+char *volumeFile2;
 
 /** function declaration **/
 
@@ -66,7 +81,7 @@ void initShader();
 void initFrameBuffer(GLuint, GLuint, GLuint);
 GLuint initTFF1DTex(const char* filename);
 GLuint initFace2DTex(GLuint texWidth, GLuint texHeight);
-GLuint initVolume3DTexture(const char* filename, GLuint width, GLuint height, GLuint depth);
+GLuint initVolume3DTexture(const char* filename, GLuint width, GLuint height, GLuint depth, GLuint);
 void initTestFrameBuffer(GLuint texObj, GLuint texWidth, GLuint texHeight);
 void render(GLenum cullFace);
 
@@ -106,7 +121,7 @@ void initInitializeGlobalData()
                                             0.40, 0.20, 0.00, 0.00, 1.00, 0.01,
                                             0.20, 0.10, 0.82, 0.50, 0.20, 0.01 };
 
-    float ROItransferFunc[31] = {TFLen,        1.00, 0.55, 1.00, 0.00, 0.00, 0.05,
+    float ROItransferFunc[31] = {TFLen,     1.00, 0.55, 1.00, 0.00, 0.00, 0.05,
                                             0.50, 0.40, 0.00, 1.00, 0.00, 0.01,
                                             0.40, 0.20, 0.00, 0.00, 1.00, 0.01,
                                             0.20, 0.10, 0.82, 0.50, 0.20, 0.01 };
@@ -249,45 +264,113 @@ void initInitializeGlobalData()
         y = y + 0.005;
     }
 
-     
-    for( int i = 4*60; i < 4*150; i += 4)
-    {
-        transferFunc[i] = 0.70 ;
-        transferFunc[i+1] = 0.70;
-        transferFunc[i+2] = 0.70;
-        transferFunc[i+3] = 0.10;     
-    }
  
-    for( int i = 4*150; i < 4*220; i += 4)
+    for( int i = 4*60; i < 4*256; i += 4)
     {
         transferFunc[i] = 0.95 ;
         transferFunc[i+1] = 0.95;
         transferFunc[i+2] = 0.95;
-        transferFunc[i+3] = 0.0;
+        transferFunc[i+3] = 0.01;
     }
     for( int i = 4*220; i < 4*255; i += 4)
     {
         transferFunc[i] = 1.0 ;
         transferFunc[i+1] = 1.0;
         transferFunc[i+2] = 1.0;
-        transferFunc[i+3] = 0.1;
-    
-    }
-     for( int i = 4*250; i < 4*250; i += 4)
-    {
-        transferFunc[i] = 0.0 ;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.95;
-        transferFunc[i+3] = 1.0;
+        transferFunc[i+3] = 0.01;
     
     }
 
-/*  for(int i =0; i<TFLen; i++)                                     
+
+ /* --- stent8 ---- 
+    for( int i = 4*0; i < 4*256; i += 4)
     {
-        transferFunction[i] = transferFunc[i];      
-        ROItransferFunction[i] = ROItransferFunc[i];  
+        transferFunc[i] = 0.0 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.0;
     }
-*/
+    for( int i = 4*0; i < 4*40; i += 4)
+    {
+        transferFunc[i] = 0.0 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.0;
+    } 
+    for( int i = 4*30; i < 4*45; i += 4)
+    {
+        transferFunc[i] = 0.8500 ;
+        transferFunc[i+1] = 0.60;
+        transferFunc[i+2] = 0.40;
+        transferFunc[i+3] = 0.1;
+    }    
+    for( int i = 4*45; i < 4*80; i += 4)
+    {
+        transferFunc[i] = 0.40 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.10;
+    }  
+      
+   for( int i = 4*80; i < 4*140; i += 4)
+    {
+        transferFunc[i] = 0.50 ;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.001;
+    } 
+
+    for( int i = 4*140; i < 4*256; i += 4)
+    {
+        transferFunc[i] = 0.950 ;
+        transferFunc[i+1] = 0.950;
+        transferFunc[i+2] = 0.950;
+        transferFunc[i+3] = 0.40;     
+    }
+
+   - experiement. - 
+    for( int i = 0; i < 4*10; i += 4)
+    {
+        transferFunc[i] = 1.0;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.0;
+    }                                        
+
+    for( int i = 4*10; i < 4*20; i += 4)
+    {
+        transferFunc[i] = 0.950;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 1.0;
+    } 
+    for( int i = 20; i < 4*30; i += 4)
+    {
+        transferFunc[i] = 0.0;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.0;
+        transferFunc[i+3] = 0.50;
+    }                                        
+
+    for( int i = 4*20; i < 4*256; i += 4)
+    {
+        transferFunc[i] = 0.0;
+        transferFunc[i+1] = 0.0;
+        transferFunc[i+2] = 0.75;
+        transferFunc[i+3] = 0.5;
+    } 
+
+ */
+    /*
+    for( int i = 4*0; i < 4*256; i += 4)
+    {
+        transferFunc[i] = 0.950 ;
+        transferFunc[i+1] = 0.950;
+        transferFunc[i+2] = 0.950;
+        transferFunc[i+3] = 0.0;     
+    }
+ */
+
     for(int i = 0; i < 256*4 ; i++)                                     
     {
         transferFunction[i] = transferFunc[i];      
@@ -296,16 +379,23 @@ void initInitializeGlobalData()
 
     /**** 3D data controls ********/
 
-    g_3DVolHeight = 256; // 512;
-    g_3DVolWidth = 256; // 174;
-    g_3DVolBreath = 256; // 512;
+    g_3DVolHeight =  256; //512;
+    g_3DVolWidth =  256; //174;
+    g_3DVolBreath =  256; //512;
+
+    g_3DVol2Height = 256; //512;
+    g_3DVol2Width =  256; //174;
+    g_3DVol2Breath =  256; //512;
+
 
     volumeFile = "./model/foot.raw" ;
+    volumeFile2 = "./model/foot_null.raw" ;
+
      // "./model/bonsai.raw" 
      // "./model/skull.raw"
      // "./model/BostonTeapot.raw"   -- 256 256 178
      // "./model/foot.raw"
-    //  stent8.raw 512 x 512 x 174
+     //  stent8.raw 512 x 512 x 174
 }
 
 
@@ -321,7 +411,8 @@ void init()
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
     g_histogramTexObj = initFace2DTex(g_texWidth, g_texHeight);
 
-    g_volTexObj = initVolume3DTexture( volumeFile, g_3DVolHeight, g_3DVolBreath, g_3DVolWidth);
+    g_volTexObj = initVolume3DTexture( volumeFile, g_3DVolHeight, g_3DVolBreath, g_3DVolWidth, 8);
+    g_vol2TexObj = initVolume3DTexture( volumeFile2, g_3DVol2Height, g_3DVol2Breath, g_3DVol2Width, 8);
 
     GL_ERROR();
     initFrameBuffer(g_bfTexObj, g_texWidth, g_texHeight);
@@ -563,13 +654,18 @@ GLuint initFace2DTex(GLuint backfaceTextureWidth, GLuint backfaceTextureHeight)
 }
 
 
-GLuint initVolume3DTexture(const char* filename, GLuint w, GLuint h, GLuint d)
+GLuint initVolume3DTexture(const char* filename, GLuint w, GLuint h, GLuint d, GLuint dataSizeinBits)
 // init 3D texture to store the volume data used fo ray casting
 {
     
     FILE *fp;
     size_t size = w * h * d;
-    GLubyte *data = new GLubyte[size];			  // 8bit
+    
+    GLubyte *dataByte = new GLubyte[size];			  // 8bit
+    
+    GLushort *dataShort = new GLushort[size];        // 16bit
+   
+    GLuint texObj;
     if (!(fp = fopen(filename, "rb")))
     {
         cout << "Error: opening .raw file failed" << endl;
@@ -579,9 +675,16 @@ GLuint initVolume3DTexture(const char* filename, GLuint w, GLuint h, GLuint d)
     {
         cout << "OK: open .raw file successed" << endl;
     }
-    if ( fread(data, sizeof(char), size, fp)!= size) 
+
+    if ( (dataSizeinBits == 8) && fread(dataByte, sizeof(char), size, fp) != size ) 
     {
-        cout << "Error: read .raw file failed" << endl;
+        cout << "Error: read 8bit .raw file failed" << endl;
+        exit(1);
+    }
+    else
+    if ( (dataSizeinBits == 16) && fread(dataShort, sizeof(short), size, fp) != size ) 
+    {
+        cout << "Error: read 16 bit .raw file failed" << endl;
         exit(1);
     }
     else
@@ -590,9 +693,9 @@ GLuint initVolume3DTexture(const char* filename, GLuint w, GLuint h, GLuint d)
     }
     fclose(fp);
 
-    glGenTextures(1, &g_volTexObj);
+    glGenTextures(1, &texObj);
     // bind 3D texture target
-    glBindTexture(GL_TEXTURE_3D, g_volTexObj);
+    glBindTexture(GL_TEXTURE_3D, texObj);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -601,11 +704,19 @@ GLuint initVolume3DTexture(const char* filename, GLuint w, GLuint h, GLuint d)
  
     // pixel transfer happens here from client to OpenGL server
     glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-    glTexImage3D(GL_TEXTURE_3D, 0, GL_INTENSITY, w, h, d, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE,data);
+   
+    if ( dataSizeinBits == 8 )
+        glTexImage3D(GL_TEXTURE_3D, 0, GL_INTENSITY, w, h, d, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE,dataByte);
 
-    delete []data;
+    if ( dataSizeinBits == 16 )
+        glTexImage3D(GL_TEXTURE_3D, 0, GL_INTENSITY, w, h, d, 0, GL_LUMINANCE, GL_UNSIGNED_SHORT,dataShort);
+
+
+    delete []dataByte;
+    delete []dataShort;
+
     cout << "volume texture created" << endl;
-    return g_volTexObj;
+    return texObj;
 }
 
 void checkFramebufferStatus()
@@ -639,14 +750,14 @@ void initFrameBuffer(GLuint texObj, GLuint texWidth, GLuint texHeight)
     
 void initTestFrameBuffer(GLuint texObj, GLuint texWidth, GLuint texHeight)    
 {
-/*  
+ /*  
 	 // create a depth buffer for our framebuffer
     GLuint depthBuffer;
     glGenRenderbuffers(1, &depthBuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, depthBuffer);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, texWidth, texHeight);
     
-*/    
+ */    
 	    
     glGenFramebuffers(1, &g_TestFrameBuffer);
     glBindFramebuffer(GL_FRAMEBUFFER, g_TestFrameBuffer);
@@ -725,6 +836,20 @@ void rayCastSetUnifroms()
     {
 		cout << "VolumeTex is not bind to the uniform" << endl;
     }
+
+  //**************    volume 2    **********
+    GLint volume2Loc = glGetUniformLocation(g_programHandle, "VolumeTex2");
+    if (volume2Loc >= 0)
+    {
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_3D, g_vol2TexObj);
+        glUniform1i(volume2Loc, 2);
+    }
+    else
+    {
+        cout << "VolumeTex2 is not bind to the uniform" << endl;
+    }
+ //***************************************
 	
 
     GLint ROItransferFunctionLoc = glGetUniformLocation(g_programHandle, "ROItransferFunction");
@@ -848,8 +973,8 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 		rangeTotal[2] += texValue[4*i+2];
 		rangeTotal[3] += texValue[4*i+3];
 
-//        if( texValue[4*i] > 0)
-//            cout << " Values:: " << texValue[4*i] << " " << texValue[4*i+1] << " " << texValue[4*i+2] << " " << texValue[4*i+3] << "\n";
+ //        if( texValue[4*i] > 0)
+ //            cout << " Values:: " << texValue[4*i] << " " << texValue[4*i+1] << " " << texValue[4*i+2] << " " << texValue[4*i+3] << "\n";
 	}
 	
 
@@ -873,7 +998,7 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
         i++;
     }       
 
-//    cout << " Values:: " << rangeTotal[0]*100 << " " << rangeTotal[1]*100 << " " << rangeTotal[2]*100 << " " << rangeTotal[3]*100 << "\n";
+ //    cout << " Values:: " << rangeTotal[0]*100 << " " << rangeTotal[1]*100 << " " << rangeTotal[2]*100 << " " << rangeTotal[3]*100 << "\n";
     cout << " " << transferFunction[83] << " " << transferFunction[123] << " " << transferFunction[183] << transferFunction[0] << "\n";
     rangeTotal[0] *= 500;
     rangeTotal[1] *= 500;
@@ -882,10 +1007,10 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 
  //   cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
 
-    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( 0, 0, 255), 12, 8, 0  );
-    line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar( 0, 255, 0), 12, 8, 0  );
-    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( 255, 0, 0), 12, 8, 0  );
-    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( 255*0.2 , 255*0.5 , 255 * 0.82), 12, 8, 0  );
+    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( 0.374*255, 255*0.64, 255*0.950), 12, 8, 0  );   // blue green red
+    line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar( 0, 0, 255*0.950), 12, 8, 0  );
+    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( 0.132*255, 0.132*255, 255*0.70), 12, 8, 0  );
+    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( 255*0.99 , 255*0.99 , 255 * 0.99), 12, 8, 0  );
 
     namedWindow("Visibility histogram", CV_WINDOW_AUTOSIZE );
     imshow("Visibility histogram", histImage );
@@ -948,7 +1073,7 @@ void display()
     GL_ERROR(); 
     
     // for test the first pass
-/*
+    /*
      glBindFramebuffer(GL_READ_FRAMEBUFFER, g_frameBuffer);
      checkFramebufferStatus();
      glViewport(0, 0, g_winWidth, g_winHeight);
@@ -977,13 +1102,15 @@ void render(GLenum cullFace)
     				 glm::vec3(0.0f, 1.0f, 0.0f));
 
     glm::mat4 model = mat4(1.0f);
+
     model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
 	// to make the "*.raw" i.e. the volume data stand up.
  
-	model *= glm::rotate(0.0f, vec3(1.0f, 0.0f, 0.0f));
-    model *= glm::rotate(90.0f, vec3(0.0f, 1.0f, 0.0f));
+ //	model *= glm::rotate(90.0f, vec3(1.0f, 0.0f, 0.0f));
 
-    model *= glm::rotate(0.0f, vec3(0.0f, 0.0f, 1.0f));
+    model *= glm::rotate(270.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
+
+    model *= glm::rotate(180.0f, vec3(0.0f, 0.0f, 1.0f));
 
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
     

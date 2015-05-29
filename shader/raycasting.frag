@@ -6,6 +6,7 @@ in vec4 ExitPointCoord;
 
 uniform sampler2D ExitPoints;
 uniform sampler3D VolumeTex;
+uniform sampler3D Volume2Tex;
 uniform sampler1D TransferFunc;  
 uniform float     StepSize;
 uniform vec2      ScreenSize;
@@ -15,6 +16,27 @@ uniform float ROI[6];
 
 //layout (location = 0) 
 out vec4 FragColor;
+
+#define WIN_SIZE 10
+
+int gradientOfWindow(int w[WIN_SIZE])
+{
+    
+    int min=0, max=0;
+
+    for(int i=0; i < WIN_SIZE; i++)
+    {
+        if(min > w[i])
+            min = w[i];
+
+
+        if(max < w[i])
+            max = w[i];
+    }
+
+
+    return (max-min);
+}
 
 
 void main()
@@ -32,12 +54,13 @@ void main()
     vec3 voxelCoord = EntryPoint;
     vec4 colorAcum = vec4(0.0);           // The dest color
     float alphaAcum = 0.0;                // The  dest alpha for blending
-    float intensity;
+    float intensity, intensity2;
     float rayAccumulatedLength = 0.0;
     vec4 colorSample; // The src color 
     float alphaSample; // The src alpha
     bool flag = false;
     bool isHittingROI = false;
+    bool isoSurfaceFlag = false;
    
     float sampleOpacityValue = 0.0;
     float accumulatedOpacity = 0.0;
@@ -49,7 +72,9 @@ void main()
     for(int i = 0; i < 1600; i++)
     { 
 
-        intensity =  texture(VolumeTex, voxelCoord).x; 
+        intensity =  texture(VolumeTex, voxelCoord).x;
+        intensity2 =  texture(Volume2Tex, voxelCoord).x; 
+
         voxelCoord += deltaDir;
         rayAccumulatedLength += deltaDirLen;
             
@@ -57,29 +82,34 @@ void main()
         {   
             break;    
         }
-
+/*
         if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) &&  
             ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
             ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) )     
         {
-           
             isHittingROI = true;
-        
             break;
         }
+*/
+        
+        if( intensity2 > 0.5 )     
+        {
+            isHittingROI = true;
+            break;
+        }
+
     }     
 
     voxelCoord = EntryPoint;    
     rayAccumulatedLength = 0.0;
 
-//  if( isHittingROI )
-    {
-        for(int i = 0; i < 1600; i++)
+
+        for(int i = 0; i < 1600; i++)  // computing visibility histogram. for per-ray VH on ROI.
         {
             intensity =  texture(VolumeTex, voxelCoord).x;      
             int INTENSITY = int(intensity * 256);                                   
 
-            if(  0.078125 <= intensity && 0.1171875 >= intensity )
+            if(  0.117 <= intensity && 0.175 >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];       
@@ -87,28 +117,27 @@ void main()
 
             }   
             else
-            if(  0.1171875 <= intensity && 0.175 >= intensity )
+            if(  0.175 <= intensity && 0.3125 >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
                 vh2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
             }
             else
-            if( 0.175 <= intensity && 0.234 >= intensity )
+            if( 0.3125 <= intensity && 0.546 >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
                 vh3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
             }
             else
-            if( 0.234 <= intensity && 0.585 >= intensity )
+            if( 0.546 <= intensity && 1.0 >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
                 vh4 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
             }
             
-                    
             accumulatedOpacity += (1.0 - accumulatedOpacity) * sampleOpacityValue;
             
             voxelCoord += deltaDir;
@@ -124,63 +153,130 @@ void main()
                 break;
             }
         }                 
-    }
+    
+
 
     voxelCoord = EntryPoint;
     rayAccumulatedLength = 0.0;
-
-
+    accumulatedOpacity = 0;
     
-   
-    for(int i = 0; i < 1600; i++)
+
+    int winSize = WIN_SIZE, ptr=0;
+    int window[WIN_SIZE];
+    if ( isoSurfaceFlag)
+    {
+        for(int i = 0; i < winSize; i++)
+        // Initialization of window for iso-surface extraction using ray casting.
+        {   
+            intensity =  texture(VolumeTex, voxelCoord).x;                     
+            int INTENSITY = int(intensity * 256);
+            voxelCoord += deltaDir;
+            rayAccumulatedLength += deltaDirLen;
+            window[i] = INTENSITY;
+        } 
+    }
+
+
+    int n;
+    for(int i = winSize; i < 1600; i++)
     {   
 
-        intensity =  texture(VolumeTex, voxelCoord).x;                     
-        int INTENSITY = int(intensity * 256);
+        intensity =  texture(VolumeTex, voxelCoord).x;  
+        intensity2 = texture(Volume2Tex, voxelCoord).x;                    
+        int volSampleIntensity = int( texture(VolumeTex, voxelCoord).x * 256);    
+        int vol2SampleIntensity = int( texture(Volume2Tex, voxelCoord).x * 256);
+        
+        /*
+        if( gradientOfWindow(window) < 0 && isoSurfaceFlag)
+        {
+            
+            window[ptr%winSize] = volSampleIntensity;
+            ptr++;
 
-        colorSample.r = transferFunction[INTENSITY*4 ];
-        colorSample.g = transferFunction[INTENSITY*4 + 1 ];
-        colorSample.b = transferFunction[INTENSITY*4 + 2 ];
-        colorSample.a = transferFunction[INTENSITY*4 + 3 ];
+            voxelCoord += deltaDir;
+            rayAccumulatedLength += deltaDirLen;
+            continue;
+        }
+        */
 
-          if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) &&  
-                ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
-                ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) ) 
-            {
-                isHittingROI = false;
-            }
+        colorSample.r = transferFunction[volSampleIntensity*4 ];
+        colorSample.g = transferFunction[volSampleIntensity*4 + 1 ];
+        colorSample.b = transferFunction[volSampleIntensity*4 + 2 ];
+        colorSample.a = transferFunction[volSampleIntensity*4 + 3 ];
+
+        if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) &&  
+            ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
+            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) ) 
+        {
+        //    isHittingROI = false;
+
+            // Ray hit the ROI and normal composting begins.
+        }
 
 
+        if( vol2SampleIntensity >= 240)
+        {
+        
+        isHittingROI = false;
+
+        colorSample.r = 0.0;
+        colorSample.g = 1.0;
+        colorSample.b = 0.0;
+        colorSample.a = 0.5;
+
+       // colorSample.a = colorSample.a * pow(( 1 - vh4),2);
+
+        }
+
+
+        n = 3;
         if( isHittingROI )
         {
-            if(  0.078125 <= intensity && 0.1171875 >= intensity )
+            if(  0.117 <= intensity && 0.175 >= intensity )
             {
-                colorSample.a = colorSample.a * pow(( 1 - vh1),2);
+                colorSample.a = colorSample.a * pow(( 1 - vh1), n);
             }   
             else
-            if(  0.1171875 <= intensity && 0.175 >= intensity )
+            if(  0.175 <= intensity && 0.3125 >= intensity )
             {
-                colorSample.a = colorSample.a * pow(( 1 - vh2),2);
+                colorSample.a = colorSample.a * pow(( 1 - vh2), n);
             }
             else
-            if( 0.175 <= intensity && 0.234 >= intensity )
+            if( 0.3125 <= intensity && 0.545 >= intensity )
             {
-                colorSample.a = colorSample.a * pow(( 1 - vh3),2);    
+                colorSample.a = colorSample.a * pow(( 1 - vh3), n);    
             }
             else
-            if( 0.234 <= intensity && 0.585 >= intensity )
+            if( 0.545 <= intensity && 1.0 >= intensity )
             {
-                colorSample.a = colorSample.a * pow(( 1 - vh4),2);
-            }    
-
-    
+                colorSample.a = colorSample.a * pow(( 1 - vh4), n);
+            }        
         }
+      
+        
         if (colorSample.a > 0.0) 
         {
-
+        // Front to back composting.
             colorAcum.rgb += (1.0 - colorAcum.a) * colorSample.rgb * colorSample.a;
             colorAcum.a += (1.0 - colorAcum.a) * colorSample.a;
         }
+
+        
+
+/*      if( isoSurfaceFlag)
+        {
+            for(int j = 0; j < winSize; j++)
+            {   
+                intensity =  texture(VolumeTex, voxelCoord).x;                     
+                int INTENSITY = int(intensity * 256);
+                voxelCoord += deltaDir;
+                rayAccumulatedLength += deltaDirLen;
+                window[j] = INTENSITY;
+                i = i+5;
+                ptr = 0;
+            }
+        }
+*/
         
 
         voxelCoord += deltaDir;
@@ -189,7 +285,7 @@ void main()
         if (rayAccumulatedLength >= rayLength )
         {   
             colorAcum.rgb = colorAcum.rgb * colorAcum.a + (1 - colorAcum.a) * bgColor.rgb;      
-            break;  // terminate if opacity > 1 or; ray is outside the volume   
+            break;      // terminate if opacity > 1 or; ray is outside the volume   
         }   
         else if (colorAcum.a > 1.0)
         {
@@ -197,207 +293,8 @@ void main()
             break;
         }
     }
+
+    
     
     FragColor = colorAcum;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-bool isRayHittingROI(float x, float y, float z)
-{
-    
-    if( ( x < ROI[0] && x > ROI[3] ) && ( y < ROI[1] && y > ROI[4] ) &&  ( z < ROI[2] && z > ROI[5] ) )
-        return true;
-    
-    return false;
-}
-*/
-
- /*
-        while( indexTF < transferFunction[0] )
-        {
-            if( intensity <= transferFunction[indexTF] && intensity >= transferFunction[indexTF+1] )
-            {
-                colorSample.r = transferFunction[indexTF+2];
-                colorSample.g = transferFunction[indexTF+3];
-                colorSample.b = transferFunction[indexTF+4];
-                colorSample.a = transferFunction[indexTF+5];
-                break;
-            }
-
-         indexTF+=6;
-        }    
-        */
-
-
-         /*
-        if (intensity > 0.35 )                                             //    -------> 80/255 = 0.31 (bone)           
-        {                                            
-            colorSample.rgb = vec3(1.0, 0.0, 0.0);
-            colorSample.a = transferFunction[0];    
-        }
-        else
-        if (intensity > 0.07 )
-        {                                                                 //     ------> 20/256 = 0.78 (tissue)
-            colorSample.rgb = vec3(0.7,0.4,0.1);
-            colorSample.a = transferFunction[1];
-        }
-        else
-        {
-            colorSample.rgba = vec4(0.0,0.0,0.0,0.0);
-        }
-    */
-
-
-/*
-        if( !isHittingROI )
-        {
-            if(  intensity <= transferFunction[indexTF] && intensity >= transferFunction[indexTF+1] )
-            {
-                colorSample.r = transferFunction[indexTF+2];
-                colorSample.g = transferFunction[indexTF+3];
-                colorSample.b = transferFunction[indexTF+4];
-                colorSample.a = transferFunction[indexTF+5];    
-       
-            }  
-            else
-            if( (indexTF += 6) < transferFunction[0] && intensity <= transferFunction[indexTF] && 
-                intensity >= transferFunction[indexTF+1]  )
-            {
-                colorSample.r = transferFunction[indexTF+2];
-                colorSample.g = transferFunction[indexTF+3];
-                colorSample.b = transferFunction[indexTF+4];
-                colorSample.a = transferFunction[indexTF+5];
-            }
-            else
-            if( (indexTF += 6) < transferFunction[0] && intensity <= transferFunction[indexTF] && 
-                intensity >= transferFunction[indexTF+1] )
-            {
-                colorSample.r = transferFunction[indexTF+2];
-                colorSample.g = transferFunction[indexTF+3];
-                colorSample.b = transferFunction[indexTF+4];
-                colorSample.a = transferFunction[indexTF+5];
-
-            }
-            else
-            if( (indexTF += 6) < transferFunction[0] && intensity <= transferFunction[indexTF] && 
-                intensity >= transferFunction[indexTF+1] )
-            {
-                colorSample.r = transferFunction[indexTF+2];
-                colorSample.g = transferFunction[indexTF+3];
-                colorSample.b = transferFunction[indexTF+4];
-                colorSample.a = transferFunction[indexTF+5];
-            }
-            else
-            {
-
-                colorSample.r = 0.0;
-                colorSample.g = 0.0;
-                colorSample.b = 0.0;
-                colorSample.a = 0.0;
-            }
-        }
-        else
-        {
-            if(  intensity <= ROItransferFunction[indexTF] && intensity >= ROItransferFunction[indexTF+1] )
-            {
-                colorSample.r = ROItransferFunction[indexTF+2];
-                colorSample.g = ROItransferFunction[indexTF+3];
-                colorSample.b = ROItransferFunction[indexTF+4];
-                colorSample.a = ROItransferFunction[indexTF+5];    
-       
-            }  
-            else
-            if( (indexTF += 6) < ROItransferFunction[0] && intensity <= ROItransferFunction[indexTF] && 
-                intensity >= ROItransferFunction[indexTF+1]  )
-            {
-                colorSample.r = ROItransferFunction[indexTF+2];
-                colorSample.g = ROItransferFunction[indexTF+3];
-                colorSample.b = ROItransferFunction[indexTF+4];
-                colorSample.a = ROItransferFunction[indexTF+5];
-            }
-            else
-            if( (indexTF += 6) < ROItransferFunction[0] && intensity <= ROItransferFunction[indexTF] && 
-                intensity >= ROItransferFunction[indexTF+1] )
-            {
-                colorSample.r = ROItransferFunction[indexTF+2];
-                colorSample.g = ROItransferFunction[indexTF+3];
-                colorSample.b = ROItransferFunction[indexTF+4];
-                colorSample.a = ROItransferFunction[indexTF+5];
-
-            }
-            else
-            if( (indexTF += 6) < ROItransferFunction[0] && intensity <= ROItransferFunction[indexTF] && 
-                intensity >= ROItransferFunction[indexTF+1] )
-            {
-                colorSample.r = ROItransferFunction[indexTF+2];
-                colorSample.g = ROItransferFunction[indexTF+3];
-                colorSample.b = ROItransferFunction[indexTF+4];
-                colorSample.a = ROItransferFunction[indexTF+5];
-            }
-            else
-            {
-
-                colorSample.r = 0.0;
-                colorSample.g = 0.0;
-                colorSample.b = 0.0;
-                colorSample.a = 0.0;
-            }
-
-        }
-    
-*/    

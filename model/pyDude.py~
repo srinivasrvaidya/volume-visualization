@@ -1,0 +1,40 @@
+
+import random
+import struct
+
+arrList = []
+fb = open("stent.raw","wb")
+
+x = 0
+for i in range(0, 512):   # height up-down
+	for j in range(0, 174):    # thickness
+		for k in range(0, 512):    #left-right
+			fb.write(struct.pack('>B', x))
+
+
+
+with open("stent8.raw", "r+") as f:
+#with open("skull.raw", "r+") as f:	
+    byte = f.read(1)
+    data2 = struct.pack('c', chr(254))
+    data1 = struct.pack('c', chr(255))
+    data = struct.pack('B', 255)
+
+    for i in range(320, 325):   # height up-down
+		for j in range(65, 120):    # thickness
+			for k in range(320, 350):    #left-right
+
+				item = i*512*178 + j*512 + k
+				#item = i*256*256 + j*256 + k
+				#print item," ",
+				f.seek(item, 0)
+				x = 250
+				#print " - ",
+				try:
+					f.write(struct.pack('>B', x))
+					fb.write(struct.pack('>B', x))
+				except:
+					print " problem boss \n"
+
+				#print " + "
+f.close()

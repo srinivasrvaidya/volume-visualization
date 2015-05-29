@@ -6,6 +6,7 @@ in vec4 ExitPointCoord;
 
 uniform sampler2D ExitPoints;
 uniform sampler3D VolumeTex;
+uniform sampler3D Volume2Tex;
 uniform sampler1D TransferFunc;  
 uniform float     StepSize;
 uniform vec2      ScreenSize;
@@ -57,21 +58,21 @@ void main()
 
         }   
         else
-        if(  0.1171875 <= intensity && 0.175 >= intensity )
+        if(  0.1171875 <= intensity && 0.17578 >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
             r2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
         }
         else
-        if( 0.175 <= intensity && 0.234 >= intensity )
+        if( 0.17578 <= intensity && 0.234375 >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
             r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
         }
         else
-        if( 0.234 <= intensity && 0.585 >= intensity )
+        if( 0.234375 <= intensity && 1.00 >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/111/trunk/Examples/Example3
+END
+Example3.vcxproj.filters
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/42/trunk/Examples/Example3/Example3.vcxproj.filters
+END
+g2Default.png
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/99/trunk/Examples/Example3/g2Default.png
+END
+g2Blue.png
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/111/trunk/Examples/Example3/g2Blue.png
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/109/trunk/Examples/Example3/main.cpp
+END
+default.png
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/17/trunk/Examples/Example3/default.png
+END
+Example3.vcxproj
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/42/trunk/Examples/Example3/Example3.vcxproj
+END
+g2Default.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/99/trunk/Examples/Example3/g2Default.cfg
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/45/trunk/Examples/Example3/makefile
+END
+g2Blue.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/111/trunk/Examples/Example3/g2Blue.cfg
+END

@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{lam1994}
+L.~Lamport.
+\newblock {\em \LaTeX: A Document Preparation System}.
+\newblock Addison-Wesley Publishing Company, second edition, 1994.
+
+\bibitem{LastName1996}
+F.~LastName, F.~I. LastName, and F.~{LastName Jr.}
+\newblock Conference paper {MUN} title.
+\newblock In {\em Proceedings of the Conference of Sample Conferences}, pages
+  100--110, Apr. 1996.
+
+\bibitem{someguy2002}
+F.~name Last-name and S.~Guy.
+\newblock Journal article {SWGC} title.
+\newblock {\em Journal of Sample Journals}, 1(12):1000--1024, 2002.
+
+\end{thebibliography}

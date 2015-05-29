@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/104/trunk/Examples/Example4
+END
+Example4.vcxproj.filters
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/42/trunk/Examples/Example4/Example4.vcxproj.filters
+END
+g2Default.png
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/17/trunk/Examples/Example4/g2Default.png
+END
+g2Bubble.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/104/trunk/Examples/Example4/g2Bubble.cpp
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/99/trunk/Examples/Example4/main.cpp
+END
+default.png
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/17/trunk/Examples/Example4/default.png
+END
+Example4.vcxproj
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/42/trunk/Examples/Example4/Example4.vcxproj
+END
+g2Bubble.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/104/trunk/Examples/Example4/g2Bubble.h
+END
+g2Default.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/17/trunk/Examples/Example4/g2Default.cfg
+END
+makefile
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/45/trunk/Examples/Example4/makefile
+END

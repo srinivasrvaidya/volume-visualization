@@ -1,4 +1,4 @@
-
+	
 accumulatedOpacity = 0.0
 sampleOpacityValue = 0.9
 i = 0
