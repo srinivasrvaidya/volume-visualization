@@ -2,7 +2,10 @@
 \usepackage{latexsym}
 \usepackage{rotating}
 \usepackage[super]{nth}
-\usepackage{algorithmx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[scaled=0.95]{helvet}
+
 
 % Try uncommenting the following line if fonts don't
 % display correctly in the PDF file.

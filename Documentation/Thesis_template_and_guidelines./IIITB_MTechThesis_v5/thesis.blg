@@ -13,44 +13,64 @@ A level-1 auxiliary file: Chapters/chap6.aux
 A level-1 auxiliary file: Chapters/Appendix/apdxa.aux
 A level-1 auxiliary file: Chapters/Appendix/apdxb.aux
 Database file #1: ref.bib
-You've used 3 entries,
+You're missing a field part---line 105 of file ref.bib
+ :  month = 
+ :          ,
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "44"
+refers to entry "DBLP:conf/sibgrapi/2010", which doesn't exist
+A bad cross reference---entry "d"
+refers to entry "DBLP:conf/visualization/2003", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/visualization/2003"
+Warning--I didn't find a database entry for "DBLP:conf/sibgrapi/2010"
+Name 1 in "Robert A. Drebin, Loren Carpenter, and Pat Hanrahan" has a comma at the end for entry Robert:1992
+while executing---line 1049 of file abbrv.bst
+Name 1 in "Barthold Lichtenbelt, Randy Crane, and Shaz Naqvi" has a comma at the end for entry bar
+while executing---line 1049 of file abbrv.bst
+Name 1 in "Barthold Lichtenbelt, Randy Crane, and Shaz Naqvi" has a comma at the end for entry bar
+while executing---line 1090 of file abbrv.bst
+Name 1 in "Robert A. Drebin, Loren Carpenter, and Pat Hanrahan" has a comma at the end for entry Robert:1992
+while executing---line 1090 of file abbrv.bst
+Warning--empty year in Robert:1992
+You've used 26 entries,
             2118 wiz_defined-function locations,
-            528 strings with 4311 characters,
-and the built_in function-call counts, 1078 in all, are:
-= -- 107
-> -- 38
-< -- 1
-+ -- 15
-- -- 12
-* -- 71
-:= -- 172
-add.period$ -- 9
-call.type$ -- 3
-change.case$ -- 15
+            676 strings with 8355 characters,
+and the built_in function-call counts, 10073 in all, are:
+= -- 999
+> -- 421
+< -- 11
++ -- 167
+- -- 138
+* -- 691
+:= -- 1562
+add.period$ -- 81
+call.type$ -- 26
+change.case$ -- 146
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 46
-empty$ -- 93
-format.name$ -- 12
-if$ -- 232
+cite$ -- 27
+duplicate$ -- 425
+empty$ -- 827
+format.name$ -- 138
+if$ -- 2206
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 4
-newline$ -- 18
-num.names$ -- 6
-pop$ -- 19
+int.to.str$ -- 26
+missing$ -- 29
+newline$ -- 133
+num.names$ -- 54
+pop$ -- 167
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 120
 quote$ -- 0
-skip$ -- 34
+skip$ -- 330
 stack$ -- 0
-substring$ -- 78
-swap$ -- 13
-text.length$ -- 1
+substring$ -- 685
+swap$ -- 137
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 10
-warning$ -- 0
-while$ -- 11
-width$ -- 4
-write$ -- 35
+type$ -- 98
+warning$ -- 1
+while$ -- 96
+width$ -- 28
+write$ -- 292
+(There were 7 error messages)

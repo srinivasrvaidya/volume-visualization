@@ -69,8 +69,25 @@ float ROItransferFunction[ 256 * 4 ] = {0.0};
 float g_stepSize;
 bool rotationFlag;
 float ROI[6] = {0.6, 0.6, 0.6, 0.4, 0.4, 0.4};
-char *volumeFile;
-char *volumeFile2;
+char volumeFile[30];
+char volumeFile2[30];
+
+/** mouse handing **/
+bool mouseDown = false;
+ 
+float xrot = 0.0f;
+float yrot = 0.0f;
+ 
+float xdiff = 0.0f;
+float ydiff = 0.0f;
+
+float scaleFactor = 1.0f;
+ 
+/** frame per second calc **/
+long int frame=0, t, timebase=0;
+int range[8];
+float red[4], blue[4], green[4],alpha[4]; 
+char fileInput[20];
 
 /** function declaration **/
 
@@ -125,7 +142,7 @@ void initInitializeGlobalData()
                                             0.50, 0.40, 0.00, 1.00, 0.00, 0.01,
                                             0.40, 0.20, 0.00, 0.00, 1.00, 0.01,
                                             0.20, 0.10, 0.82, 0.50, 0.20, 0.01 };
-*/
+ */
 
 
     float ROItransferFunc[31] = {TFLen,     1.00, 0.35, 1.00, 0.00, 0.00, 0.01,
@@ -133,97 +150,67 @@ void initInitializeGlobalData()
                                             0.18, 0.08, 0.00, 0.00, 1.00, 0.005,
                                             0.08, 0.05, 0.82, 0.50, 0.20, 0.1 };                                        
 
-/*    float transferFunc[31] = {TFLen,        1.00, 0.35, 1.00, 0.00, 0.00, 0.01,
+ /*    float transferFunc[31] = {TFLen,        1.00, 0.35, 1.00, 0.00, 0.00, 0.01,
                                             0.35, 0.18, 0.00, 1.00, 0.00, 0.01,
                                             0.18, 0.08, 0.00, 0.00, 1.00, 0.005,
                                             0.08, 0.05, 0.82, 0.50, 0.20, 0.1 };  
-*/
-/* Continous transfer function */
-
-    float transferFunc[256*4];   
-    float x = 0.0, y = 0.0;
-/*
-    for( int i = 0; i < 4*20; i += 4)
-    {
-        transferFunc[i] = 0.0;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 0.0;
-    }                                        
-
-    for( int i = 4*20; i < 4*30; i += 4)
-    {
-        transferFunc[i] = 0.950;
-        transferFunc[i+1] = 0.64;
-        transferFunc[i+2] = 0.375;
-        transferFunc[i+3] = 0.01;
-    }                                         
-
-
-    x = 0.0, y = 0.0;
-    for( int i = 4*30; i < 4*45; i += 4)
-    {
-        transferFunc[i] = 0.50+x;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.50;
-        transferFunc[i+3] = 0.01;
-        x = x + 0.05;
-        y = y + 0.005;
-    }
-    
-    x = 0.0, y = 0.0;
-    for( int i = 4*45; i < 4*60; i += 4)
-    {
-        transferFunc[i] = 0.50+x;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.50;
-        transferFunc[i+3] = 0.05;
-        x = x + 0.05;
-        y = y + 0.005;
-    }
-
-    for( int i = 4*60; i < 4*80; i += 4)
-    {
-        transferFunc[i] = 0.30 ;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 0.01;
-    }
-    for( int i = 4*80; i < 4*120; i += 4)
-    {
-        transferFunc[i] = 0.30 ;
-        transferFunc[i+1] = 0.30;
-        transferFunc[i+2] = 0.30;
-        transferFunc[i+3] = 0.30;
-    } 
-
-
-    for( int i = 4*120; i < 4*150; i += 4)
-    {
-        transferFunc[i] = 0.50 ;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 0.10;     
-    }
- 
-    for( int i = 4*150; i < 4*220; i += 4)
-    {
-        transferFunc[i] = 0.95 ;
-        transferFunc[i+1] = 0.95;
-        transferFunc[i+2] = 0.95;
-        transferFunc[i+3] = 0.05;
-    }
-    for( int i = 4*220; i < 4*255; i += 4)
-    {
-        transferFunc[i] = 0.95 ;
-        transferFunc[i+1] = 0.95;
-        transferFunc[i+2] = 0.95;
-        transferFunc[i+3] = 0.0;
-    
-    }
  */
+ /* Continous transfer function */
 
- 
+    float transferFunc[256*4];  
+    
+    float x = 0.0, y = 0.0;
+
+    char str[500];
+    FILE *plyReader;
+    cout << "real:: " << fileInput;
+    if ((plyReader = fopen(fileInput, "r")) == NULL) 
+    {
+        printf(" \n %s File not found ! \n", fileInput);
+        return ;
+    }
+
+    
+    if(fgets(str,200,plyReader)) 
+    {
+        sscanf(str,"%s %d %d %d", volumeFile, &g_3DVolHeight, &g_3DVolWidth, &g_3DVolBreath);
+    }
+    if(fgets(str,200,plyReader))
+    {
+        sscanf(str,"%s %d %d %d", volumeFile2, &g_3DVol2Height, &g_3DVol2Width, &g_3DVol2Breath);
+    }
+    if(fgets(str,50,plyReader))
+    {
+        sscanf(str,"%d %d %f %f %f %f", &range[0], &range[1], &red[0], &green[0], &blue[0], &alpha[0]);
+    }
+    if(fgets(str,50,plyReader))
+    {
+        sscanf(str,"%d %d %f %f %f %f", &range[2], &range[3], &red[1], &green[1], &blue[1], &alpha[1]);
+    }
+    if(fgets(str,50,plyReader))
+    {
+        sscanf(str,"%d %d %f %f %f %f", &range[4], &range[5], &red[2], &green[2], &blue[2], &alpha[2]);
+    }
+    if(fgets(str,50,plyReader))
+    {
+        sscanf(str,"%d %d %f %f %f %f", &range[6], &range[7], &red[3], &green[3], &blue[3], &alpha[3]);
+    }
+
+ //   cout << volumeFile << " - " << volumeFile2 ; //<< "\n - " << i1 << " : " << i2 << " : "<< r1 << " : " << b1 << g1 << a1;
+/*
+    range[0] = 20;
+    r[1] = 30;
+    
+    r[2] = 30;
+    r[3] = 45;
+
+    r[4] = 45;
+    r[5] = 60;
+
+    r[6] = 60;
+    r[7] = 256;
+
+ FOOT -- 
     for( int i = 0; i < 4*20; i += 4)
     {
         transferFunc[i] = 0.0;
@@ -247,7 +234,7 @@ void initInitializeGlobalData()
         transferFunc[i] = 0.50+x;
         transferFunc[i+1] = 0.0;
         transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 0.01;
+        transferFunc[i+3] = 0.02;
         x = x + 0.05;
         y = y + 0.005;
     }
@@ -259,7 +246,7 @@ void initInitializeGlobalData()
         transferFunc[i] = 0.70 + x;
         transferFunc[i+1] = 0.132 - y;
         transferFunc[i+2] = 0.132 - y;
-        transferFunc[i+3] = 0.01;
+        transferFunc[i+3] = 0.1;
         x = x + 0.05;
         y = y + 0.005;
     }
@@ -270,19 +257,11 @@ void initInitializeGlobalData()
         transferFunc[i] = 0.95 ;
         transferFunc[i+1] = 0.95;
         transferFunc[i+2] = 0.95;
-        transferFunc[i+3] = 0.01;
-    }
-    for( int i = 4*220; i < 4*255; i += 4)
-    {
-        transferFunc[i] = 1.0 ;
-        transferFunc[i+1] = 1.0;
-        transferFunc[i+2] = 1.0;
-        transferFunc[i+3] = 0.01;
-    
+        transferFunc[i+3] = 0.2;
     }
 
 
- /* --- stent8 ---- 
+ --- stent8 ---- 
     for( int i = 4*0; i < 4*256; i += 4)
     {
         transferFunc[i] = 0.0 ;
@@ -327,49 +306,49 @@ void initInitializeGlobalData()
         transferFunc[i+2] = 0.950;
         transferFunc[i+3] = 0.40;     
     }
+*/
+ //  - experiement. - 
 
-   - experiement. - 
-    for( int i = 0; i < 4*10; i += 4)
-    {
-        transferFunc[i] = 1.0;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 0.0;
-    }                                        
+    
 
-    for( int i = 4*10; i < 4*20; i += 4)
-    {
-        transferFunc[i] = 0.950;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 1.0;
-    } 
-    for( int i = 20; i < 4*30; i += 4)
-    {
-        transferFunc[i] = 0.0;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.0;
-        transferFunc[i+3] = 0.50;
-    }                                        
-
-    for( int i = 4*20; i < 4*256; i += 4)
-    {
-        transferFunc[i] = 0.0;
-        transferFunc[i+1] = 0.0;
-        transferFunc[i+2] = 0.75;
-        transferFunc[i+3] = 0.5;
-    } 
-
- */
-    /*
+// --- TF :: HEAD --- 
     for( int i = 4*0; i < 4*256; i += 4)
     {
-        transferFunc[i] = 0.950 ;
-        transferFunc[i+1] = 0.950;
-        transferFunc[i+2] = 0.950;
-        transferFunc[i+3] = 0.0;     
+        transferFunc[i]   = 0 ;
+        transferFunc[i+1] = 0;
+        transferFunc[i+2] = 0;
+        transferFunc[i+3] = 0;     
     }
- */
+    for( int i = 4*range[0]; i < 4*range[1]; i += 4)
+    {
+        transferFunc[i] = red[0] ;
+        transferFunc[i+1] = blue[0];
+        transferFunc[i+2] = green[0];
+        transferFunc[i+3] = alpha[0];     
+    }
+
+    for( int i = 4*range[2]; i < 4*range[3]; i += 4)
+    {
+        transferFunc[i] = red[1];
+        transferFunc[i+1] = blue[1];
+        transferFunc[i+2] = green[1];
+        transferFunc[i+3] = alpha[1];
+    } 
+    for( int i = 4*range[4]; i < 4*range[5]; i += 4)
+    {
+        transferFunc[i] = red[2];
+        transferFunc[i+1] = blue[2];
+        transferFunc[i+2] = green[2];
+        transferFunc[i+3] = alpha[2];
+    } 
+    for( int i = 4*range[6]; i < 4*range[7]; i += 4)
+    {
+        transferFunc[i] = red[3];
+        transferFunc[i+1] = blue[3];
+        transferFunc[i+2] = green[3];
+        transferFunc[i+3] = alpha[3];
+    }                                        
+
 
     for(int i = 0; i < 256*4 ; i++)                                     
     {
@@ -378,7 +357,7 @@ void initInitializeGlobalData()
     }
 
     /**** 3D data controls ********/
-
+/*
     g_3DVolHeight =  256; //512;
     g_3DVolWidth =  256; //174;
     g_3DVolBreath =  256; //512;
@@ -389,13 +368,15 @@ void initInitializeGlobalData()
 
 
     volumeFile = "./model/foot.raw" ;
-    volumeFile2 = "./model/foot_null.raw" ;
+   // volumeFile2 = "./model/pet_null.raw" ;
+    volumeFile2 = "./model/foot_4.raw" ;
 
      // "./model/bonsai.raw" 
      // "./model/skull.raw"
      // "./model/BostonTeapot.raw"   -- 256 256 178
      // "./model/foot.raw"
      //  stent8.raw 512 x 512 x 174
+*/
 }
 
 
@@ -407,7 +388,7 @@ void init()
     g_texHeight = g_winHeight;
     initVertexBufferObject();
     initShader();
-    g_tffTexObj = initTFF1DTex("tff.dat");
+ //   g_tffTexObj = initTFF1DTex("tff.dat");
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
     g_histogramTexObj = initFace2DTex(g_texWidth, g_texHeight);
 
@@ -873,8 +854,6 @@ void rayCastSetUnifroms()
     }
 
    
-    
-
     GLint ROILoc = glGetUniformLocation(g_programHandle, "ROI");
     if ( ROILoc >= 0)
     {
@@ -883,6 +862,17 @@ void rayCastSetUnifroms()
     else
     {
             cout << "ROILoc is not bind to the uniform" << endl;
+    }
+
+
+    GLint RangeLoc = glGetUniformLocation(g_programHandle, "r");
+    if ( RangeLoc >= 0)
+    {
+        glUniform1iv( RangeLoc, 8, range);
+    }
+    else
+    {
+            cout << "RangeLoc is not bind to the uniform" << endl;
     }
 
 }
@@ -999,7 +989,7 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
     }       
 
  //    cout << " Values:: " << rangeTotal[0]*100 << " " << rangeTotal[1]*100 << " " << rangeTotal[2]*100 << " " << rangeTotal[3]*100 << "\n";
-    cout << " " << transferFunction[83] << " " << transferFunction[123] << " " << transferFunction[183] << transferFunction[0] << "\n";
+    cout << " " << transferFunction[(range[0]*4)+3] << " " << transferFunction[(range[2]*4)+3] << " " << transferFunction[(range[4]*4)+3] << transferFunction[(range[6]*4)+3] << "\n";
     rangeTotal[0] *= 500;
     rangeTotal[1] *= 500;
     rangeTotal[2] *= 500;
@@ -1007,10 +997,10 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 
  //   cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
 
-    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( 0.374*255, 255*0.64, 255*0.950), 12, 8, 0  );   // blue green red
-    line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar( 0, 0, 255*0.950), 12, 8, 0  );
-    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( 0.132*255, 0.132*255, 255*0.70), 12, 8, 0  );
-    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( 255*0.99 , 255*0.99 , 255 * 0.99), 12, 8, 0  );
+    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( blue[0]*256, green[0]*256, red[0]*256), 12, 8, 0  );   // blue green red
+    line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar( blue[1]*256, green[1]*256 , red[1]*256), 12, 8, 0  );
+    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( blue[2]*256, green[2]*256 , red[2]*256), 12, 8, 0  );
+    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( blue[3]*256, green[3]*256 , red[3]*256), 12, 8, 0  );
 
     namedWindow("Visibility histogram", CV_WINDOW_AUTOSIZE );
     imshow("Visibility histogram", histImage );
@@ -1056,6 +1046,7 @@ void display()
     GL_ERROR(); 
     
     readBufferTexture(g_TestFrameBuffer);   
+
     
     /* -- Ray cast to frame buffer to display-- */
     
@@ -1103,14 +1094,20 @@ void render(GLenum cullFace)
 
     glm::mat4 model = mat4(1.0f);
 
-    model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
+     model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
 	// to make the "*.raw" i.e. the volume data stand up.
+
+    model *= glm::rotate((float)xrot, glm::vec3(1.0f, 1.0f, 0.0f));
+    model *= glm::rotate((float)yrot, glm::vec3(0.0f, 1.0f, 0.0f));
+
+
+    model *= glm::scale(glm::vec3(scaleFactor, scaleFactor , scaleFactor) );
+
  
- //	model *= glm::rotate(90.0f, vec3(1.0f, 0.0f, 0.0f));
+//	model *= glm::rotate(90.0f, vec3(1.0f, 0.0f, 0.0f));
 
-    model *= glm::rotate(270.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
-
-    model *= glm::rotate(180.0f, vec3(0.0f, 0.0f, 1.0f));
+     model *= glm::rotate(90.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
+ //   model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
 
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
     
@@ -1137,10 +1134,19 @@ void render(GLenum cullFace)
 }
 void rotateDisplay()
 {
-   
-    if ( rotationFlag )
-        g_angle = (g_angle + 1) % 360;
-    
+    frame++;
+
+    t = glutGet(GLUT_ELAPSED_TIME);
+    float fps;
+
+    if (t - timebase > 1000) {
+        fps = frame*1000.0/(t-timebase);
+//        cout << "FPS :: " << fps << endl;
+
+        timebase = t;
+        frame = 0;
+    }
+
     glutPostRedisplay();
 }
 void reshape(int w, int h)
@@ -1157,16 +1163,16 @@ void keyboard(unsigned char key, int x, int y)
     {
 	case 'A':
 	case 'a':	
-                    if ( transferFunction[83] < 0.005)
+                    if ( transferFunction[ (range[0]*4)+3 ] < 0.005)
                     {
-                        for( int i = 4*20; i < 4*30; i += 4)
+                        for( int i = 4*range[0]; i < 4*range[1]; i += 4)
                         {
                             transferFunction[i+3] = 0.0;
                         }    
                     }       
                     else    
                     {
-                        for( int i = 4*20; i < 4*30; i += 4)
+                        for( int i = 4*range[0]; i < 4*range[1]; i += 4)
                         {
                             transferFunction[i+3] -= 0.005;
                         } 
@@ -1175,9 +1181,9 @@ void keyboard(unsigned char key, int x, int y)
 
     break;
 	
-	case 'D':
-	case 'd':
-	            for( int i = 4*20; i < 4*30; i += 4)
+	case 'S':
+	case 's':
+	            for( int i = 4*range[0]; i < 4*range[1]; i += 4)
                 {
                     transferFunction[i+3] += 0.005;
                 }
@@ -1185,16 +1191,16 @@ void keyboard(unsigned char key, int x, int y)
 
     case 'q':
     case 'Q':   
-                if ( transferFunction[123] < 0.005)
+                if ( transferFunction[ (range[2]*4)+3 ] < 0.005)
                 {
-                    for( int i = 4*30; i < 4*45; i += 4)
+                    for( int i = 4*range[2]; i < 4*range[3]; i += 4)
                     {
                         transferFunction[i+3] = 0.0;
                     }    
                 }       
                 else    
                 {
-                    for( int i = 4*30; i < 4*45; i += 4)
+                    for( int i = 4*range[2]; i < 4*range[3]; i += 4)
                     {
                         transferFunction[i+3] -= 0.005;
                     } 
@@ -1202,27 +1208,27 @@ void keyboard(unsigned char key, int x, int y)
 
     break;
     
-    case 'e':
-    case 'E':
-                for( int i = 4*30; i < 4*45; i += 4)
+    case 'w':
+    case 'W':
+                for( int i = 4*range[2]; i < 4*range[3]; i += 4)
                 {
                     transferFunction[i+3] += 0.005;
                 } 
     break;
 
-    case 'J':    // move left
-    case 'j':
+    case 'Z':    // move left
+    case 'z':
 
-                if ( transferFunction[183] < 0.005)
+                if ( transferFunction[ (range[4]*4)+3 ] < 0.005)
                 {
-                    for( int i = 4*45 ; i < 4*60 ; i += 4)
+                    for( int i = 4*range[4] ; i < 4*range[5] ; i += 4)
                     {
                         transferFunction[i+3] = 0.0;
                     }    
                 }       
                 else    
                 {
-                    for( int i = 4*45 ; i < 4*60 ; i += 4)
+                    for( int i = 4*range[4] ; i < 4*range[5] ; i += 4)
                     {
                         transferFunction[i+3] -= 0.005;
                     } 
@@ -1230,14 +1236,42 @@ void keyboard(unsigned char key, int x, int y)
 
     break;
 
-    case 'L':    // move right
-    case 'l':
-                for( int i = 4*45 ; i < 4*60 ; i += 4)
+    case 'X':    // move right
+    case 'x':
+                for( int i = 4*range[4] ; i < 4*range[5] ; i += 4)
                 {
                     transferFunction[i+3] += 0.005;
                 }
     break;
 
+
+    case 'D':    // move left
+    case 'd':
+
+                if ( transferFunction[ (range[6]*4)+3 ] < 0.005)
+                {
+                    for( int i = 4*range[6] ; i < 4*range[7] ; i += 4)
+                    {
+                        transferFunction[i+3] = 0.0;
+                    }    
+                }       
+                else    
+                {
+                    for( int i = 4*range[6] ; i < 4*range[7] ; i += 4)
+                    {
+                        transferFunction[i+3] -= 0.005;
+                    } 
+                }
+
+    break;
+
+    case 'F':    // move right
+    case 'f':
+                for( int i = 4*range[6] ; i < 4*range[7] ; i += 4)
+                {
+                    transferFunction[i+3] += 0.005;
+                }
+    break;
 
     case 'M': // move front
     case 'm':
@@ -1265,6 +1299,9 @@ void keyboard(unsigned char key, int x, int y)
                 ROI[3] -= 0.05;
     break;
 
+    case 'r': scaleFactor += 0.03; break;
+    case 't': scaleFactor -= 0.03; break;
+
     case '\x20' :
             rotationFlag = !rotationFlag;
             break;
@@ -1276,11 +1313,48 @@ void keyboard(unsigned char key, int x, int y)
 	
     }
     
-    glutPostRedisplay();
+ //   glutPostRedisplay();
 }
 
-int main(int argc, char** argv)
+void mouseMotion(int x, int y)
 {
+    if (mouseDown)
+    {
+        yrot = x - xdiff;
+        xrot = y + ydiff;
+         
+   //     glutPostRedisplay();
+    }
+}
+
+void mouse(int button, int state, int x, int y)
+{
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+        {
+            mouseDown = true;
+             
+            xdiff = x - yrot;
+            ydiff = -y + xrot;
+        }
+    else
+        mouseDown = false;
+        
+}
+
+int main(int argc, char* argv[])
+{
+
+
+    if( argv[1] != NULL)
+    {
+        strcpy (fileInput, argv[1]);
+        cout << "\n File entered is " << fileInput;
+    }
+    else
+    {
+        cout << "\n Pass file as argument. \n";
+        return 1;
+    }
     
     initInitializeGlobalData();
 
@@ -1288,6 +1362,9 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(g_winWidth, g_winWidth);
     glutCreateWindow(" RayCasting Algorithm");
+
+  
+
     GLenum err = glewInit();
     
     if (GLEW_OK != err)
@@ -1300,6 +1377,8 @@ int main(int argc, char** argv)
     glutDisplayFunc(&display);
     glutReshapeFunc(&reshape);
     glutIdleFunc(&rotateDisplay);
+    glutMouseFunc(&mouse);
+    glutMotionFunc(&mouseMotion);
     init();
     glutMainLoop();
     return EXIT_SUCCESS;

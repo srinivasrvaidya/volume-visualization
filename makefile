@@ -1,7 +1,7 @@
 CC = g++
 OFLAG = -o
 CFLAGS = -c -Wall -g -DDEBUG 
-LIB = -lGLEW -lGL -lGLU -lglut -lc -lm -lstdc++ -Wno-write-strings
+LIB = -lGLEW -lGL -lGLU -lglut -lc -lm -Wno-write-strings
 LDFLAGS = `pkg-config --libs opencv`
 
 all: main.o

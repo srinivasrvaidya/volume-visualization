@@ -13,6 +13,7 @@ uniform vec2      ScreenSize;
 uniform float transferFunction[256*4];
 uniform float ROItransferFunction[50];
 uniform float ROI[6];
+uniform int r[8];
 
 //uniform int countVoxelFlag;
 //layout (location = 0) 
@@ -45,12 +46,46 @@ void main()
 
     bool rangeFlag = true;
 
+    float range[8];
+    
+
+    range[0] = r[0] / 256.0;
+    range[1] = r[1] / 256.0;
+    
+    range[2] = r[2] / 256.0;
+    range[3] = r[3] / 256.0;
+
+    range[4] =  r[4] / 256.0;
+    range[5] =  r[5] / 256.0;
+
+    range[6] =  r[6] / 256.0;
+    range[7] =  r[7] / 256.0;
+
+/*
+    range[0] = 60;    range[1] = 80;
+    range[2] = 80;    range[3] = 100;
+    range[4] = 100;   range[5] = 120;
+    range[6] = 150;   range[7] = 256;
+    range[0] /=  256.0;
+    range[1] /=  256.0;
+    
+    range[2] /= 256.0;
+    range[3] /= 256.0;
+
+    range[4] /=  256.0;
+    range[5] /=   256.0;
+
+    range[6] /= 256.0;
+    range[7] /=   256.0;
+*/
+
     for(int i = 0; i < 1600; i++)
     {
     	intensity =  texture(VolumeTex, voxelCoord).x;      
         int INTENSITY = int(intensity * 256);                                   
 
-        if(  0.078125 <= intensity && 0.1171875 >= intensity )
+                    
+        if(  range[0] <= intensity && range[1] >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];       
@@ -58,21 +93,21 @@ void main()
 
         }   
         else
-        if(  0.1171875 <= intensity && 0.17578 >= intensity )
+        if(  range[2] <= intensity && range[3] >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
             r2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
         }
         else
-        if( 0.17578 <= intensity && 0.234375 >= intensity )
+        if(  range[4] <= intensity && range[5] >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
             r3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
         }
         else
-        if( 0.234375 <= intensity && 1.00 >= intensity )
+        if(  range[6] <= intensity && range[7] >= intensity )
         {
 
             sampleOpacityValue = transferFunction[INTENSITY*4 + 3];

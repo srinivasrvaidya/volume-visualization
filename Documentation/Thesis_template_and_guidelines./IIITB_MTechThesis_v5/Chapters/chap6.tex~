@@ -1,0 +1,12 @@
+% chap6.tex
+
+\chapter{Results}\label{chap:}
+
+We applied our approach dicussed in the thesis to a number of datasets, both medical and non-medical. The use of visibility histogram alone prove to be an important element towards the understanding of complex datasets. Results show that visibility histogram are a useful aid to quantify the information derived from the structure of interest in both single and multimodality setup. The technique discussed helps user generate desired visualization, by intuitively designing the transfer function, and thus enabling user to gain insights into the volume. We have implemented it on GPU, leading to improved performance with better user experience.  
+
+As part of future work, we can incorporate lighting for better illustrative visualization. We can extend to two-dimensional transfer function, for silhouette rendering on ROI for enhanced visualization incorporating NPR techniques. Use of volume raycasting and visibility driven transfer function techniques to visualize iso-surfaces of volumetric dataset. Another important future work is to extent this techniques to enable visualization on non-uniform grids. We can extend our approach to study effects of intergrating other NPR technique for multimodal visualization. We can work on the implementational aspects of the semi-automatic transfer function generation.
+
+
+ 
+
+

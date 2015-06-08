@@ -1,0 +1,53 @@
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+
+\lstset{style=customc}
+\begin{lstlisting}
+// backFace.vertexShader
+
+#version 130
+in vec3 VerPos;
+in vec3 VerClr;
+out vec3 Color;
+
+/* MVP is Projection-View-Model Matrix, which is computed in
+application program */
+uniform mat4 MVP;
+
+void main()
+{
+    Color = VerClr;
+    gl_Position = MVP * vec4(VerPos, 1.0);
+}
+\end{lstlisting}
+
+
+\lstset{style=customc}
+\begin{lstlisting}
+// backFace.vertexShader
+
+#version 130
+
+/* Output of backFace.vertexShader */
+in vec3 Color;
+out vec4 FragColor;
+
+void main()
+{
+    FragColor = vec4(Color, 1.0);
+    
+}
+\end{lstlisting}
+ 

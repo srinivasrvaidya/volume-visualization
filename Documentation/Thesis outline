@@ -47,11 +47,7 @@ chapter 5: Visibility guided multimodal volume visualization
 - per ray histogram
 - Benefits of using VH for multimodal viz.
 
-chapter 6: Prerequisite Installations
-- Install openGL GLSL 2.3+, GLEW, openCV, GLM, GLUI...
-- GPU assistanced computation
-
-chapter 7: Implementation
+chapter 6: Implementation
 - Datasets
 	- Source
 	- format
@@ -59,8 +55,10 @@ chapter 7: Implementation
 - Fragment shader. - backface frag and vertex shader - front face front and vertex shader.
 - Use of off-screen renderers. 
 - Binding textures to samplers (https://www.opengl.org/wiki/Sampler_%28GLSL%29)
-
 - Histogram computation.
+- Prerequisite Installations
+- Install openGL GLSL 2.3+, GLEW, openCV, GLM, GLUI...
+- GPU assistanced computation
 
 
 chapter 8: Results & Future Work

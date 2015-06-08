@@ -13,6 +13,7 @@ uniform vec2      ScreenSize;
 uniform float transferFunction[256*4];
 uniform float ROItransferFunction[50];
 uniform float ROI[6];
+uniform int r[8];
 
 //layout (location = 0) 
 out vec4 FragColor;
@@ -67,9 +68,38 @@ void main()
 
     vec4 bgColor = vec4(0.0, 0.0, 0.0, 0.0);
     float vh1 = 0.0, vh2 = 0.0, vh3 = 0.0, vh4 = 0.0;
+    float range[8];
+
+/*
+    range[0] = 60;    range[1] = 80;
+    range[2] = 80;    range[3] = 100;
+    range[4] = 100;   range[5] = 120;
+    range[6] = 150;   range[7] = 256;
+ 
+
+    range[0] = 20;    range[1] = 30;
+    range[2] = 30;    range[3] = 45;
+    range[4] = 45;    range[5] = 60;
+    range[6] = 60;    range[7] = 256;
+*/
 
 
-    for(int i = 0; i < 1600; i++)
+
+    range[0] = r[0] / 256;
+    range[1] = r[1] / 256;
+    
+    range[2] = r[2] / 256;
+    range[3] = r[3] / 256;
+
+    range[4] =  r[4] / 256;
+    range[5] =  r[5] / 256;
+
+    range[6] =  r[6] / 256;
+    range[7] =  r[7] / 256;
+
+
+
+    for(int i = 0; i < 2256; i++)
     { 
 
         intensity =  texture(VolumeTex, voxelCoord).x;
@@ -82,34 +112,40 @@ void main()
         {   
             break;    
         }
-/*
+
+        // bounding box.
         if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) &&  
             ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
-            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) )     
+            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) )                
         {
-            isHittingROI = true;
+    //        isHittingROI = true;
             break;
         }
-*/
-        
+
+        if ( intensity > 0.234 )
+        {
+   //         isHittingROI = true;
+   //         break;
+        }
+       
         if( intensity2 > 0.5 )     
         {
             isHittingROI = true;
             break;
         }
-
+        
     }     
 
     voxelCoord = EntryPoint;    
     rayAccumulatedLength = 0.0;
 
 
-        for(int i = 0; i < 1600; i++)  // computing visibility histogram. for per-ray VH on ROI.
+        for(int i = 0; i < 2600; i++)  // computing visibility histogram. for per-ray VH on ROI.
         {
             intensity =  texture(VolumeTex, voxelCoord).x;      
             int INTENSITY = int(intensity * 256);                                   
 
-            if(  0.117 <= intensity && 0.175 >= intensity )
+            if(  range[0] <= intensity && range[1] >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];       
@@ -117,21 +153,21 @@ void main()
 
             }   
             else
-            if(  0.175 <= intensity && 0.3125 >= intensity )
+            if(  range[2] <= intensity && range[3] >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
                 vh2 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
             }
             else
-            if( 0.3125 <= intensity && 0.546 >= intensity )
+            if( range[4] <= intensity && range[5] >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
                 vh3 += (1.0 - accumulatedOpacity) * sampleOpacityValue;
             }
             else
-            if( 0.546 <= intensity && 1.0 >= intensity )
+            if( range[6] <= intensity && range[7] >= intensity )
             {
 
                 sampleOpacityValue = transferFunction[INTENSITY*4 + 3];
@@ -178,7 +214,7 @@ void main()
 
 
     int n;
-    for(int i = winSize; i < 1600; i++)
+    for(int i = 0; i < 2600; i++)
     {   
 
         intensity =  texture(VolumeTex, voxelCoord).x;  
@@ -208,7 +244,7 @@ void main()
             ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
             ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) ) 
         {
-        //    isHittingROI = false;
+   //          isHittingROI = false;
 
             // Ray hit the ROI and normal composting begins.
         }
@@ -217,40 +253,42 @@ void main()
         if( vol2SampleIntensity >= 240)
         {
         
-        isHittingROI = false;
+            isHittingROI = false;
 
-        colorSample.r = 0.0;
-        colorSample.g = 1.0;
-        colorSample.b = 0.0;
-        colorSample.a = 0.5;
+            colorSample.r = 0.0;
+            colorSample.g = 1.0;
+            colorSample.b = 0.0;
+            colorSample.a = 1.0;
 
-       // colorSample.a = colorSample.a * pow(( 1 - vh4),2);
+            colorSample.a = colorSample.a * pow(( 1 - vh4),2);
 
         }
 
 
-        n = 3;
+        n = 4;
         if( isHittingROI )
         {
-            if(  0.117 <= intensity && 0.175 >= intensity )
+
+            if(  range[0] <= intensity && range[1] >= intensity )
             {
                 colorSample.a = colorSample.a * pow(( 1 - vh1), n);
             }   
             else
-            if(  0.175 <= intensity && 0.3125 >= intensity )
+            if(  range[2] <= intensity && range[3] >= intensity )
             {
                 colorSample.a = colorSample.a * pow(( 1 - vh2), n);
             }
             else
-            if( 0.3125 <= intensity && 0.545 >= intensity )
+            if(  range[4] <= intensity && range[5] >= intensity )
             {
                 colorSample.a = colorSample.a * pow(( 1 - vh3), n);    
             }
             else
-            if( 0.545 <= intensity && 1.0 >= intensity )
+            if(  range[6] <= intensity && range[7] >= intensity )
             {
                 colorSample.a = colorSample.a * pow(( 1 - vh4), n);
             }        
+
         }
       
         

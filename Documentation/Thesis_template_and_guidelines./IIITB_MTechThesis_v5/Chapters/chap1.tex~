@@ -2,91 +2,60 @@
 
 \chapter{Introduction}\label{chap:intro}
 
-Visualization has become an indispensable tool in many areas of science and engineering. In particular, the advances in visualization made over the past twenty years have turned visualization from a presentation tool to a discovery tool.
+Visualization has become an indispensable tool in many areas of science and engineering. In particular, the advances in this field made over the past twenty years have turned visualization from a presentation tool to a discovery tool.
 
-Volume visualization is a technique which enables physicians and scientists to gain insight into complex volumetric structures. Currently, the trend towards information acquisition using data sets from multiple modalities is increasing in order to facilitate better medical diagnosis. As different modalities frequently carry complementary information, our goal is to combine their strengths and generate focus+context  visualization.
+Volume visualization is a technique that enables physicians and scientists to gain insight into complex volumetric structures. Currently, the trend towards information acquisition using data sets from multiple modalities is increasing in order to facilitate better medical diagnosis.  Volume visualization of such data helps radiologists to identify and quantify tumours from MRI and CT scans, and neuroscientists detect regional metabolic brain activity from PET and functional MRI scans. Analysis of these diverse types of images requires interactive visualization tools. The main focus of thesis will be on medical visualization. As different modalities frequently carry complementary information, our goal is to combine their strengths and generate visualizations that enable viewers to view the object of primary interest in  greater detail, while at the same time not losing surrounding information or context, leading to better focus+context visualization and also improve usability by providing more intuitive image manipulation mechanisms. \\
 
 
 \section{Motivation}
 
+For volume models, the key advantage of using direct volume rendering is its potential to show the structure of the value distribution throughout the volume. The contribution of each volume sample to the final image is explicitly computed and included. The key challenge of direct volume rendering is to convey that value distribution clearly and accurately. In particular, we cannot achieve higher opacity and clarity for each volume sample, if volume samples in the rear of the volume are not to be completely obscured. Hence, many visualization techniques have been developed to enable viewing of volume data by adjusting (interactively or otherwise) the opacity and color of volume elements.
 
+Despite the proliferation of volume rendering software, the design of effective transfer functions or the mapping of volume sample values to color and opacity in the image is still a challenge. The growing popularity of GPU-based volume renderers has advocated the use of a more exploratory approach, where use\rq s can arrive at good transfer functions via trial-and-error modification of opacity and color values. However, effective transfer functions are often the product of time-consuming tweaking of opacity parameters until meeting a desired quality metric, often subjective. The reason to adopt such an is approach is partly due to lack of a metric to measure the quality of transfer functions. 
 
-For volume models, the key advantage of using direct volume rendering is its potential to show the structure of the value distribution throughout the volume. The contribution of each volume sample to the final image is explicitly computed and included. The key challenge of direct volume rendering is to convey that value distribution clearly and accurately. In particular, showing each volume sample with full opacity and clarity is impossible if volume samples in the rear of the volume are not to be completely obscured.
-
-Despite the proliferation of volume rendering software, the design of effective transfer functions is still a challenge. The growing popularity of GPU-based volume renderers has advocated the use of a more exploratory approach, where users can arrive at good trans-
-fer functions via trial-and-error modification of opacity and color values. However, effective transfer functions are often the product
-of time-consuming tweaking of opacity parameters until meeting a desired quality metric, often subjective. One possible explanation
-for this ad hoc methodology is the lack of an objective measure to quantify the quality of transfer functions. 
-
+With hardware acceleration, volume rendering has become very attractive for many applications. To be more widely adopted, however, its usability remains to be enhanced. In particular, the task of classifying volume data before rendering as well as the task of manipulating potentially a large number of rendering and viewing parameters to achieve desired visualization are often time-consuming and tedious. 
 
 In interpreting volume data for surgical planning or medical diagnosis, the information which can be visualized from a single modality, example, Computed Tomography (CT), may be insufficient. A number of factors influence this, including limited resolution, sensitivity to tissue properties, noise, etc. For this reason, radiologists often make use of additional modalities that provide complementary or supplementary information. In this way, radiologists are able to extract more clearly the structures of interest and the spatial relationships
-among them. For example, CT provides the most detailed anatomical information from the human body, usually at high resolution. It helps depict high dense structures such as bone, as well as the shape of internal organs. On the other hand, the acquisition of metabolic activity must rely on a modality like Positron Emission Tomography (PET). In general, metabolic activity is important to detect cancer, since cancer tumors and other malignancies are usually located in regions with high rate of metabolic activity, such as regions with high blood flow. To obtain the best of the two modalities, recent visualization systems attempt at fusing both types of information in a single meaningful image.
+among them. For example, CT provides the most detailed anatomical information from the human body, usually at high resolution. It helps depict high dense structures such as bone, as well as the shape of internal organs. On the other hand, the acquisition of metabolic activity must rely on a modality like Positron Emission Tomography (PET). In general, metabolic activity is important to detect cancer, since cancer tumours and other malignancies are usually located in regions with high rate of metabolic activity, such as regions with high blood flow. To obtain the best of the two modalities, recent visualization systems attempt at fusing both types of information in a single meaningful image ~\cite{895844}.
 
+Multimodal volume rendering presents additional challenges, from the problems of superimposing dual modality data and highlighting objects of interest, to the desire to suppress occluding materials while maintaining the context and to enhance structural and spatial clarity of the objects.
 
-The issue of visibility is not exclusive of medical data. Simulations of 3D phenomena often contain
-structures that evolve and are intertwined in 3D space with other less interesting structures. Therefore,
-visualization of internal flow becomes difficult. 
-
-With hardware acceleration, volume rendering has become very attractive to many applications. To be more widely adopated, however, its usability remains to be enhanced. In particular, the task of classifying volume data before rendering as well as the task of manipulating potentially a large number of rendering and viewing parameters to achieve desired visualization are often time-consuming and tedious. Recent research results show some good progress on visualizing individual volume data, but multimodal volume rendering presents additional challenges, from the problems of superimposing dual modality data and highlighting objects of interest, to the desire to suppress occluding materials while maintaining the context and to enhance structural and spatial clarity of the objects.
-
-
-\section{Background/Related Work}
-
-
-
-
-
-
-\section{Objective}
-
-
-
-
-
+The issue of visibility is not exclusive to medical data. Simulations of 3D phenomena often contain structures are intertwined in 3D space with other less interesting structures. Therefore, visualization of internal flow becomes difficult. The techniques discussed in this thesis can be applied to such datasets too.
 
 
 \section{Non Photorealistic Rendering }
 
-The emergence of non-photorealistic rendering (NPR) over the greater part of a decade has created an intriguing new field espousing expression, abstraction and stylisation in preference to the traditional computer graphics concerns for photorealism. By lifting the burden of realism, NPR is capable of engaging with users, providing compelling and unique experiences through devices such as abstraction and stylisation. Non-photorealistic rendering can be used to illustrate subtle spatial relationships that might not be visible with more realistic rendering techniques. 
+The emergence of non-photorealistic rendering (NPR) over the greater part of a decade has created an intriguing new field espousing expression, abstraction and stylisation in preference to the traditional computer graphics concerns for photorealism~\cite{Ebert:2000}. By lifting the burden of realism, NPR is capable of engaging with user\rq s, providing compelling and unique experiences through devices such as abstraction and stylisation. Non-photorealistic rendering can be used to illustrate subtle spatial relationships that might not be visible with more realistic rendering techniques. 
 
-Volume rendering has remained a prevalent tool in medical and scientific visualisation for over a decade. The ability to visualise complex real-world phenomena has found its way into practical applications including CT and MRI scans of the brain and imaging flow in fluid dynamics. The integration of volume rendering with non-photorealistic rendering(NPR) is an intuitive and natural progression given the communicative and expressive capabilities of NPR. 
+Volume rendering has remained a prevalent tool in medical and scientific visualisation for over more than a decade. The ability to visualise complex real-world phenomena has found its way into practical applications including CT and MRI scans of the brain and imaging flow in fluid dynamics. The integration of volume rendering with non-photorealistic rendering(NPR) is an intuitive and natural progression given the communicative and expressive capabilities of NPR~\cite{Hertzmann:2010}. 
 
-Volume Non-photorealistic rendering acheives two complimentary goals, the communication of information using images and rendering images in interesting and novel visual styles which are free of the traditional computer graphics constraint of producing images which are “life-like”. Hence, Volume non photorealistic rendering techniques can be used to create visualizations of volume data that are more effective at conveying the structure within the volume.
+Volume Non-photorealistic rendering acheives two complimentary goals: the communication of information using images, and rendering images in interesting and novel visual styles which are free of the traditional computer graphics constraint of producing "life-like" images~\cite{Elvins:1992}. Hence, Volume NPR techniques can be used to create visualizations of volume data that are more effective at conveying the structure within the volume.
 
-[1] Volume Illustration: Non-Photorealistic Rendering of Volume Models
-[2] State of the Art Non-Photorealistic Rendering (NPR) Techniques
+\section{Focus+Context for Volume Visualization }
+
+Visualization of CT, MRI or PET data allows physicians and radiologists to see internal structures and organs with much greater detail than with conventional methods. However, in some cases there is too much data to be displayed at once on a computer display (or the display’s resolution may be insufficient for practical use). A simple and widely used solution is to apply a magnification factor to get closer to a specific region. But by doing so, it is equally easy to get lost in the dataset. This is generally called loss of context, because we are no longer able to visualize the entire dataset. When we zoom in, we are focusing on a certain feature that is of interest. Another approach to increase visibility of the ROI is to make occluding materials completely transparent. This brings focus to the region of interest, however, we could lose the context since the surrounding material or regions may become too transparent to provide meaningful information. In the field of Visualization this problem is called focus+context~\cite{robert2001} and a number of successful solutions have emerged. The challenge is to find a way of looking at a high level of detail at this area of focus, without losing the overall context. We also want operations to be interactive and with better usability.
 
 
-\section{Focus and Context for Volume Visualization }
+\section{Related work}
 
-In the case of volume data (3D datasets), direct volume rendering [4] is one of the most used approaches for visualization. Medical applications are amongst the most popular ones, data acquired from a scanner (computerized tomography, magnetic resonance, etc) is fed to a volume rendering system, allowing physicians and radiologists to see internal structures and organs with much greater detail than with conventional methods.
+Many techniques for multimodal visualization render the multi-volume by mixing the component volumes at a certain step of the volume rendering pipeline, such as, accumulation, illumination or at pixel levels~\cite{pixel}. In another approach, one set of data and optical transformations are applied to the region of interest, and a different set of transformations to the remaining data. Few other techniques include interactive cuts~\cite{cut}, distorted views ~\cite{lens}, opacity peelings~\cite{n} or ghosted views~\cite{h}. Opacity peeling, automatically finds the layers that compose an image from a given point of view. Cutaway views completely remove occluding, unimportant structures and possibly also remove valuable context information.  
 
-However, in some cases there is too much data to be displayed at once on a computer display (or the display’s resolution may be insufficient for practical use). A simple and widely used solution is to apply a magnification factor to get closer to a specific region. But by doing so, it is equally easy to get lost in the dataset. This is generally called loss of context, because we are no longer able to visualize the entire dataset. When we zoom in, we are focusing on a certain feature that is of interest. In the field of Visualization this problem is called focus+context [22] and a number of successful solutions have emerged. The challenge is to find a way of looking at a high level of detail at this area of focus, without losing the overall context.
+The technique of importance-aware rendering~\cite{m}, can help visual hidden structure. Features within the volumetric data are first classified according to a new dimension, denoted as object importance, and the final image is generated by raycasting and combining the intersected features proportional to their importance (importance compositing). The object importance is added as a new dimension to the traditional volume rendering pipeline in order to maximize the visual information. This technique removes or suppresses less important parts of a scene to reveal more important underlying information.  
 
-[22] Robert Spence. Information Visualization. ACM Press, 1st edition, 2001.
-[4] Robert A. Drebin, Loren Carpenter, and Pat Hanrahan. Volume rendering. In Proceedings of the 15th annual conference on Computer graphics and interactive techniques, pages 65–74. ACM Press, 1988.
+Another technique similar to~\cite{m} is importance aware compositing~\cite{44}, which uses a front-to-back sample composition equation for direct volume rendering that takes into account a measure of sample importance. Importance-driven techniques~\cite{m} and ghosted views~\cite{h} assign different opacities in a viewpoint dependent manner, so that the user constantly gets an uninterrupted view of internal structures. 
+But both these technique require prior definitions of context regions.
+
+\section{Objective}
+
+The objective of this thesis is to study techniques for viewing of volumetric data with the ability to support interactive and intuitive mechanisms for adjusting opacities of volume elements, such that it enhances visibility of structures or regions of interest to achieve "focus+context". Quantification of visibility of structures or regions relative to the entire model is studied, which provides intuitive insights while designing transfer functions. Specifically, the technique described in~\cite{vdtf} and~\cite{mm} is analyzed. The algorithm used to implement is parallelizable and is implemented on the GPU, which leads to enhanced performance, better interactivity, and good user experience. 
+
 
 \section{Organization of thesis}
-Thesis is be divided into two parts. First part deals with visibility histogram, which represents the visibility of the sample values from a given viewport. These visibility histogram provides a feedback mechanism for designing transfer function. Visibility histograms are view and opacity dependent. This method becomes an important aid for volume exploration.
-Therefore, first part of thesis we deal with defining visibility driven transfer functions. 
 
-Second part of deals with challenges posed by multimodal visualization to generate informative pictures from complementary data(we used CT and PET ). The visibility information is used to fuse multimodal datasets for generating focus+context visualization.
-Using visibility calculations, tradeoff between visibility and spatial clarity is handled. 
+The thesis is divided into two parts. The first part deals with visibility histograms, which represents the visibility of the sample values from a given viewport. The visibility histogram provides a feedback mechanism for designing transfer functions. Visibility histograms are view and opacity dependent. This method becomes an important aid for volume exploration. Therefore, in the first part of thesis we deal with generation of visibility driven transfer functions. 
 
-\section{Chapters}
-The thesis should contain an abstract, acknowledgments, chapters, and
-bibliography. Appendices are optional. The chapters should include an
-introducted, related work (or literature survey), background, hypothesis,
-implementation, results, and conclusions.
+The second part of deals with challenges posed by multimodal visualization to generate informative pictures from complementary data (we use CT and PET datasets). The visibility information is used for generating focus+context visualization of fused multimodal datasets. Using visibility calculations, tradeoff between visibility and spatial clarity is handled. 
 
-chapter 1: Introduction
-chapter 2: Background/Literature survey
-chapter 3: Direct Volume rendering using raycasting
-chapter 4: Visibility Histograms
-chapter 5: Visibility guided multimodal volume visualization
-chapter 6: Prerequisite Installations
-chapter 7: Implementation
-chapter 8: Results \& Future Work
 
 
 

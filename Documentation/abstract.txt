@@ -1,0 +1,14 @@
+
+Thesis Topic:
+
+1) Visibility driven context+focus visualization for multimodal dataset.
+
+2) Visibility driven Focus+context Multimodal Volume visualization.
+
+3) Implementation of Context+focus Multimodal Volume visualization using visibility driven transfer function.
+
+4) Context+focus Multimodal Volume visualization using visibility Histogram.
+
+
+The aim of the thesis work, is to implement context+focus multimodal volume visualization using visibility histogram.
+Visiblity histogram gives graphical cues that intuitively infrom the user about the contribution of particular scalar values to the final image. The user need not deal with time comsuming and tedious trail-and-error approach to design transfer function. In this thesis, we make use of dual modality, for example, CT and PET, to produce effective focus+context volume visualization, where CT dataset is used to provide clear contextual information and PET data is our region of interest. We use per-ray visibility histograms, which improves visibility of region of interest offering better visualization to examine multimodal volume data. 

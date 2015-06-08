@@ -3,7 +3,7 @@ import random
 import struct
 import math
 
-with open("foot_3.raw", "r+") as f:
+with open("foot_4.raw", "r+") as f:
 #with open("skull.raw", "r+") as f:	
     #byte = f.read(1)
     data2 = struct.pack('c', chr(254))
@@ -14,15 +14,15 @@ with open("foot_3.raw", "r+") as f:
     y = 250
     y1 = 245
 
-    m = 200
+    m = 150
     n = 140
     o = 150
 
-    a=170
+    a=130
     b=140
     c=150
 
-    q=200
+    q=140
     w=150
     e=170
 
@@ -37,12 +37,12 @@ with open("foot_3.raw", "r+") as f:
 				#f.write(struct.pack('>B', x))
 
 
-				if( math.sqrt( ( (i-a)*(i-a) )  +  ( (j-b)*(j-b) ) + ( (k-c)*(k-c) )  )  <= 10):
+				if( math.sqrt( ( (i-a)*(i-a) )  +  ( (j-b)*(j-b) ) + ( (k-c)*(k-c) )  )  <= 6):
 					f.write(struct.pack('>B', y))
-				elif( math.sqrt( ( (i-m)*(i-m) )  +  ( (j-n)*(j-n) ) + ( (k-o)*(k-o) )  )  <= 16):
+				elif( math.sqrt( ( (i-m)*(i-m) )  +  ( (j-n)*(j-n) ) + ( (k-o)*(k-o) )  )  <= 10):
 #				if i > 200 and i < 240 and j > 80 and j < 120 and k > 200 and k < 240:	
 					f.write(struct.pack('>B', y))
-				elif( math.sqrt( ( (i-q)*(i-q) )  +  ( (j-w)*(j-w) ) + ( (k-e)*(k-e) )  )  <= 10):
+				elif( math.sqrt( ( (i-q)*(i-q) )  +  ( (j-w)*(j-w) ) + ( (k-e)*(k-e) )  )  <= 6):
 #				if i > 200 and i < 240 and j > 80 and j < 120 and k > 200 and k < 240:	
 					f.write(struct.pack('>B', y1))		
 				else:
