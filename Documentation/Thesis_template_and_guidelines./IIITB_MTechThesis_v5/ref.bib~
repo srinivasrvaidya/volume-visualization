@@ -347,7 +347,7 @@ ISSN={1077-2626},}
                The paper includes an extended discussion on several
                possible schemes for levels of sparseness specification.
                Furthermore different approaches to importance compositing
-               are treated.",
+               are treated.",	
   pages =      "408--418",
   number =     "4",
   journal =    "IEEE Transactions on Visualization and Computer Graphics",
@@ -416,15 +416,25 @@ Forum, 25 (3): 597–606, 2006.
 [peel] C. Correa, D. Silver, and M. Chen, Discontinuous displacement mapping for volume graphics. In
 Proc. Volume Graphics '06, 2006, pp. 9 -16.
 
-@INPROCEEDINGS{vdtf,
-author={Correa, C. and Kwan-Liu Ma},
-booktitle={Visualization Symposium, 2009. PacificVis '09. IEEE Pacific},
-title={Visibility-driven transfer functions},
-year={2009},
-month={April},
-pages={177-184},
-keywords={data visualisation;rendering (computer graphics);transfer functions;1D opacity transfer functions;complex data set visualization;direct volume rendering;visibility-driven transfer functions;Attenuation;Computer graphics;Data visualization;Feedback;Histograms;Image generation;Multidimensional systems;Process design;Rendering (computer graphics);Transfer functions;Transfer functions;volume rendering},
-doi={10.1109/PACIFICVIS.2009.4906854},}
+@article{vdtf,
+ author = {Correa, Carlos D. and Ma, Kwan-Liu},
+ title = {Visibility Histograms and Visibility-Driven Transfer Functions},
+ journal = {IEEE Transactions on Visualization and Computer Graphics},
+ issue_date = {February 2011},
+ volume = {17},
+ number = {2},
+ month = feb,
+ year = {2011},
+ issn = {1077-2626},
+ pages = {192--204},
+ numpages = {13},
+ url = {http://dx.doi.org/10.1109/TVCG.2010.35},
+ doi = {10.1109/TVCG.2010.35},
+ acmid = {1920225},
+ publisher = {IEEE Educational Activities Department},
+ address = {Piscataway, NJ, USA},
+ keywords = {Transfer functions, Transfer functions, volume rendering, visibility, view-point dependent rendering, histograms., histograms., view-point dependent rendering, visibility, volume rendering},
+}
 
 
 @Inproceedings{mm,

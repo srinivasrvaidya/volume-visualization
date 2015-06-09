@@ -34,38 +34,38 @@ while executing---line 1090 of file abbrv.bst
 Warning--empty year in Robert:1992
 You've used 26 entries,
             2118 wiz_defined-function locations,
-            676 strings with 8355 characters,
-and the built_in function-call counts, 10073 in all, are:
-= -- 999
+            678 strings with 8411 characters,
+and the built_in function-call counts, 9965 in all, are:
+= -- 990
 > -- 421
-< -- 11
+< -- 10
 + -- 167
 - -- 138
-* -- 691
-:= -- 1562
+* -- 694
+:= -- 1557
 add.period$ -- 81
 call.type$ -- 26
 change.case$ -- 146
 chr.to.int$ -- 0
 cite$ -- 27
-duplicate$ -- 425
-empty$ -- 827
+duplicate$ -- 413
+empty$ -- 813
 format.name$ -- 138
-if$ -- 2206
+if$ -- 2168
 int.to.chr$ -- 0
 int.to.str$ -- 26
 missing$ -- 29
 newline$ -- 133
 num.names$ -- 54
-pop$ -- 167
+pop$ -- 162
 preamble$ -- 1
 purify$ -- 120
 quote$ -- 0
-skip$ -- 330
+skip$ -- 317
 stack$ -- 0
-substring$ -- 685
-swap$ -- 137
-text.length$ -- 11
+substring$ -- 682
+swap$ -- 127
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 98

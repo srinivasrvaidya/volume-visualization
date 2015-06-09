@@ -89,6 +89,8 @@ int range[8];
 float red[4], blue[4], green[4],alpha[4]; 
 char fileInput[20];
 
+
+
 /** function declaration **/
 
 void keyboard(unsigned char key, int x, int y);
@@ -125,6 +127,10 @@ void initInitializeGlobalData()
     rotationFlag = false;
 
     g_stepSize = 0.001f;
+
+
+    cout << " ===== " << g_stepSize << "\n" ;
+
     g_winWidth = 500;
     g_winHeight = 500;
 
@@ -1104,10 +1110,10 @@ void render(GLenum cullFace)
     model *= glm::scale(glm::vec3(scaleFactor, scaleFactor , scaleFactor) );
 
  
-//	model *= glm::rotate(90.0f, vec3(1.0f, 0.0f, 0.0f));
+	model *= glm::rotate(270.0f, vec3(1.0f, 0.0f, 0.0f));
 
-     model *= glm::rotate(90.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
- //   model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
+    model *= glm::rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
+    model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
 
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
     
@@ -1134,8 +1140,8 @@ void render(GLenum cullFace)
 }
 void rotateDisplay()
 {
+    /*
     frame++;
-
     t = glutGet(GLUT_ELAPSED_TIME);
     float fps;
 
@@ -1146,6 +1152,7 @@ void rotateDisplay()
         timebase = t;
         frame = 0;
     }
+    */
 
     glutPostRedisplay();
 }
@@ -1318,26 +1325,40 @@ void keyboard(unsigned char key, int x, int y)
 
 void mouseMotion(int x, int y)
 {
+
     if (mouseDown)
     {
         yrot = x - xdiff;
         xrot = y + ydiff;
-         
-   //     glutPostRedisplay();
+        
+        g_stepSize = 0.005f;
+    
+    //    glutPostRedisplay();
+
+
     }
 }
 
 void mouse(int button, int state, int x, int y)
 {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-        {
-            mouseDown = true;
+    {
+        mouseDown = true;
+        g_stepSize = 0.005f;
              
-            xdiff = x - yrot;
-            ydiff = -y + xrot;
-        }
+        xdiff = x - yrot;
+        ydiff = -y + xrot;
+    }
     else
+    {
         mouseDown = false;
+        
+    }
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP)
+    {
+       
+        g_stepSize = 0.001f;
+    }
         
 }
 
