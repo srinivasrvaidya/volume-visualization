@@ -13,7 +13,7 @@ uniform vec2      ScreenSize;
 uniform float transferFunction[256*4];
 uniform float ROItransferFunction[50];
 uniform float ROI[6];
-uniform int r[8];
+uniform float r[8];
 
 //uniform int countVoxelFlag;
 //layout (location = 0) 
@@ -60,12 +60,12 @@ void main()
 
     range[6] =  r[6] / 256.0;
     range[7] =  r[7] / 256.0;
-
 /*
     range[0] = 60;    range[1] = 80;
     range[2] = 80;    range[3] = 100;
     range[4] = 100;   range[5] = 120;
     range[6] = 150;   range[7] = 256;
+
     range[0] /=  256.0;
     range[1] /=  256.0;
     

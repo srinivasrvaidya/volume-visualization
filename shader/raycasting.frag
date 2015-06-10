@@ -13,7 +13,9 @@ uniform vec2      ScreenSize;
 uniform float transferFunction[256*4];
 uniform float ROItransferFunction[50];
 uniform float ROI[6];
-uniform int r[8];
+uniform float r[8];
+uniform int e;
+uniform int voiFlag;
 
 //layout (location = 0) 
 out vec4 FragColor;
@@ -81,8 +83,20 @@ void main()
     range[2] = 30;    range[3] = 45;
     range[4] = 45;    range[5] = 60;
     range[6] = 60;    range[7] = 256;
-*/
 
+
+    range[0] /=  256;
+    range[1] /=  256;
+    
+    range[2] /= 256;
+    range[3] /= 256;
+
+    range[4] /= 256;
+    range[5] /= 256;
+
+    range[6] /= 256;
+    range[7] /= 256;
+*/
 
 
     range[0] = r[0] / 256;
@@ -116,9 +130,9 @@ void main()
         // bounding box.
         if( ( voxelCoord.x < ROI[0] && voxelCoord.x > ROI[3] ) &&  
             ( voxelCoord.y < ROI[1] && voxelCoord.y > ROI[4] ) &&  
-            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) )                
+            ( voxelCoord.z < ROI[2] && voxelCoord.z > ROI[5] ) && voiFlag == 1 )                
         {
-    //        isHittingROI = true;
+            isHittingROI = true;
             break;
         }
 
@@ -128,6 +142,7 @@ void main()
    //         break;
         }
        
+       // for PET.
         if( intensity2 > 0.5 )     
         {
             isHittingROI = true;
@@ -258,14 +273,13 @@ void main()
             colorSample.r = 0.0;
             colorSample.g = 1.0;
             colorSample.b = 0.0;
-            colorSample.a = 1.0;
-
-            colorSample.a = colorSample.a * pow(( 1 - vh4),2);
+            colorSample.a = 0.20;
+       //     colorSample.a = colorSample.a * pow(( 1 - vh4), 1);
 
         }
 
 
-        n = 4;
+        n = e;
         if( isHittingROI )
         {
 

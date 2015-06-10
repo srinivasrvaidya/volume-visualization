@@ -86,8 +86,11 @@ float scaleFactor = 1.0f;
 /** frame per second calc **/
 long int frame=0, t, timebase=0;
 int range[8];
+float r[8];
 float red[4], blue[4], green[4],alpha[4]; 
 char fileInput[20];
+
+int e=0, voiFlag=0;
 
 
 
@@ -314,6 +317,13 @@ void initInitializeGlobalData()
     }
 */
  //  - experiement. - 
+
+
+    for(int i = 0; i <= 7 ; i++)
+    {
+        r[i] = range[i];
+        cout << " =--- " << r[i] << "\n";
+    }
 
     
 
@@ -874,11 +884,32 @@ void rayCastSetUnifroms()
     GLint RangeLoc = glGetUniformLocation(g_programHandle, "r");
     if ( RangeLoc >= 0)
     {
-        glUniform1iv( RangeLoc, 8, range);
+        glUniform1fv( RangeLoc, 8, r);
     }
     else
     {
             cout << "RangeLoc is not bind to the uniform" << endl;
+    }
+
+    GLint eLoc = glGetUniformLocation(g_programHandle, "e");
+    if ( eLoc >= 0)
+    {
+        glUniform1i( eLoc, e);
+    }
+    else
+    {
+            cout << "eLoc is not bind to the uniform" << endl;
+    }
+
+
+    GLint voiFlagLoc = glGetUniformLocation(g_programHandle, "voiFlag");
+    if ( voiFlag >= 0)
+    {
+        glUniform1i( voiFlagLoc, voiFlag);
+    }
+    else
+    {
+            cout << " voiFlag is not bind to the uniform" << endl;
     }
 
 }
@@ -1003,10 +1034,10 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 
  //   cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
 
-    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar( blue[0]*256, green[0]*256, red[0]*256), 12, 8, 0  );   // blue green red
-    line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar( blue[1]*256, green[1]*256 , red[1]*256), 12, 8, 0  );
-    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar( blue[2]*256, green[2]*256 , red[2]*256), 12, 8, 0  );
-    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar( blue[3]*256, green[3]*256 , red[3]*256), 12, 8, 0  );
+    line( histImage, Point(100, 500) , Point(100, 550 - rangeTotal[0]), Scalar(  green[0]*256 , blue[0]*256, red[0]*256), 12, 8, 0  );   // blue green red
+    line( histImage, Point(200, 500) , Point(200, 550 - rangeTotal[1]), Scalar(  green[1]*256 , blue[1]*256, red[1]*256), 12, 8, 0  );
+    line( histImage, Point(300, 500) , Point(300, 550 - rangeTotal[2]), Scalar(  green[2]*256 , blue[2]*256, red[2]*256), 12, 8, 0  );
+    line( histImage, Point(400, 500) , Point(400, 550 - rangeTotal[3]), Scalar(  green[3]*256 , blue[3]*256,    red[3]*256), 12, 8, 0  );
 
     namedWindow("Visibility histogram", CV_WINDOW_AUTOSIZE );
     imshow("Visibility histogram", histImage );
@@ -1111,9 +1142,9 @@ void render(GLenum cullFace)
 
  
 	model *= glm::rotate(270.0f, vec3(1.0f, 0.0f, 0.0f));
+//    model *= glm::rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
 
-    model *= glm::rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
-    model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
+//    model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
 
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
     
@@ -1168,8 +1199,8 @@ void keyboard(unsigned char key, int x, int y)
 {
     switch (key)
     {
-	case 'A':
-	case 'a':	
+	case 'q':
+	case 'Q':	
                     if ( transferFunction[ (range[0]*4)+3 ] < 0.005)
                     {
                         for( int i = 4*range[0]; i < 4*range[1]; i += 4)
@@ -1188,16 +1219,16 @@ void keyboard(unsigned char key, int x, int y)
 
     break;
 	
-	case 'S':
-	case 's':
+	case 'W':
+	case 'w':
 	            for( int i = 4*range[0]; i < 4*range[1]; i += 4)
                 {
                     transferFunction[i+3] += 0.005;
                 }
 	break;
 
-    case 'q':
-    case 'Q':   
+    case 'A':
+    case 'a':   
                 if ( transferFunction[ (range[2]*4)+3 ] < 0.005)
                 {
                     for( int i = 4*range[2]; i < 4*range[3]; i += 4)
@@ -1215,8 +1246,8 @@ void keyboard(unsigned char key, int x, int y)
 
     break;
     
-    case 'w':
-    case 'W':
+    case 'S':
+    case 's':
                 for( int i = 4*range[2]; i < 4*range[3]; i += 4)
                 {
                     transferFunction[i+3] += 0.005;
@@ -1252,7 +1283,7 @@ void keyboard(unsigned char key, int x, int y)
     break;
 
 
-    case 'D':    // move left
+    case 'D':    
     case 'd':
 
                 if ( transferFunction[ (range[6]*4)+3 ] < 0.005)
@@ -1272,7 +1303,7 @@ void keyboard(unsigned char key, int x, int y)
 
     break;
 
-    case 'F':    // move right
+    case 'F':    
     case 'f':
                 for( int i = 4*range[6] ; i < 4*range[7] ; i += 4)
                 {
@@ -1280,34 +1311,70 @@ void keyboard(unsigned char key, int x, int y)
                 }
     break;
 
-    case 'M': // move front
-    case 'm':
+
+
+    case 'V': // move front
+    case 'v':
+                voiFlag = 1 - voiFlag; 
+    break;
+
+    case 'i': // move UP
+    case 'I':
                 ROI[2] -= 0.05;
                 ROI[5] -= 0.05;
     break;
 
 
-    case 'n': // move back
-    case 'N':
+    case 'K': // move DOWN
+    case 'k':
                 ROI[2] += 0.05;
                 ROI[5] += 0.05;
     break;
 
-    case 'i': // move front
-    case 'I':
+    case 'n': // move front
+    case 'N':
                 ROI[0] += 0.05;
                 ROI[3] += 0.05;
     break;
 
 
-    case 'K': // move back
-    case 'k':
+    case 'M': // move back
+    case 'm':
                 ROI[0] -= 0.05;
                 ROI[3] -= 0.05;
     break;
 
-    case 'r': scaleFactor += 0.03; break;
-    case 't': scaleFactor -= 0.03; break;
+
+    case 'l': // move right
+    case 'L':
+                ROI[1] -= 0.05;
+                ROI[4] -= 0.05;
+    break;
+
+
+    case 'j': // move left
+    case 'J':
+                ROI[1] += 0.05;
+                ROI[4] += 0.05;
+    break;
+
+
+
+    case 't': scaleFactor += 0.03; break;
+    case 'y': scaleFactor -= 0.03; break;
+
+
+
+    case 'e':
+    case 'E': e = e + 1; 
+             //   cout << "\n e = " << e;
+    break;
+
+    case 'r':
+    case 'R': 
+            if ( e >= 1 )
+                e = e - 1;
+    break;
 
     case '\x20' :
             rotationFlag = !rotationFlag;
@@ -1320,7 +1387,7 @@ void keyboard(unsigned char key, int x, int y)
 	
     }
     
- //   glutPostRedisplay();
+    glutPostRedisplay();
 }
 
 void mouseMotion(int x, int y)
@@ -1331,7 +1398,7 @@ void mouseMotion(int x, int y)
         yrot = x - xdiff;
         xrot = y + ydiff;
         
-        g_stepSize = 0.005f;
+        g_stepSize = 0.004f;
     
     //    glutPostRedisplay();
 
@@ -1344,7 +1411,7 @@ void mouse(int button, int state, int x, int y)
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
     {
         mouseDown = true;
-        g_stepSize = 0.005f;
+        g_stepSize = 0.004f;
              
         xdiff = x - yrot;
         ydiff = -y + xrot;
