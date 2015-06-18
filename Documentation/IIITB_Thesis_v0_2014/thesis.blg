@@ -1,0 +1,72 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+The style file: unsrt.bst
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: acknowledgments.aux
+A level-1 auxiliary file: Chapters/chap1.aux
+A level-1 auxiliary file: Chapters/chap2.aux
+A level-1 auxiliary file: Chapters/chap3.aux
+A level-1 auxiliary file: Chapters/chap4.aux
+A level-1 auxiliary file: Chapters/chap5.aux
+A level-1 auxiliary file: Chapters/chap6.aux
+Database file #1: ref.bib
+You're missing a field part---line 105 of file ref.bib
+ :  month = 
+ :          ,
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "44"
+refers to entry "DBLP:conf/sibgrapi/2010", which doesn't exist
+A bad cross reference---entry "d"
+refers to entry "DBLP:conf/visualization/2003", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/visualization/2003"
+Warning--I didn't find a database entry for "DBLP:conf/sibgrapi/2010"
+Warning--empty booktitle in add1
+Warning--empty year in add1
+Name 1 in "Robert A. Drebin, Loren Carpenter, and Pat Hanrahan" has a comma at the end for entry Robert:1992
+while executing---line 944 of file unsrt.bst
+Warning--empty year in Robert:1992
+Name 1 in "Barthold Lichtenbelt, Randy Crane, and Shaz Naqvi" has a comma at the end for entry bar
+while executing---line 944 of file unsrt.bst
+You've used 30 entries,
+            1791 wiz_defined-function locations,
+            646 strings with 8890 characters,
+and the built_in function-call counts, 8488 in all, are:
+= -- 789
+> -- 306
+< -- 12
++ -- 113
+- -- 83
+* -- 563
+:= -- 1209
+add.period$ -- 93
+call.type$ -- 30
+change.case$ -- 30
+chr.to.int$ -- 0
+cite$ -- 33
+duplicate$ -- 423
+empty$ -- 858
+format.name$ -- 83
+if$ -- 1999
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 33
+newline$ -- 152
+num.names$ -- 32
+pop$ -- 112
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 251
+stack$ -- 0
+substring$ -- 640
+swap$ -- 150
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 81
+width$ -- 32
+write$ -- 335
+(There were 5 error messages)

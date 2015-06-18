@@ -1,0 +1,255 @@
+\usepackage[pdftex]{graphicx}
+\usepackage{latexsym}
+\usepackage{rotating}
+\usepackage[super]{nth}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage[top=1.5in, bottom=1in, left=1.5in, right=1in]{geometry}
+
+% Try uncommenting the following line if fonts don't
+% display correctly in the PDF file.
+%\usepackage{pslatex} 
+
+% To use palatino font, uncomment the following line.
+%\usepackage{mathpazo}
+
+% To use times roman font, uncomment the following line.
+\usepackage{mathptmx} 
+
+% For other fonts, see http://www.tug.org/fonts/
+
+% Page layout -- customizing page number location for chapters
+\fancyhf{} % clear all header and footer fields
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\voffset}{-36pt} %{-0.5in}
+\headsep = 60pt %25pt+36pt
+
+% To have the references sorted in the order they are cited,
+% (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
+%
+\bibliographystyle{unsrt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+%% % Footnotes are to be single spaced.
+%% %
+%% \newcommand{\munfootnote}[1]{%
+%%         \singlespacing
+%% 	\normalsize
+%% 	\footnote{#1}%
+%%         \doublespacing
+%% 	\normalsize
+%% }
+
+% Lengthy quotes must also be single spaced.
+% We provide a parameter for the citation label too.
+%
+\newcommand{\bquote}{\singlespacing\begin{quote}}
+\newcommand{\bquotec}[1]{\bquote\cite{#1}}
+\newcommand{\equote}{\end{quote}\doublespacing}
+
+% Command for creating the thesis title page in accordance with the
+% requirements of the School of Graduate Studies.
+% For usage example, see thesis.tex.
+%
+\newcommand{\thesistitle}{my-title}
+\newcommand{\authorname}{my-name}
+\newcommand{\rollnumber}{my-roll-number}
+\newcommand{\mydegree}{1}
+\newcommand{\degreeyear}{2012}
+\newcommand{\advisorname}{advisor-name}
+\newcommand{\coadvisorname}{coadvisor-name}
+\newcommand{\numberofcoadvisors}{0}
+
+\newcommand{\degreename}[1]{%
+\ifthenelse{\equal{#1}{1}}{Master of Technology}{}%
+\ifthenelse{\equal{#1}{2}}{Master of Science by Research}{}%
+\ifthenelse{\equal{#1}{3}}{Doctor of Philosophy}{}%
+}
+
+\newcommand{\monthname}[1]{%
+\ifthenelse{\equal{#1}{1}}{January}{}%
+\ifthenelse{\equal{#1}{2}}{February}{}%
+\ifthenelse{\equal{#1}{3}}{March}{}%
+\ifthenelse{\equal{#1}{4}}{April}{}%
+\ifthenelse{\equal{#1}{5}}{May}{}%
+\ifthenelse{\equal{#1}{6}}{June}{}%
+\ifthenelse{\equal{#1}{7}}{July}{}%
+\ifthenelse{\equal{#1}{8}}{August}{}%
+\ifthenelse{\equal{#1}{9}}{September}{}%
+\ifthenelse{\equal{#1}{10}}{October}{}%
+\ifthenelse{\equal{#1}{11}}{November}{}%
+\ifthenelse{\equal{#1}{12}}{December}{}%
+}
+\newcommand{\monthyear}[2]{\monthname{#1} #2}
+\newcommand{\myday}{18}
+\newcommand{\mymonth}{6}
+\newcommand{\myyear}{2012}
+\newcommand{\titlepagedate}{\monthyear{\mymonth}{\myyear}}
+\newcommand{\certificatedate}{The \nth{\myday} of \monthname{\mymonth}, \myyear}
+\newcommand{\fillintheblank}{\underline{\phantom{something}}}
+
+\newcommand{\thesistitlecoverpage}{
+\thispagestyle{empty}
+\begin{center}
+\LARGE
+\vspace*{1cm}
+\uppercase{\bf \thesistitle}\\
+\vspace{3.5cm}
+{\bf \authorname}\\
+\vspace{3.5cm}
+{\bf Thesis for the degree of \degreename{\mydegree}}\\
+\Large
+\titlepagedate\\
+\vspace{3.5cm}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.15\columnwidth]{Images/iiitb_logo}\\
+\Large
+International Institute of Information Technology, Bangalore
+\end{figure}
+\end{center}
+\clearpage
+}
+
+\newcommand{\thesistitlepage}{
+\thispagestyle{empty}
+\begin{center}
+\LARGE
+\vspace*{1cm}
+\uppercase{\bf \thesistitle}\\
+\vspace{4cm}
+\Large
+Submitted to International Institute of Technology, Bangalore \\
+in Partial Fulfillment of \\
+the Requirements for the Award of \\
+\degreename{\mydegree}\\
+\vspace{2cm}
+by \\
+\vspace{2cm}
+\LARGE
+{\bf \authorname} \\
+{\bf \rollnumber} \\
+\vspace{3cm}
+\Large
+International Institute of Information Technology, Bangalore \\
+\titlepagedate
+\end{center}
+\clearpage
+}
+
+\newcommand{\thesiscertificate}{
+\begin{center}
+\vspace*{1cm}
+\Large
+\textbf{Thesis Certificate}
+\vspace{2cm}
+\end{center}
+
+\large
+This is to certify that the thesis titled \textbf{\thesistitle} submitted to
+the International Institute of Information Technology, Bangalore, for the award
+of the degree of \textbf{\degreename{\mydegree}} is a bona fide record of the
+research work done by \textbf{\authorname} \textbf{\rollnumber} under my supervision. The contents
+of this thesis, in full or in parts, have not been submitted to any other
+Institute or University for the award of any degree or diploma. \\\\
+\vspace{2cm}
+
+\begin{flushright}
+\makebox[2.5in]{\hrulefill}\\
+\advisorname\\
+\ifthenelse{\equal{\numberofcoadvisors}{0}}{}{
+\vspace{0.5cm}
+\makebox[2.5in]{\hrulefill}\\
+\coadvisorname
+}
+\end{flushright}
+
+\noindent IIITB, Bangalore, \\
+\certificatedate.
+\clearpage
+}
+
+\newcommand{\abstracttitle}{
+\begin{center}
+\Large
+\textbf{\uppercase{\thesistitle}}\\
+\vspace{2cm}
+\normalsize
+\textbf{Abstract}
+\end{center}
+\doublespacing
+\hspace*{0.25cm}
+}
+
+\newcommand{\maketitlepages}{
+\thesistitlecoverpage
+\pagenumbering{roman}
+\thesistitlepage
+\doublespacing
+\thesiscertificate
+
+\addcontentsline{toc}{chapter}{Abstract}
+\abstracttitle
+\input{abstract}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\include{acknowledgments}
+\addcontentsline{toc}{chapter}{List of Publications}
+\include{mypublications}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\include{abbreviations}
+
+% to prevent long numbering from overlapping onto the titles in the lists
+\makeatletter
+\renewcommand{\l@figure}{\@dottedtocline{1}{1.5em}{3em}}
+\let\l@table\l@figure
+\makeatother
+
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\clearpage
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\clearpage
+
+\pagenumbering{arabic}
+
+% Positioning page number position on top right corner
+% Redefining plain style which is automatically applied to chapters (including Bibliography)
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}}
+\pagestyle{fancy}
+}
+
+% Customizing figure and table numbering in chapters
+\newcommand{\setchapterindexing}{
+  \renewcommand{\thetable}{TC\arabic{chapter}.\arabic{table}}  
+  \renewcommand{\thefigure}{FC\arabic{chapter}.\arabic{figure}}
+}
+
+% Customizing figure and table numbering in appendices
+\newcommand{\setappendixindexing}{
+  \renewcommand{\thetable}{TA\arabic{chapter}.\arabic{table}}  
+  \renewcommand{\thefigure}{FA\arabic{chapter}.\arabic{figure}}
+}
+
+\newcommand{\setbib}{
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{ref}
+}
+
+%
+% For theorems and corollaries.
+%
+\newtheorem{cor}{Corollary}
+\newtheorem{thm}{Theorem}
+
+

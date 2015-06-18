@@ -16,6 +16,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform2.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <string>
 
 #include <Glui2/glui2.h>
 
@@ -62,7 +63,7 @@ const int WindowHeight = 512;
 // Global Glui2 Handle
 Glui2* GluiHandle = NULL;
 
-
+string sss;
 
 float transferFunction[ 256 * 4 ] = {0.0};
 float ROItransferFunction[ 256 * 4 ] = {0.0};
@@ -132,7 +133,7 @@ void initInitializeGlobalData()
     g_stepSize = 0.001f;
 
 
-    cout << " ===== " << g_stepSize << "\n" ;
+   // cout << " ===== " << g_stepSize << "\n" ;
 
     g_winWidth = 500;
     g_winHeight = 500;
@@ -167,12 +168,10 @@ void initInitializeGlobalData()
  /* Continous transfer function */
 
     float transferFunc[256*4];  
-    
-    float x = 0.0, y = 0.0;
 
     char str[500];
     FILE *plyReader;
-    cout << "real:: " << fileInput;
+ //   cout << "real:: " << fileInput;
     if ((plyReader = fopen(fileInput, "r")) == NULL) 
     {
         printf(" \n %s File not found ! \n", fileInput);
@@ -322,7 +321,7 @@ void initInitializeGlobalData()
     for(int i = 0; i <= 7 ; i++)
     {
         r[i] = range[i];
-        cout << " =--- " << r[i] << "\n";
+   //     cout << " =--- " << r[i] << "\n";
     }
 
     
@@ -844,7 +843,7 @@ void rayCastSetUnifroms()
     }
     else
     {
-        cout << "VolumeTex2 is not bind to the uniform" << endl;
+  //      cout << "VolumeTex2 is not bind to the uniform" << endl;
     }
  //***************************************
 	
@@ -856,7 +855,7 @@ void rayCastSetUnifroms()
     }
     else
     {
-        cout << " ROItransferFunctionLoc is not bind to the uniform" << endl;
+  //      cout << " ROItransferFunctionLoc is not bind to the uniform" << endl;
     }
 
     GLint transferFunctionLoc = glGetUniformLocation(g_programHandle, "transferFunction");
@@ -877,7 +876,7 @@ void rayCastSetUnifroms()
     }
     else
     {
-            cout << "ROILoc is not bind to the uniform" << endl;
+ //           cout << "ROILoc is not bind to the uniform" << endl;
     }
 
 
@@ -898,7 +897,7 @@ void rayCastSetUnifroms()
     }
     else
     {
-            cout << "eLoc is not bind to the uniform" << endl;
+ //           cout << "eLoc is not bind to the uniform" << endl;
     }
 
 
@@ -1005,7 +1004,7 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
 	}
 	
 
-    cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
+ //   cout << " Values:: " << rangeTotal[0] << " " << rangeTotal[1] << " " << rangeTotal[2] << " " << rangeTotal[3] << "\n";
   
 
     i=0;
@@ -1026,7 +1025,7 @@ void readBufferTexture(GLuint g_TestFrameBuffer)
     }       
 
  //    cout << " Values:: " << rangeTotal[0]*100 << " " << rangeTotal[1]*100 << " " << rangeTotal[2]*100 << " " << rangeTotal[3]*100 << "\n";
-    cout << " " << transferFunction[(range[0]*4)+3] << " " << transferFunction[(range[2]*4)+3] << " " << transferFunction[(range[4]*4)+3] << transferFunction[(range[6]*4)+3] << "\n";
+//    cout << " " << transferFunction[(range[0]*4)+3] << " " << transferFunction[(range[2]*4)+3] << " " << transferFunction[(range[4]*4)+3] << transferFunction[(range[6]*4)+3] << "\n";
     rangeTotal[0] *= 500;
     rangeTotal[1] *= 500;
     rangeTotal[2] *= 500;
@@ -1142,10 +1141,11 @@ void render(GLenum cullFace)
 
  
 	model *= glm::rotate(270.0f, vec3(1.0f, 0.0f, 0.0f));
-//    model *= glm::rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
 
-//    model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
 
+    model *= glm::rotate(180.0f, vec3(0.0f, 1.0f, 0.0f));   // make::: 180 - 0,1,0 for stent8 dataset.
+    model *= glm::rotate(90.0f, vec3(0.0f, 0.0f, 1.0f));
+    
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
     
     // Multiplication order: reverse order of transform

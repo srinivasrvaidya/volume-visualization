@@ -1,0 +1,59 @@
+\contentsline {chapter}{Abstract}{iv}
+\contentsline {chapter}{Acknowledgements}{v}
+\contentsline {chapter}{List of Figures}{x}
+\contentsline {chapter}{List of Tables}{xii}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Motivation}{2}
+\contentsline {section}{\numberline {1.2}Non Photorealistic Rendering }{3}
+\contentsline {section}{\numberline {1.3}Focus+Context for Volume Visualization }{4}
+\contentsline {section}{\numberline {1.4}Related Work}{5}
+\contentsline {section}{\numberline {1.5}Objective}{6}
+\contentsline {section}{\numberline {1.6}Organization of Thesis}{6}
+\contentsline {chapter}{\numberline {2}Direct Volume Rendering Using Raycasting}{8}
+\contentsline {section}{\numberline {2.1}Introduction}{9}
+\contentsline {section}{\numberline {2.2}Definitions}{9}
+\contentsline {subsection}{\numberline {2.2.1}3D Grid}{9}
+\contentsline {subsubsection}{\numberline {2.2.1.1}Structured Grids}{9}
+\contentsline {subsubsection}{\numberline {2.2.1.2}Unstructured Grids}{10}
+\contentsline {subsubsection}{\numberline {2.2.1.3}Hybrid Grids}{10}
+\contentsline {subsection}{\numberline {2.2.2}Voxel}{10}
+\contentsline {subsection}{\numberline {2.2.3}Direct Volume Rendering}{11}
+\contentsline {subsection}{\numberline {2.2.4}Transfer Functions}{11}
+\contentsline {subsection}{\numberline {2.2.5}Region of Interest}{11}
+\contentsline {section}{\numberline {2.3}Volume Ray Casting}{12}
+\contentsline {subsection}{\numberline {2.3.1}Basic Algorithm}{13}
+\contentsline {subsection}{\numberline {2.3.2}Two-pass Rendering}{13}
+\contentsline {subsection}{\numberline {2.3.3}Sampling}{15}
+\contentsline {subsection}{\numberline {2.3.4}Compositing }{16}
+\contentsline {subsubsection}{\numberline {2.3.4.1}Back-to-Front Compositing Equations}{17}
+\contentsline {subsubsection}{\numberline {2.3.4.2}Front-to-Back Compositiong Equations}{17}
+\contentsline {chapter}{\numberline {3}Visibility Driven Transfer functions}{20}
+\contentsline {section}{\numberline {3.1}Motivation}{20}
+\contentsline {section}{\numberline {3.2}Related Work}{21}
+\contentsline {section}{\numberline {3.3}Visibility histogram}{23}
+\contentsline {subsection}{\numberline {3.3.1}Visibility}{23}
+\contentsline {subsection}{\numberline {3.3.2}Visibility Histogram}{24}
+\contentsline {subsection}{\numberline {3.3.3}Influence of the Transfer Function}{25}
+\contentsline {subsection}{\numberline {3.3.4}Influence of the Viewing Direction}{27}
+\contentsline {section}{\numberline {3.4}Role Of Raycasting In Computing Visibility Histogram}{27}
+\contentsline {section}{\numberline {3.5}Transfer Function Design}{29}
+\contentsline {subsection}{\numberline {3.5.1}Manually Generated Transfer Functions}{29}
+\contentsline {subsection}{\numberline {3.5.2}Semi-automatic Transfer Functions Design}{31}
+\contentsline {section}{\numberline {3.6}Focus+Context Using Visibility Histograms}{31}
+\contentsline {chapter}{\numberline {4}Visibility guided multimodal volume visualization }{34}
+\contentsline {section}{\numberline {4.1}Motivation }{34}
+\contentsline {section}{\numberline {4.2}Context+Focus Visualization For Multimodal Volume}{35}
+\contentsline {section}{\numberline {4.3}Local Visibility Histogram}{35}
+\contentsline {chapter}{\numberline {5}Implementation}{38}
+\contentsline {section}{\numberline {5.1}Introduction}{38}
+\contentsline {subsection}{\numberline {5.1.1}The Graphics Pipeline}{38}
+\contentsline {subsection}{\numberline {5.1.2}Vertex Shader}{39}
+\contentsline {subsection}{\numberline {5.1.3}Fragment Shader}{40}
+\contentsline {subsection}{\numberline {5.1.4}OpenGL Shading Language}{40}
+\contentsline {subsection}{\numberline {5.1.5}GLSL Setup for Execution}{42}
+\contentsline {section}{\numberline {5.2}Communication to GPU Shaders}{42}
+\contentsline {section}{\numberline {5.3}Datasets}{43}
+\contentsline {section}{\numberline {5.4}Two-pass Rendering}{43}
+\contentsline {section}{\numberline {5.5}Graphics Pipeline in Hardware}{45}
+\contentsline {chapter}{\numberline {6}Results}{46}
+\contentsline {chapter}{Bibliography}{48}

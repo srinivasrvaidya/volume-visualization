@@ -1,0 +1,24 @@
+This template is a modification of Metathesis v2.0, adapted to the requirements
+of IIIT-Bangalore.
+
+Metathesis v2.0
+----------------
+These files comprise a template for using LaTeX to typeset a
+graduate thesis (MSc or PhD) at Memorial University of Newfoundland
+(http://www.mun.ca/).  This template is bested suited for a Linux
+environment which has recent versions of latex, ghostscript, make and
+associated packages installed.
+
+This template may be useful at other institutions for other operating
+systems as well.
+
+Start with thesis.tex and modify the other files as required.  For more
+information on usage and the latest version of the template, please
+consult the web page:
+
+http://www.cs.mun.ca/~donald/metathesis/
+
+====
+
+The nth.sty file required for formatting date in text format has been taken from:
+http://www.ctan.org/tex-archive/macros/generic/misc

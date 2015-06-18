@@ -1,0 +1,788 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.5.21)  12 JUN 2015 15:59
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**thesis.tex
+(./thesis.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./thesis.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count89
+\rotFPtop=\skip43
+\rotFPbot=\skip44
+\rot@float@box=\box26
+\rot@mess@toks=\toks15
+) (./nth.sty
+Package: nth 2002/02/27
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count90
+\lst@gtempboxa=\box27
+\lst@token=\toks16
+\lst@length=\count91
+\lst@currlwidth=\dimen105
+\lst@column=\count92
+\lst@pos=\count93
+\lst@lostspace=\dimen106
+\lst@width=\dimen107
+\lst@newlines=\count94
+\lst@lineno=\count95
+\lst@maxwidth=\dimen108
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+\c@lstnumber=\count96
+\lst@skipnumbers=\count97
+\lst@framebox=\box28
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2013/08/26 1.5b listings configuration
+))
+Package: listings 2013/08/26 1.5b (Carsten Heinz)
+
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen109
+\captionmargin@=\dimen110
+\captionwidth=\dimen111
+\caption@tempdima=\dimen112
+\caption@indent=\dimen113
+\caption@parindent=\dimen114
+\caption@hangindent=\dimen115
+)
+\c@ContinuedFloat=\count98
+Package caption Info: listings package is loaded.
+Package caption Info: rotating package is loaded.
+)
+\c@subfigure=\count99
+\c@subtable=\count100
+)
+\c@cor=\count101
+\c@thm=\count102
+) (./thesis.aux)
+\openout1 = `thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count103
+\scratchdimen=\dimen116
+\scratchbox=\box29
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen117
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
+\everyMPtoPDFconversion=\toks18
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\c@lstlisting=\count109
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+<Images/iiitb_logo.png, id=1, 586.44093pt x 486.31688pt>
+File: Images/iiitb_logo.png Graphic file (type png)
+
+<use Images/iiitb_logo.png>
+Package pdftex.def Info: Images/iiitb_logo.png used on input line 46.
+(pdftex.def)             Requested size: 65.04034pt x 53.93283pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Images/iiitb_logo.png (P
+NG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 46--46
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 46.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 46.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 46.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 46.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+) [2]
+\openout2 = `abstract.aux'.
+
+ (./abstract.tex
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ã in font cmr12!
+)
+[3
+
+]
+\openout2 = `acknowledgments.aux'.
+
+ (./acknowledgments.tex) [4
+
+
+] (./thesis.toc [5
+
+
+] [6])
+\tf@toc=\write3
+\openout3 = `thesis.toc'.
+
+ [7] (./thesis.lof
+
+LaTeX Warning: Citation `b' on page viii undefined on input line 10.
+
+
+LaTeX Warning: Citation `peel' on page viii undefined on input line 11.
+
+
+LaTeX Warning: Citation `a' on page viii undefined on input line 12.
+
+[8
+
+])
+\tf@lof=\write4
+\openout4 = `thesis.lof'.
+
+ [9] (./thesis.lot)
+\tf@lot=\write5
+\openout5 = `thesis.lot'.
+
+ [10
+
+]
+\openout2 = `Chapters/chap1.aux'.
+
+ (./Chapters/chap1.tex
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+[1
+
+
+
+] [2]
+
+LaTeX Warning: Citation `895844' on page 3 undefined on input line 19.
+
+[3]
+
+LaTeX Warning: Citation `Ebert:2000' on page 4 undefined on input line 28.
+
+
+LaTeX Warning: Citation `Hertzmann:2010' on page 4 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Elvins:1992' on page 4 undefined on input line 32.
+
+[4]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+
+
+LaTeX Warning: Citation `robert2001' on page 5 undefined on input line 36.
+
+
+LaTeX Warning: Citation `pixel' on page 5 undefined on input line 41.
+
+
+LaTeX Warning: Citation `cut' on page 5 undefined on input line 41.
+
+
+LaTeX Warning: Citation `lens' on page 5 undefined on input line 41.
+
+
+LaTeX Warning: Citation `n' on page 5 undefined on input line 41.
+
+
+LaTeX Warning: Citation `h' on page 5 undefined on input line 41.
+
+[5]
+
+LaTeX Warning: Citation `m' on page 6 undefined on input line 43.
+
+
+LaTeX Warning: Citation `m' on page 6 undefined on input line 45.
+
+
+LaTeX Warning: Citation `44' on page 6 undefined on input line 45.
+
+
+LaTeX Warning: Citation `m' on page 6 undefined on input line 45.
+
+
+LaTeX Warning: Citation `h' on page 6 undefined on input line 45.
+
+[6]
+
+LaTeX Warning: Citation `add1' on page 7 undefined on input line 48.
+
+
+LaTeX Warning: Citation `add2' on page 7 undefined on input line 48.
+
+
+LaTeX Warning: Citation `add3' on page 7 undefined on input line 49.
+
+
+LaTeX Warning: Citation `add4' on page 7 undefined on input line 49.
+
+
+LaTeX Warning: Citation `vdtf' on page 7 undefined on input line 53.
+
+
+LaTeX Warning: Citation `mm' on page 7 undefined on input line 53.
+
+[7]) [8]
+\openout2 = `Chapters/chap2.aux'.
+
+ (./Chapters/chap2.tex
+Chapter 2.
+
+LaTeX Warning: Citation `62' on page 9 undefined on input line 7.
+
+[9
+
+
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 18.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
+ [10]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+ [11]
+
+LaTeX Warning: Citation `nov' on page 12 undefined on input line 38.
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+
+LaTeX Warning: Citation `Robert:1992' on page 12 undefined on input line 42.
+
+
+LaTeX Warning: Citation `bar' on page 12 undefined on input line 43.
+
+
+LaTeX Warning: Citation `Wittenbrink98opacity-weightedcolor' on page 12 undefin
+ed on input line 48.
+
+[12] <Images/foot_different_TF.jpg, id=79, 593.21625pt x 472.76625pt>
+File: Images/foot_different_TF.jpg Graphic file (type jpg)
+
+<use Images/foot_different_TF.jpg>
+Package pdftex.def Info: Images/foot_different_TF.jpg used on input line 52.
+(pdftex.def)             Requested size: 350.0pt x 278.94409pt.
+ [13 <./Images/foot_different_TF.jpg>]
+<Images/ray_cast1.jpg, id=83, 233.37187pt x 190.7125pt>
+File: Images/ray_cast1.jpg Graphic file (type jpg)
+
+<use Images/ray_cast1.jpg>
+Package pdftex.def Info: Images/ray_cast1.jpg used on input line 75.
+(pdftex.def)             Requested size: 220.0pt x 179.79356pt.
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+[15 <./Images/ray_cast1.jpg>]
+<Images/cube.png, id=91, 584.1825pt x 412.54124pt>
+File: Images/cube.png Graphic file (type png)
+ <use Images/cube.png>
+Package pdftex.def Info: Images/cube.png used on input line 92.
+(pdftex.def)             Requested size: 320.0pt x 225.98563pt.
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+)
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
+
+ []
+
+[16 <./Images/cube.png>]
+<Images/ray_entry_exit.jpg, id=98, 420.06938pt x 227.34938pt>
+File: Images/ray_entry_exit.jpg Graphic file (type jpg)
+
+<use Images/ray_entry_exit.jpg>
+Package pdftex.def Info: Images/ray_entry_exit.jpg used on input line 134.
+(pdftex.def)             Requested size: 350.0pt x 189.42844pt.
+ [17 <./Images/ray_entry_exit.jpg>]
+<Images/sampling1.jpg, id=102, 138.5175pt x 190.7125pt>
+File: Images/sampling1.jpg Graphic file (type jpg)
+
+<use Images/sampling1.jpg>
+Package pdftex.def Info: Images/sampling1.jpg used on input line 145.
+(pdftex.def)             Requested size: 120.0pt x 165.2172pt.
+ [18 <./Images/sampling1.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
+
+ []
+
+[19] <Images/dvr_head.png, id=112, 466.74374pt x 470.75874pt>
+File: Images/dvr_head.png Graphic file (type png)
+
+<use Images/dvr_head.png>
+Package pdftex.def Info: Images/dvr_head.png used on input line 196.
+(pdftex.def)             Requested size: 220.0pt x 221.89594pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [20] [21 <./Images/dvr_head.png>]
+\openout2 = `Chapters/chap3.aux'.
+
+ (./Chapters/chap3.tex [22
+
+
+]
+Chapter 3.
+[23
+
+]
+
+LaTeX Warning: Citation `c' on page 24 undefined on input line 23.
+
+
+LaTeX Warning: Citation `b' on page 24 undefined on input line 23.
+
+[24] <Images/cut-away.png, id=129, 441.65pt x 309.155pt>
+File: Images/cut-away.png Graphic file (type png)
+
+<use Images/cut-away.png>
+Package pdftex.def Info: Images/cut-away.png used on input line 27.
+(pdftex.def)             Requested size: 220.0pt x 154.0016pt.
+
+
+LaTeX Warning: Citation `b' on page 25 undefined on input line 28.
+
+
+LaTeX Warning: Citation `b' on page 25 undefined on input line 28.
+
+
+LaTeX Warning: Citation `d' on page 25 undefined on input line 31.
+
+<Images/vol-peeling.png, id=130, 780.9175pt x 209.78375pt>
+File: Images/vol-peeling.png Graphic file (type png)
+
+<use Images/vol-peeling.png>
+Package pdftex.def Info: Images/vol-peeling.png used on input line 35.
+(pdftex.def)             Requested size: 250.0pt x 67.15776pt.
+
+
+LaTeX Warning: Citation `peel' on page 25 undefined on input line 36.
+
+
+LaTeX Warning: Citation `peel' on page 25 undefined on input line 36.
+
+[25 <./Images/cut-away.png> <./Images/vol-peeling.png>]
+
+LaTeX Warning: Citation `e' on page 26 undefined on input line 43.
+
+
+LaTeX Warning: Citation `a' on page 26 undefined on input line 43.
+
+
+LaTeX Warning: Citation `f' on page 26 undefined on input line 43.
+
+[26] <Images/size-tf.png, id=137, 526.96875pt x 236.885pt>
+File: Images/size-tf.png Graphic file (type png)
+
+<use Images/size-tf.png>
+Package pdftex.def Info: Images/size-tf.png used on input line 50.
+(pdftex.def)             Requested size: 250.0pt x 112.38057pt.
+
+
+LaTeX Warning: Citation `a' on page 27 undefined on input line 51.
+
+
+LaTeX Warning: Citation `a' on page 27 undefined on input line 51.
+
+
+LaTeX Warning: Citation `vdtf' on page 27 undefined on input line 60.
+
+[27 <./Images/size-tf.png>] [28]
+<Images/VHistogram.jpg, id=146, 564.1075pt x 362.35374pt>
+File: Images/VHistogram.jpg Graphic file (type jpg)
+
+<use Images/VHistogram.jpg>
+Package pdftex.def Info: Images/VHistogram.jpg used on input line 100.
+(pdftex.def)             Requested size: 250.0pt x 160.58618pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
+
+ []
+
+<Images/tf_influence.jpg, id=147, 1075.01625pt x 770.88pt>
+File: Images/tf_influence.jpg Graphic file (type jpg)
+
+<use Images/tf_influence.jpg>
+Package pdftex.def Info: Images/tf_influence.jpg used on input line 112.
+(pdftex.def)             Requested size: 450.0pt x 322.68523pt.
+
+Overfull \hbox (16.38pt too wide) in paragraph at lines 112--113
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+[29 <./Images/VHistogram.jpg>] [30 <./Images/tf_influence.jpg>]
+<Images/tf_view_influence.jpg, id=154, 774.895pt x 894.34125pt>
+File: Images/tf_view_influence.jpg Graphic file (type jpg)
+
+<use Images/tf_view_influence.jpg>
+Package pdftex.def Info: Images/tf_view_influence.jpg used on input line 122.
+(pdftex.def)             Requested size: 450.0pt x 519.37332pt.
+
+Overfull \hbox (16.38pt too wide) in paragraph at lines 122--123
+ [][] 
+ []
+
+[31] [32 <./Images/tf_view_influence.jpg>]
+<Images/VH_pipeline.jpg, id=161, 610.28pt x 453.695pt>
+File: Images/VH_pipeline.jpg Graphic file (type jpg)
+
+<use Images/VH_pipeline.jpg>
+Package pdftex.def Info: Images/VH_pipeline.jpg used on input line 139.
+(pdftex.def)             Requested size: 350.0pt x 260.20801pt.
+ [33 <./Images/VH_pipeline.jpg>]
+<Images/occlusion.jpg, id=166, 674.52pt x 673.51625pt>
+File: Images/occlusion.jpg Graphic file (type jpg)
+
+<use Images/occlusion.jpg>
+Package pdftex.def Info: Images/occlusion.jpg used on input line 152.
+(pdftex.def)             Requested size: 350.0pt x 349.48024pt.
+
+
+LaTeX Warning: Citation `vdtf' on page 34 undefined on input line 159.
+
+[34] [35 <./Images/occlusion.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+<Images/NON-VOI.png, id=173, 459.7175pt x 464.73625pt>
+File: Images/NON-VOI.png Graphic file (type png)
+
+<use Images/NON-VOI.png>
+Package pdftex.def Info: Images/NON-VOI.png used on input line 179.
+(pdftex.def)             Requested size: 234.15558pt x 236.71451pt.
+ <Images/VOI.png, id=174, 436.63126pt x 447.6725pt>
+File: Images/VOI.png Graphic file (type png)
+
+<use Images/VOI.png>
+Package pdftex.def Info: Images/VOI.png used on input line 185.
+(pdftex.def)             Requested size: 234.15558pt x 240.0728pt.
+) [36] [37 <./Images/NON-VOI.png> <./Images/VOI.png>]
+\openout2 = `Chapters/chap4.aux'.
+
+
+(./Chapters/chap4.tex
+Chapter 4.
+[38
+
+
+
+] <Images/Vol-ROI.png, id=185, 449.68pt x 428.60126pt>
+File: Images/Vol-ROI.png Graphic file (type png)
+
+<use Images/Vol-ROI.png>
+Package pdftex.def Info: Images/Vol-ROI.png used on input line 24.
+(pdftex.def)             Requested size: 350.0pt x 333.60786pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[39] <Images/pet-ct-roi.png, id=190, 604.2575pt x 222.8325pt>
+File: Images/pet-ct-roi.png Graphic file (type png)
+
+<use Images/pet-ct-roi.png>
+Package pdftex.def Info: Images/pet-ct-roi.png used on input line 33.
+(pdftex.def)             Requested size: 300.0pt x 110.63054pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[40 <./Images/Vol-ROI.png>] <Images/i=0.png, id=196, 409.53pt x 436.63126pt>
+File: Images/i=0.png Graphic file (type png)
+
+<use Images/i=0.png>
+Package pdftex.def Info: Images/i=0.png used on input line 54.
+(pdftex.def)             Requested size: 149.99898pt x 149.99835pt.
+ <Images/i=1.png, id=197, 456.70625pt x 481.8pt>
+File: Images/i=1.png Graphic file (type png)
+
+<use Images/i=1.png>
+Package pdftex.def Info: Images/i=1.png used on input line 55.
+(pdftex.def)             Requested size: 149.99574pt x 149.99605pt.
+ <Images/i=3.png, id=198, 449.68pt x 476.78125pt>
+File: Images/i=3.png Graphic file (type png)
+
+<use Images/i=3.png>
+Package pdftex.def Info: Images/i=3.png used on input line 58.
+(pdftex.def)             Requested size: 150.00046pt x 149.99773pt.
+ <Images/i=10.png, id=199, 473.77pt x 479.7925pt>
+File: Images/i=10.png Graphic file (type png)
+
+<use Images/i=10.png>
+Package pdftex.def Info: Images/i=10.png used on input line 59.
+(pdftex.def)             Requested size: 149.99739pt x 150.00067pt.
+) [41 <./Images/pet-ct-roi.png>] [42 <./Images/i=0.png> <./Images/i=1.png> <./I
+mages/i=3.png> <./Images/i=10.png>]
+\openout2 = `Chapters/chap5.aux'.
+
+ (./Chapters/chap5.tex
+Chapter 5.
+<Images/graphics_pipeline.jpg, id=207, 817.0525pt x 68.255pt>
+File: Images/graphics_pipeline.jpg Graphic file (type jpg)
+
+<use Images/graphics_pipeline.jpg>
+Package pdftex.def Info: Images/graphics_pipeline.jpg used on input line 13.
+(pdftex.def)             Requested size: 450.0pt x 37.59242pt.
+
+Overfull \hbox (16.38pt too wide) in paragraph at lines 13--14
+ [][] 
+ []
+
+[43
+
+
+
+ <./Images/graphics_pipeline.jpg>] [44] [45]
+<Images/glsl_setup.jpg, id=218, 688.5725pt x 550.055pt>
+File: Images/glsl_setup.jpg Graphic file (type jpg)
+
+<use Images/glsl_setup.jpg>
+Package pdftex.def Info: Images/glsl_setup.jpg used on input line 61.
+(pdftex.def)             Requested size: 450.0pt x 359.47871pt.
+
+Overfull \hbox (16.38pt too wide) in paragraph at lines 61--62
+ [][] 
+ []
+
+[46] [47 <./Images/glsl_setup.jpg>] [48] [49] [50] [51]) [52]
+\openout2 = `Chapters/chap6.aux'.
+
+
+(./Chapters/chap6.tex
+Chapter 6.
+[53
+
+
+
+]) [54] (./thesis.bbl [55
+
+
+] [56] [57]
+Missing character: There is no √ in font cmr12!
+Missing character: There is no ∂ in font cmr12!
+Missing character: There is no √ in font cmr12!
+Missing character: There is no ü in font cmr12!
+ [58]) [59]
+\openout2 = `Chapters/Appendix/apdxa.aux'.
+
+
+(./Chapters/Appendix/apdxa.tex)
+\openout2 = `Chapters/Appendix/apdxb.aux'.
+
+ (./Chapters/Appendix/apdxb.tex) (./thesis.aux
+(./abstract.aux) (./acknowledgments.aux) (./Chapters/chap1.aux)
+(./Chapters/chap2.aux) (./Chapters/chap3.aux) (./Chapters/chap4.aux)
+(./Chapters/chap5.aux) (./Chapters/chap6.aux) (./Chapters/Appendix/apdxa.aux)
+(./Chapters/Appendix/apdxb.aux))
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4899 strings out of 495028
+ 73536 string characters out of 6181497
+ 175502 words of memory out of 5000000
+ 7967 multiletter control sequences out of 15000+600000
+ 9633 words of font info for 36 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 49i,8n,58p,1404b,1545s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on thesis.pdf (69 pages, 2488263 bytes).
+PDF statistics:
+ 307 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+

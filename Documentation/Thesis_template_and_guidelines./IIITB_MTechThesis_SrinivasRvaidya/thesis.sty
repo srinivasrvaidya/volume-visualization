@@ -1,0 +1,208 @@
+\usepackage[pdftex]{graphicx}
+\usepackage{latexsym}
+\usepackage{rotating}
+\usepackage[super]{nth}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[scaled=0.95]{helvet}
+\usepackage{subcaption}
+
+
+
+% Try uncommenting the following line if fonts don't
+% display correctly in the PDF file.
+%\usepackage{pslatex} 
+
+% To use palatino font, uncomment the following line.
+%\usepackage{mathpazo}
+
+% To use times roman font, uncomment the following line.
+%\usepackage{mathptmx}
+
+% For other fonts, see http://www.tug.org/fonts/
+
+\oddsidemargin = .5in
+\textwidth = 6in
+
+\headheight = 0in
+\headsep = 0in
+\topmargin = .25in
+\textheight = 8.5in
+
+\floatsep = .29in
+\textfloatsep = \floatsep
+\intextsep = \floatsep
+
+% To have the references sorted in the order they are cited,
+% (instead of alphabetically), use 'unsrt' instead of 'abbrv'.
+%
+\bibliographystyle{abbrv}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Almost everything is double spaced.
+%
+\newcommand{\spacing}{1.8}
+\renewcommand{\baselinestretch}{\spacing}
+
+% Footnotes are to be single spaced.
+%
+\newcommand{\munfootnote}[1]{%
+	\renewcommand{\baselinestretch}{1.0}%
+	\normalsize
+	\footnote{#1}%
+	\renewcommand{\baselinestretch}{\spacing}%
+	\normalsize
+}
+
+% Lengthy quotes must also be single spaced.
+% We provide a parameter for the citation label too.
+%
+\newenvironment{munquote}[1][]{%
+	\renewcommand{\baselinestretch}{1.0}%
+	\normalsize
+	\def\muncite{#1}
+	\vspace{1.5mm}
+	\begin{quote}\sl``}{''\muncite
+	\end{quote}
+	\renewcommand{\baselinestretch}{\spacing}%
+	\normalsize
+}
+
+% Command for creating the thesis title page in accordance with the
+% requirements of the School of Graduate Studies.
+% For usage example, see thesis.tex.
+%
+\newcommand{\thesistitle}{my-title}
+\newcommand{\authorname}{my-name}
+\newcommand{\mydegree}{1}
+\newcommand{\degreeyear}{2012}
+\newcommand{\advisorname}{advisor-name}
+\newcommand{\coadvisorname}{coadvisor-name}
+
+\newcommand{\degreename}[1]{%
+\ifthenelse{\equal{#1}{1}}{Master of Technology}{}%
+\ifthenelse{\equal{#1}{2}}{Master of Science by Research}{}%
+\ifthenelse{\equal{#1}{3}}{Doctor of Philosophy}{}%
+}
+
+\newcommand{\monthname}[1]{%
+\ifthenelse{\equal{#1}{1}}{January}{}%
+\ifthenelse{\equal{#1}{2}}{February}{}%
+\ifthenelse{\equal{#1}{3}}{March}{}%
+\ifthenelse{\equal{#1}{4}}{April}{}%
+\ifthenelse{\equal{#1}{5}}{May}{}%
+\ifthenelse{\equal{#1}{6}}{June}{}%
+\ifthenelse{\equal{#1}{7}}{July}{}%
+\ifthenelse{\equal{#1}{8}}{August}{}%
+\ifthenelse{\equal{#1}{9}}{September}{}%
+\ifthenelse{\equal{#1}{10}}{October}{}%
+\ifthenelse{\equal{#1}{11}}{November}{}%
+\ifthenelse{\equal{#1}{12}}{December}{}%
+}
+\newcommand{\monthyear}[2]{\monthname{#1} #2}
+\newcommand{\myday}{18}
+\newcommand{\mymonth}{6}
+\newcommand{\myyear}{2012}
+\newcommand{\titlepagedate}{\monthyear{\mymonth}{\myyear}}
+\newcommand{\certificatedate}{The \nth{\myday} of \monthname{\mymonth}, \myyear}
+\newcommand{\fillintheblank}{\underline{\phantom{something}}}
+
+\newcommand{\thesistitlepage}{
+\thispagestyle{empty}
+\begin{center}
+
+\renewcommand{\baselinestretch}{1.0}
+\textbf{\Large \thesistitle}
+\renewcommand{\baselinestretch}{\spacing}%
+
+\vspace{1.0cm}
+
+by \\
+\textbf{\large \authorname}
+
+\vspace{\fill}
+\vspace{\fill}
+
+A thesis submitted\\
+in partial fulfilment of the\\
+requirements for the degree of\\
+\vspace{1cm}
+\textbf{\large \degreename{\mydegree}} \\
+in \\ 
+\textbf{\large Information Technology} \\
+
+\vspace{\fill}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.15\columnwidth]{Images/iiitb_logo}
+\end{figure}
+{\bf \large 
+International Institute of Information Technology, Bangalore.}\\
+\large \titlepagedate
+\vspace{\fill}
+\end{center}
+}
+
+\newcommand{\thesiscertificate}{
+\begin{center}
+\textbf{\large Thesis Certificate}
+\end{center}
+
+This is to certify that the thesis titled \textbf{\thesistitle} submitted to
+the International Institute of Information Technology, Bangalore, for the award
+of the degree of \textbf{\degreename{\mydegree}} is a bona fide record of the
+research work done by \textbf{\authorname} under my supervision. The contents
+of this thesis, in full or in parts, have not been submitted to any other
+Institute or University for the award of any degree or diploma. \\\\
+\vspace{2cm}
+
+\begin{flushright}
+\makebox[2.5in]{\hrulefill}\\
+\advisorname\\
+\ifthenelse{\equal{\coadvisorname}{}}{}{
+\vspace{0.5cm}
+\makebox[2.5in]{\hrulefill}\\
+\coadvisorname
+}
+\end{flushright}
+
+\noindent IIIT-Bangalore, \\
+\certificatedate.
+}
+
+\newcommand{\maketitlepages}{
+\pagenumbering{roman}
+\thesistitlepage
+\newpage
+\thesiscertificate
+\newpage
+
+\addcontentsline{toc}{chapter}{Abstract}
+\include{abstract}
+
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\include{acknowledgments}
+\tableofcontents
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+}
+
+\newcommand{\setbib}{
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{ref}
+}
+
+%
+% For theorems and corollaries.
+%
+\newtheorem{cor}{Corollary}
+\newtheorem{thm}{Theorem}
+
+

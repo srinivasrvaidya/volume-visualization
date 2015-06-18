@@ -1,0 +1,182 @@
+\begin{thebibliography}{10}
+
+\bibitem{b}
+Stefan Bruckner and Meister~Eduard Gr{"o}ller.
+\newblock Exploded views for volume data.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics},
+  12(5):1077--1084, 9 2006.
+
+\bibitem{peel}
+Carlos~D. Correa, Deborah Silver, and Min Chen.
+\newblock {Discontinuous Displacement Mapping for Volume Graphics}.
+\newblock In Raghu Machiraju and Torsten Moeller, editors, {\em Volume
+  Graphics}. The Eurographics Association, 2006.
+
+\bibitem{a}
+C.~Correa and Kwan-Liu Ma.
+\newblock Size-based transfer functions: A new volume exploration technique.
+\newblock {\em Visualization and Computer Graphics, IEEE Transactions on},
+  14(6):1380--1387, Nov 2008.
+
+\bibitem{895844}
+I.H. Manssour, S.S. Furuie, L.P. Nedel, and C.M.D.S. Freitas.
+\newblock A multimodal visualization framework for medical data.
+\newblock In {\em Computer Graphics and Image Processing, 2000. Proceedings
+  XIII Brazilian Symposium on}, pages 356--, 2000.
+
+\bibitem{Ebert:2000}
+David Ebert and Penny Rheingans.
+\newblock Volume illustration: Non-photorealistic rendering of volume models.
+\newblock In {\em Proceedings of the Conference on Visualization '00}, VIS '00,
+  pages 195--202, Los Alamitos, CA, USA, 2000. IEEE Computer Society Press.
+
+\bibitem{Hertzmann:2010}
+Aaron Hertzmann.
+\newblock Non-photorealistic rendering and the science of art.
+\newblock In {\em Proceedings of the 8th International Symposium on
+  Non-Photorealistic Animation and Rendering}, NPAR '10, pages 147--157, New
+  York, NY, USA, 2010. ACM.
+
+\bibitem{Elvins:1992}
+T.~Todd Elvins.
+\newblock A survey of algorithms for volume visualization.
+\newblock {\em SIGGRAPH Comput. Graph.}, 26(3):194--201, August 1992.
+
+\bibitem{robert2001}
+Robert Spence.
+\newblock {\em Information Visualization}.
+\newblock ACM Press, first edition, 2001.
+
+\bibitem{pixel}
+Wenli Cai and Georgios Sakas.
+\newblock Data intermixing and multi-volume rendering.
+\newblock {\em Comput. Graph. Forum}, 18(3):359--368, 1999.
+
+\bibitem{cut}
+Wilmot Li, Lincoln Ritter, Maneesh Agrawala, Brian Curless, and David Salesin.
+\newblock Interactive cutaway illustrations of complex 3d models.
+\newblock {\em {ACM} Trans. Graph.}, 26(3):31, 2007.
+
+\bibitem{lens}
+Lujin Wang, Ye~Zhao, K.~Mueller, and A.~Kaufman.
+\newblock The magic volume lens: an interactive focus+context technique for
+  volume rendering.
+\newblock In {\em Visualization, 2005. VIS 05. IEEE}, pages 367--374, Oct 2005.
+
+\bibitem{n}
+Zhiguang Zhou, Guofeng Wang, Chaogeng Huang, and Hai Lin.
+\newblock Opacity modulation based peeling for direct volume rendering.
+\newblock In {\em Industrial Electronics and Applications (ICIEA), 2014 IEEE
+  9th Conference on}, pages 1152--1157, June 2014.
+
+\bibitem{h}
+J.~Kruger, J.~Schneider, and R.~Westermann.
+\newblock Clearview: An interactive context preserving hotspot visualization
+  technique.
+\newblock {\em Visualization and Computer Graphics, IEEE Transactions on},
+  12(5):941--948, Sept 2006.
+
+\bibitem{m}
+Ivan Viola, Armin Kanitsar, and Meister~Eduard Gr{"o}ller.
+\newblock Importance-driven feature enhancement in volume visualization.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics},
+  11(4):408--418, 2005.
+
+\bibitem{44}
+Francisco de~Moura~Pinto and Carla M. D.~S. Freitas.
+\newblock Importance-aware composition for illustrative volume rendering.
+\newblock In {\em {SIBGRAPI} 2010, Proceedings of the 23rd {SIBGRAPI}
+  Conference on Graphics, Patterns and Images, Gramado, Brazil, August 30
+  2010-September 3, 2010}, pages 134--141, 2010.
+
+\bibitem{add1}
+Tobias Schafhitzel, Friedemann Rößler, Daniel Weiskopf, and Thomas Ertl.
+\newblock Simultaneous visualization of anatomical and functional 3d data by
+  combining volume rendering and flow visualization.
+
+\bibitem{add2}
+Joe Kniss, Gordon Kindlmann, and Charles Hansen.
+\newblock Multidimensional transfer functions for interactive volume rendering.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics},
+  8(3):270--285, July 2002.
+
+\bibitem{add3}
+Stefan Roettger, Michael Bauer, and Marc Stamminger.
+\newblock Spatialized transfer functions.
+\newblock In {\em Proceedings of the Seventh Joint Eurographics / IEEE VGTC
+  Conference on Visualization}, EUROVIS'05, pages 271--278, Aire-la-Ville,
+  Switzerland, Switzerland, 2005. Eurographics Association.
+
+\bibitem{add4}
+Martin Haidacher, Stefan Bruckner, and Meister~Eduard Gr{"o}ller.
+\newblock Volume analysis using multimodal surface similarity.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics},
+  17(12):1969--1978, October 2011.
+
+\bibitem{vdtf}
+C.~Correa and Kwan-Liu Ma.
+\newblock Visibility-driven transfer functions.
+\newblock In {\em Visualization Symposium, 2009. PacificVis '09. IEEE Pacific},
+  pages 177--184, April 2009.
+
+\bibitem{mm}
+Lin Zheng, Carlos~D. Correa, and Kwan-Liu Ma.
+\newblock Visibility guided multimodal volume visualization.
+\newblock In {\em In Proceedings of Bioinformatics and Biomedicine (BIBM), 2013
+  IEEE International Conference}, pages 297--304, 12 2013.
+
+\bibitem{62}
+A.~Patel and K.~Mehta.
+\newblock 3d modeling and rendering of 2d medical image.
+\newblock In {\em Communication Systems and Network Technologies (CSNT), 2012
+  International Conference on}, pages 149--152, May 2012.
+
+\bibitem{nov}
+Robert.~Squire Novelline.
+\newblock {\em Fundamentals of Radiology}.
+\newblock Society for Industrial and Applied Mathematics, fifth edition, 1997.
+
+\bibitem{Robert:1992}
+Loren~Carpenter Robert A.~Drebin and Pat Hanrahan.
+\newblock Volume rendering.
+\newblock {\em In Proceedings of the 15th annual conference on Computer
+  graphics and interactive techniques.}
+
+\bibitem{bar}
+Randy~Crane Barthold~Lichtenbelt and Shaz Naqvi.
+\newblock {\em Introduction to Volume Rendering}.
+\newblock Prentice-Hall, fifth edition, 1998.
+
+\bibitem{Wittenbrink98opacity-weightedcolor}
+Craig~M. Wittenbrink, Tom Malzbender, and Michael~E. Goss.
+\newblock Opacity-weighted color interpolation for volume sampling.
+\newblock In {\em IEEE Symposium on Volume Visualization}, pages 135--142,
+  1998.
+
+\bibitem{c}
+D.~Weiskopf, K.~Engel, and T.~Ertl.
+\newblock Interactive clipping techniques for texture-based volume
+  visualization and volume shading.
+\newblock {\em Visualization and Computer Graphics, IEEE Transactions on},
+  9(3):298--312, July 2003.
+
+\bibitem{d}
+Michael~J. McGuffin, Liviu Tancau, and Ravin Balakrishnan.
+\newblock Using deformations for browsing volumetric data.
+\newblock In {\em 14th {IEEE} Visualization 2003 Conference {(VIS} 2003), 19-24
+  October 2003, Seattle, WA, {USA}}, pages 401--408, 2003.
+
+\bibitem{e}
+Marc Levoy.
+\newblock Display of surfaces from volume data.
+\newblock {\em IEEE Comput. Graph. Appl.}, 8(3):29--37, May 1988.
+
+\bibitem{f}
+Y.~Sato, C.-F. Westin, A.~Bhalerao, S.~Nakajima, N.~Shiraga, S.~Tamura, and
+  R.~Kikinis.
+\newblock Tissue classification based on {3D} local intensity structure for
+  volume rendering.
+\newblock {\em IEEE Trans on Visualization and Computer Graphics},
+  6(2):160--180, 2000.
+
+\end{thebibliography}

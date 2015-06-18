@@ -1,0 +1,26 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {FC2.1}{\ignorespaces Application of two different 1D transfer functions on the same dataset. The transfer functions are shown next to their corresponding image.\relax }}{12}
+\contentsline {figure}{\numberline {FC2.2}{\ignorespaces Direct volume rendering using raycasting.\relax }}{13}
+\contentsline {figure}{\numberline {FC2.3}{\ignorespaces Assigning unique colors to all corners to the bounding box.\relax }}{14}
+\contentsline {figure}{\numberline {FC2.4}{\ignorespaces Entry and exit Textures.\relax }}{15}
+\contentsline {figure}{\numberline {FC2.5}{\ignorespaces Sampling along the direction of ray.\relax }}{16}
+\contentsline {figure}{\numberline {FC2.6}{\ignorespaces Direct volume rendering of a volumetric head dataset.\relax }}{18}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {FC3.1}{\ignorespaces Cutaway of the skin of a CT data set\nobreakspace {}\cite {b}.\relax }}{22}
+\contentsline {figure}{\numberline {FC3.2}{\ignorespaces Volume peeling of a CT scan of a piggy bank\nobreakspace {}\cite {peel}.\relax }}{22}
+\contentsline {figure}{\numberline {FC3.3}{\ignorespaces Size-based transfer function to visualize the brain. On the left is the original rendering, where brain is obscured by the skin\nobreakspace {}\cite {a}.\relax }}{23}
+\contentsline {figure}{\numberline {FC3.4}{\ignorespaces Visibility histogram computation using Raycasting.\relax }}{25}
+\contentsline {figure}{\numberline {FC3.5}{\ignorespaces Illustration of influence of opacity mapping on the visibility histogram when viewing direction and sampling stepsize is constant. \relax }}{26}
+\contentsline {figure}{\numberline {FC3.6}{\ignorespaces Illustration of influence of viewing direction on visibility histogram when transfer function and sampling stepsize is constant. \relax }}{28}
+\contentsline {figure}{\numberline {FC3.7}{\ignorespaces Transfer function design using visibility histogram.\relax }}{29}
+\contentsline {figure}{\numberline {FC3.8}{\ignorespaces Visibility histogram depicting occlusion signature of a foot dataset. (a) The signature on the histogram reveals presence of a strong occluder. (b) The signature of this histogram reveals no presence is a strong occluder. \relax }}{30}
+\contentsline {figure}{\numberline {FC3.9}{\ignorespaces Illustration of Volume-defined ROI\relax }}{33}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {FC4.1}{\ignorespaces ROI bounded by a volume.\relax }}{36}
+\contentsline {figure}{\numberline {FC4.2}{\ignorespaces Global histogram and local histogram.\relax }}{36}
+\contentsline {figure}{\numberline {FC4.3}{\ignorespaces Effects of visibility-weighted adjustment $e$. \relax }}{37}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {FC5.1}{\ignorespaces Graphics rendering pipeline overview.\relax }}{38}
+\contentsline {figure}{\numberline {FC5.2}{\ignorespaces OpenGL GLSL program setup.\relax }}{41}
+\addvspace {10\p@ }
